@@ -1,0 +1,361 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hypothesis-Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sub-Szenarien-Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brian2_Simulationssoftware": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TVB-Simulationssoftware": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Research_Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datenasuwertungs-Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-13T22:22:51.197Z",
+  "id": "7Gj3PBrkWviOQDAZ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Forscher-Agent-Sys",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1180,
+        -2000
+      ],
+      "id": "3bee7f65-e0c7-4f4c-ad06-a8a282a48b60",
+      "name": "When chat message received",
+      "webhookId": "7182d6be-4ac8-4e3d-bd13-568b1e6f7f55"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=**Prompt für den Supervisor-Agent:**  \n\n### **Aufgabe:**  \nDer Supervisor-Agent steuert und koordiniert die verschiedenen Sub-Workflows dynamisch. Er analysiert die Nutzerfrage, leitet eine sinnvolle Vorgehensweise ab und entscheidet flexibel, welche Agenten oder Simulationsmodelle benötigt werden. Falls neue Erkenntnisse oder unerwartete Ergebnisse auftauchen, passt er den Prozess iterativ an.  \n\n### **Arbeitsweise:**  \n1. **Analyse der Nutzerfrage:** Verstehe die gestellte Frage und identifiziere relevante wissenschaftliche Konzepte.  \n2. **Hypothesenbildung:** Falls nötig, beauftrage den Hypothesen-Agent, um eine präzise, wissenschaftlich überprüfbare Hypothese zu formulieren.  \n3. **Informationssammlung:** Falls erforderlich, frage den Research-Agent nach relevanter wissenschaftlicher Literatur oder bestehenden Erkenntnissen.  \n4. **Szenario-Planung & Simulation:**  \n   - Falls Simulationen erforderlich sind, arbeite mit dem Szenario-Agent zusammen, um geeignete experimentelle Pläne zu entwickeln.  \n   - Wähle die passende Simulationssoftware (*The Virtual Brain (TVB)* oder *Brian2*) und übermittle die relevanten Parameter.  \n5. **Iterative Anpassung:**  \n   - Falls Simulationen oder Recherchen neue Fragen oder Unklarheiten aufwerfen, starte weitere Research-Anfragen oder passe die Hypothesen an.  \n   - Falls unzureichende Daten vorliegen, ergänze weitere Simulationsläufe oder analysiere zusätzliche Literatur.  \n6. **Ergebnisanalyse & Synthese:** Beauftrage den Datenauswertungs-Agent, um Forschungsergebnisse, Simulationen und Datenanalysen zusammenzuführen.  \n7. **Antwortgenerierung:** Formuliere eine fundierte, nachvollziehbare und datengetriebene Antwort für den Nutzer. Falls Unsicherheiten bestehen, markiere diese und schlage weitere Forschungs- oder Simulationsschritte vor.  \n\n### **Ziel:**  \nDer Supervisor-Agent sorgt für eine wissenschaftlich fundierte und datengetriebene Antwort. Der Prozess ist adaptiv – falls neue Erkenntnisse auftauchen, wird der Workflow angepasst, um eine möglichst präzise, vollständige und nachvollziehbare Antwort zu liefern.  \n\n### **Nutzerfrage:**  \n{{ $('When chat message received').item.json.chatInput }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        -860,
+        -2000
+      ],
+      "id": "1fe73973-bc2d-443b-928f-d9e5883aeead",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -1260,
+        -1480
+      ],
+      "id": "ce441ff5-38f7-495f-a029-7dbce400a9dc",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "5wSjIMdZLY3uXjre",
+          "name": "API_n8n_20.1"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "Hypothesen_Agent",
+        "description": "=Fähigkeiten / Zweck:\nErstellt basierend auf einer Fragestellung oder einem Sachverhalt eine wissenschaftliche Hypothese. Arbeitet mit dem Szenario-Agenten zusammen, um Szenarien zur Hypothesentestung zu generieren.\n\nWann aufrufen?\n\nWenn eine neue Fragestellung in eine testbare Hypothese umgewandelt werden soll.\nWenn der Supervisor-Agent eine Hypothese verfeinern oder anpassen möchte.\nBenötigte Eingaben:\n\nFragestellung/Sachverhalt: Worum geht es?\nKontext (optional): Hintergrundinfos, Forschungsergebnisse, frühere Hypothesen.\nAusgabe / Output:\nEine testbare, spezifische Hypothese (ggf. mehrere Alternativen) zur Untersuchung in Simulationen oder Experimenten.",
+        "workflowId": {
+          "__rl": true,
+          "value": "MOKST1tPSqCNMPhC",
+          "mode": "list",
+          "cachedResultName": "Hypothesis-Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        -1460
+      ],
+      "id": "052c5fb6-a47a-4896-9300-1e01d5acc8e0",
+      "name": "Hypothesis-Agent"
+    },
+    {
+      "parameters": {
+        "name": "Sub_Szenarien_Agent",
+        "description": "=Fähigkeiten / Zweck:\nEntwickelt experimentelle Szenarien für Fragestellungen/Hypothesen. Wählt passende Simulationssoftware (TVB oder Brian2) und definiert relevante Parameter, Modellkonfigurationen und Messgrößen.\n\nWann aufrufen?\n\nWenn unklar ist, wie eine Hypothese simuliert werden kann.\nZur automatischen Erstellung mehrerer Test-Szenarien (z. B. großskalige TVB-Simulation vs. kleine Brian2-Netzwerksimulation).\nBenötigte Eingaben:\n\nFragestellung/Hypothese: Untersuchungsgegenstand.\nRessourcen (optional): Zeit, Rechenkapazität, bevorzugte Software.\nAusgabe / Output:\n\nSzenariobeschreibung(en): Setup (TVB/Brian2), variable Parameter, erhobene Daten.\nEmpfehlungen zur besten Hypothesentestung.",
+        "workflowId": {
+          "__rl": true,
+          "value": "x4PspBtnuPO0n2Ok",
+          "mode": "list",
+          "cachedResultName": "Sub-Szenarien-Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        -260,
+        -1480
+      ],
+      "id": "ad0673c1-5870-493f-a75b-ec2de5598ba6",
+      "name": "Sub-Szenarien-Agent"
+    },
+    {
+      "parameters": {
+        "name": "Brian2_Simulationssoftware",
+        "description": "=Fähigkeiten / Zweck:\nFührt Simulationen mit der Software Brian2 durch, ideal für die Modellierung einzelner Neuronen oder kleinerer neuronaler Netzwerke (spiking neural networks).\n\nWann aufrufen?\n\nFür feingranulare Simulationen von Neuronen oder Mikronetzwerken.\nZur Überprüfung oder Exploration von Hypothesen auf Einzelzell- oder Mikronetzwerk-Ebene.\nBenötigte Eingaben:\n\nSzenariobeschreibung: Angaben zu neuronalen Modellen, Parametern, Stimulationsprotokollen.\nHypothese (optional): Erwartete Effekte oder zu testende Parameteränderungen.\nAusgabe / Output:\nSimulationsergebnisse und Insights in natürlicher Sprache.",
+        "workflowId": {
+          "__rl": true,
+          "value": "eqfCMvdWOW8V5ZmJ",
+          "mode": "list",
+          "cachedResultName": "Brian2_Version2"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        -960,
+        -1480
+      ],
+      "id": "a7d4ecc7-746f-42a8-ae37-67fe41f45580",
+      "name": "Brian2_Simulationssoftware"
+    },
+    {
+      "parameters": {
+        "name": "TVB_Simulationssoftware",
+        "description": "=Fähigkeiten / Zweck:\nFührt Simulationen mit The Virtual Brain (TVB) durch, spezialisiert auf großskalige Hirnnetzwerk-Simulationen zur Untersuchung dynamischer Prozesse.\n\nWann aufrufen?\n\nBei Szenarien zur Simulation großräumiger neuronaler Netzwerke.\nWenn ein Experiment mit TVB zur Hypothesentestung geplant ist.\nBenötigte Eingaben:\n\nSzenariobeschreibung: Parameter, Hirnregionen/Netzwerke, Zeitfenster, Fragestellung.\nHypothese (optional): Warum diese Konfiguration relevant ist.\nAusgabe / Output:\nSimulationsergebnisse in sprachlicher Form.",
+        "workflowId": {
+          "__rl": true,
+          "value": "oKf3SRq4ar4MDt8B",
+          "mode": "list",
+          "cachedResultName": "TVB_Sub_Workflow"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        -460,
+        -1480
+      ],
+      "id": "bc2fca65-e32e-4825-9aeb-037c989f8d07",
+      "name": "TVB-Simulationssoftware"
+    },
+    {
+      "parameters": {
+        "name": "Research_Agent",
+        "description": "=Fähigkeiten / Zweck:\nRecherchiert wissenschaftliche Publikationen über APIs, liefert Zusammenfassungen oder Details zu Theorien und Erkenntnissen.\n\nWann aufrufen?\n\nZur wissenschaftlichen Untermauerung einer Forschungsfrage.\nFür State-of-the-Art-Informationen oder Literaturübersichten.\nBenötigte Eingaben:\n\nFragestellung/Thema: Konkrete Frage oder Stichwörter.\nKontext (optional): Bisherige Erkenntnisse oder Literaturquellen zur Verfeinerung der Suche.\nAusgabe / Output:\nZusammenfassung relevanter Forschungsergebnisse.",
+        "workflowId": {
+          "__rl": true,
+          "value": "73LuBQENC2ABsrUz",
+          "mode": "list",
+          "cachedResultName": "Research_Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "chatInput"
+          ],
+          "schema": [
+            {
+              "id": "chatInput",
+              "displayName": "chatInput",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        -800,
+        -1480
+      ],
+      "id": "116d3316-9fc8-49fe-aef9-3a74b3a92ab4",
+      "name": "Research_Agent"
+    },
+    {
+      "parameters": {
+        "name": "Datenauswertungs_Agent",
+        "description": "=Fähigkeiten / Zweck:\nAggregiert und analysiert Daten aus Simulationen (TVB/Brian2) und Forschungsergebnissen. Erkennt Muster, stellt Zusammenhänge her und bereitet die Daten verständlich auf.\n\nWann aufrufen?\n\nNach Simulationen zur Konsolidierung der Ergebnisse.\nBei neuen Forschungsergebnissen oder Hypothesen für eine Gesamtanalyse.\nBenötigte Eingaben:\n\nSimulationsergebnisse: Zeitreihen, statistische Kennwerte, Parameterlisten.\nLiteraturdaten (optional): Wissenschaftlicher Kontext.\nFragestellung/Hypothese (optional): Falls die Analyse gezielt erfolgen soll.\nAusgabe / Output:\nZusammenfassung der Daten mit ggf. Interpretation im Hypothesenkontext.",
+        "workflowId": {
+          "__rl": true,
+          "value": "3hPiZqTvz5BOq8r3",
+          "mode": "list",
+          "cachedResultName": "Datenauswertung"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        -640,
+        -1480
+      ],
+      "id": "970dcb30-e76d-4380-965c-65d8ef502ebf",
+      "name": "Datenasuwertungs-Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -1120,
+        -1480
+      ],
+      "id": "02bd27e9-0a83-4dea-aaa0-de9e237a632f",
+      "name": "Window Buffer Memory"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-13T23:19:16.000Z",
+  "versionId": "0e6ca166-df0c-4ed0-a594-f29d1d778472"
+}
