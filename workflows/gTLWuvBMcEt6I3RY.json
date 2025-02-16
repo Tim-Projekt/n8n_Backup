@@ -1,0 +1,171 @@
+{
+  "active": false,
+  "connections": {
+    "IDs": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Summarys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "IDs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-21T14:32:06.248Z",
+  "id": "gTLWuvBMcEt6I3RY",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Pub_Med_API_Sub_Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi\n\n",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "db",
+              "value": "pubmed"
+            },
+            {
+              "name": "term",
+              "value": "={{ $('Workflow Input Trigger').item.json.query }}"
+            },
+            {
+              "name": "retmax",
+              "value": "=3"
+            },
+            {
+              "name": "api_key",
+              "value": "c2814a0b5706234c68535ec2134a738a1207"
+            },
+            {
+              "name": "usehistory",
+              "value": "y"
+            },
+            {
+              "name": "Response Format",
+              "value": "JSON"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        0
+      ],
+      "id": "1e1662b7-5274-4023-83a6-ff5016cb0b88",
+      "name": "IDs"
+    },
+    {
+      "parameters": {
+        "url": "=https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi\n",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "db",
+              "value": "=pubmed"
+            },
+            {
+              "name": "rettype",
+              "value": "=abstract"
+            },
+            {
+              "name": "retmode",
+              "value": "text"
+            },
+            {
+              "name": "api_key",
+              "value": "c2814a0b5706234c68535ec2134a738a1207"
+            },
+            {
+              "name": "WebEnv",
+              "value": "={{ $json.webEnv }}"
+            },
+            {
+              "name": "query_key",
+              "value": "={{ $json.queryKey }}"
+            },
+            {
+              "name": "retmax",
+              "value": "3"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        800,
+        0
+      ],
+      "id": "70df4050-d284-4c96-a4de-bd0b1b04b3cf",
+      "name": "Summarys"
+    },
+    {
+      "parameters": {
+        "jsCode": "// XML-Daten aus dem HTTP-Request\nconst xmlData = $input.first().json.data; // Zugriff auf die XML-Antwort\n\n// Funktion zur Extraktion von Werten aus XML\nfunction extractValue(xml, tagName) {\n  const regex = new RegExp(`<${tagName}>(.*?)</${tagName}>`, 'i');\n  const match = xml.match(regex);\n  return match ? match[1] : null;\n}\n\ntry {\n  // Extrahiere QueryKey und WebEnv aus der XML-Antwort\n  const queryKey = extractValue(xmlData, 'QueryKey');\n  const webEnv = extractValue(xmlData, 'WebEnv');\n\n  if (!queryKey || !webEnv) {\n    throw new Error(\"QueryKey oder WebEnv fehlt in der Antwort.\");\n  }\n\n  // Werte zurückgeben\n  return [{ queryKey, webEnv }];\n} catch (error) {\n  throw new Error(`Fehler bei der Verarbeitung der XML-Daten: ${error.message}`);\n}\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        0
+      ],
+      "id": "f09c0dff-0912-4e79-bd46-0c9e686c4c5d",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        40,
+        0
+      ],
+      "id": "f679ce2b-a469-454c-a333-975fcb9f4938",
+      "name": "Workflow Input Trigger"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-25T16:27:59.000Z",
+  "versionId": "5b375394-33f1-4137-a6ad-b83a3a2b46af"
+}
