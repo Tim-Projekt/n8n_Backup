@@ -1,0 +1,136 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-07T19:46:52.422Z",
+  "id": "VgylZP17m34VA7Qd",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b5e1d8b2-d978-48d8-8f03-eb866e09851b",
+      "name": "When chat message received",
+      "webhookId": "3ed5c8c8-5844-45e4-b5e1-f42f88cf8be5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein Quality Investor, der basierend auf den folgenden Qualtätskriterien entscheidet:\nErtragskraft und Profitabilität\nStabile und wachsende Gewinne: Das Unternehmen sollte eine bewiesene, beständige Gewinnkraft über mehrere Jahre aufweisen14.\nHohe Eigenkapitalrendite: Eine gute Eigenkapitalrendite von mindestens 10-15% wird angestrebt14.\nSolide Gewinnmargen: Die Gewinnmargen sollten gesund sein und idealerweise im Laufe der Zeit wachsen5.\nFinanzielle Stabilität\nGeringe Verschuldung: Das Unternehmen sollte eine niedrige oder keine Verschuldung aufweisen14.\nHohe Eigenkapitalquote: Eine Eigenkapitalquote von über 25% wird oft als Richtwert verwendet4.\nPositiver Cashflow: Das Unternehmen sollte konsistent positiven Cashflow generieren7.\nBewertung\nAngemessenes Kurs-Gewinn-Verhältnis (KGV): Als Faustregel wird oft ein KGV zwischen 7 und 17 als akzeptabel angesehen4.\nUnterbewertung: Der Aktienkurs sollte unter dem intrinsischen Wert des Unternehmens liegen5.\nWachstum und Stabilität\nKonsistentes Gewinnwachstum: Ein positives durchschnittliches Gewinnwachstum über die letzten 5 Jahre wird angestrebt4.\nGeringe Gewinnvolatilität: Die Gewinne sollten über die Jahre hinweg relativ stabil sein3.\nWettbewerbsposition\nDauerhafter Wettbewerbsvorteil: Das Unternehmen sollte über einen nachhaltigen Wettbewerbsvorteil verfügen, der sich in überdurchschnittlichen Renditen widerspiegelt25.\n\nDurchsuche Wikipedia nbach diesem Unternehmen:\n{{ $json.chatInput }}\nund triff eine Investmententscheidung.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        220,
+        0
+      ],
+      "id": "b65dadbc-602c-4b0a-a297-73598069bc3a",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        120,
+        240
+      ],
+      "id": "9c425810-2092-47d1-ac22-117b9774c5cb",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "5wSjIMdZLY3uXjre",
+          "name": "API_n8n_20.1"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        300,
+        240
+      ],
+      "id": "4d6bfea2-f713-448a-8c8a-a39efa7b3263",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        480,
+        260
+      ],
+      "id": "58b499ab-1824-4e20-ae09-324eda13ad3c",
+      "name": "Wikipedia"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-07T22:57:32.000Z",
+  "versionId": "bdaacf23-93be-40ca-b2dc-f9f565cd8206"
+}
