@@ -1,0 +1,132 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Emotion_Analysis_of_Text": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-20T21:18:55.364Z",
+  "id": "pXlpWSIfD10Nznxp",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Test_Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "8b47144d-bcab-4f02-9644-13491f43f492",
+      "name": "When chat message received",
+      "webhookId": "a5eed983-60b5-4f36-b481-9f4165eced57"
+    },
+    {
+      "parameters": {
+        "agent": "planAndExecuteAgent",
+        "promptType": "define",
+        "text": "Du biste ein Plan and Execute Agent im n8n Workflow.\n----------------------------------------------\nDeine Aufgabe ist es Sub-Workflows so zu koordinieren, sodass die Nutzeranfrage beantwortet wird.\n-----------------------------------------------\nDu arbeitest so:\n1. Du machst einen Plan, welche Modelle du in welcher Reihenfolge Prompteste.\n2. Du führst deinen Plan aus, indem du Sub-Workflows anstößt und sie dynamisch Promptest.\n--------------------------------------------\nDas Prompting der Workflows ist sehr wichtig. Schreibe gute Prompts, die Aufgabe/Ziel, Kontext und Arbeitsweise vorgeben. Gehe davon aus, dass kein Sub-Workflow, denn du Promptest irgendwelche Daten, wie z.b. die Nutzeranfrage zur Verfügung hat. Prompts an Sub-Workflows müssen (!) mehr als 100 Zeichen haben.\n-------------------------------------------\nDelegiere alle Aufgaben an Sub-Agents und probiere keine Aufgaben selbst auszuführen.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        220,
+        0
+      ],
+      "id": "42aed80b-ab79-4ada-b45d-074ef7ce4e07",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "name": "Emotion_Analysis_of_Text",
+        "description": "Rufe diesen Workflow auf, wenn du eine Emotionen-Analyse eines Textes willst. Prompte diesen Workflow.",
+        "workflowId": {
+          "__rl": true,
+          "value": "ocaBe2AFXRE3PumY",
+          "mode": "list",
+          "cachedResultName": "Test_Sub_Workflow"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        480,
+        280
+      ],
+      "id": "5f3dc808-9310-41da-b275-09fee3886a52",
+      "name": "Emotion_Analysis_of_Text"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        280
+      ],
+      "id": "e1cfb48b-62f9-4a9c-a390-9fecf4dca5fe",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "5wSjIMdZLY3uXjre",
+          "name": "API_n8n_20.1"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-21T11:25:56.000Z",
+  "versionId": "76c07adb-b700-4151-beac-4c8cd3a84281"
+}
