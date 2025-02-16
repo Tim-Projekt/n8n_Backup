@@ -1,0 +1,198 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Brunel_2000",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brunel_2000": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API5": {
+      "main": [
+        [
+          {
+            "node": "OpenAI5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Brunel_2000",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T16:59:35.392Z",
+  "id": "pl8g8gvMysohXheF",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Brunel_2000",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f9ad7ac1-32ff-4bfe-8e2b-fd5c64e5394c",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:  \nParameter: tfinal\nBeschreibung: Simulationsdauer. Minimal: Ermöglicht Beobachtung grundlegender Netzwerkdynamiken. Maximal: Lang genug für stationäre Zustände, ohne hohe Rechenlast.\nWertebereich: [Min: 500, Typisch: 1000, Max: 5000]\nEinheit: ms\n\nParameter: dt\nBeschreibung: Zeitschritt der Simulation. Minimal: Erhöht die numerische Genauigkeit. Maximal: Reduziert Rechenaufwand, bleibt aber für akkurate Simulation geeignet.\nWertebereich: [Min: 0.025, Typisch: 0.1, Max: 0.5]\nEinheit: ms\n\nParameter: Ne\nBeschreibung: Anzahl exzitatorischer Neuronen. Minimal: Kleines Netzwerk für grundlegende Interaktionen. Maximal: Größeres Netzwerk, näher an kortikalen Mikrokreisen.\nWertebereich: [Min: 1000, Typisch: 8000, Max: 20000]\nEinheit: -\n\nParameter: Ni\nBeschreibung: Anzahl inhibitorischer Neuronen. Skaliert mit Ne für Netzwerkbalance.\nWertebereich: [Min: 250, Typisch: 2000, Max: 5000]\nEinheit: -\n\nParameter: a_exc\nBeschreibung: 'a' für exzitatorische Neuronen (Izhikevich-Modell). Beeinflusst die Erholungszeitachse.\nWertebereich: [Min: 0.01, Typisch: 0.02, Max: 0.05]\nEinheit: -\n\nParameter: b_exc\nBeschreibung: 'b' für exzitatorische Neuronen. Beschreibt die Sensitivität der Erholungsvariable.\nWertebereich: [Min: 0.1, Typisch: 0.2, Max: 0.3]\nEinheit: -\n\nParameter: c_exc\nBeschreibung: 'c' für exzitatorische Neuronen. Setzt Membranspannung nach Spike zurück.\nWertebereich: [Min: -70, Typisch: -65, Max: -60]\nEinheit: mV\n\nParameter: d_exc\nBeschreibung: 'd' für exzitatorische Neuronen. Steigert Erholungsvariable nach Spike.\nWertebereich: [Min: 4, Typisch: 8, Max: 12]\nEinheit: mV/ms\n\nParameter: a_inh\nBeschreibung: 'a' für inhibitorische Neuronen (Izhikevich-Modell). Beeinflusst die Erholungszeitachse.\nWertebereich: [Min: 0.01, Typisch: 0.02, Max: 0.05]\nEinheit: -\n\nParameter: b_inh\nBeschreibung: 'b' für inhibitorische Neuronen. Beeinflusst Subthreshold-Oszillationen.\nWertebereich: [Min: 0.2, Typisch: 0.25, Max: 0.3]\nEinheit: -\n\nParameter: c_inh\nBeschreibung: 'c' für inhibitorische Neuronen. Setzt Membranspannung nach Spike zurück.\nWertebereich: [Min: -70, Typisch: -65, Max: -60]\nEinheit: mV\n\nParameter: d_inh\nBeschreibung: 'd' für inhibitorische Neuronen. Beeinflusst die Adaptation inhibitorischer Neuronen.\nWertebereich: [Min: 1, Typisch: 2, Max: 4]\nEinheit: mV/ms\n\nParameter: I\nBeschreibung: Externer Strom. Minimal: Kein externer Strom, Aktivität durch interne Dynamiken. Maximal: Moderater Antrieb zur Aktivitätserhöhung.\nWertebereich: [Min: 0, Typisch: 10, Max: 20]\nEinheit: -\n\nParameter: I_noise_exc\nBeschreibung: Rauschen für exzitatorische Neuronen. Minimal: Kein Rauschen, deterministische Aktivität.\nWertebereich: [Min: 0, Typisch: 1, Max: 2]\nEinheit: -\n\nParameter: I_noise_inh\nBeschreibung: Rauschen für inhibitorische Neuronen. Minimal: Geringeres Rauschen als exzitatorisches Rauschen.\nWertebereich: [Min: 0, Typisch: 0.8, Max: 2]\nEinheit: -\n\nParameter: v\nBeschreibung: Anfangsmembranpotential. Minimal: Variationen im Ruhepotential.\nWertebereich: [Min: -70, Typisch: -65, Max: -60]\nEinheit: mV\n\nParameter: weights_exc\nBeschreibung: Gewicht exzitatorischer Synapsen. Minimal: Schwache Synapsen, reduzierte Aktivität. Maximal: Stärkere Synapsen, verstärkte Aktivität.\nWertebereich: [Min: 0.05, Typisch: 0.1, Max: 0.2]\nEinheit: mV\n\nParameter: weights_inh\nBeschreibung: Gewicht inhibitorischer Synapsen. Typischerweise stärker als exzitatorische zur Netzwerkstabilisierung.\nWertebereich: [Min: 0.2, Typisch: g * weights_exc, Max: 1.0]\nEinheit: mV\n\nParameter: delay_up\nBeschreibung: Synaptische Verzögerung (aufsteigend). Minimal: Sehr kurze Verzögerung.\nWertebereich: [Min: 0.1, Typisch: 1.5, Max: 5]\nEinheit: ms\n\nParameter: delay_down\nBeschreibung: Synaptische Verzögerung (absteigend). Minimal: Ähnlich wie delay_up.\nWertebereich: [Min: 0.1, Typisch: 0.8, Max: 5]\nEinheit: ms\n\nBeispieloutput:\ntfinal: 1000 * ms\ndt: 0.1 * ms\nNe: 8000\nNi: 2000\na_exc: 0.02\nb_exc: 0.2\nc_exc: -65\nd_exc: 8\na_inh: 0.02\nb_inh: 0.25\nc_inh: -65\nd_inh: 2\nI: 10\nI_noise_exc: 1\nI_noise_inh: 0.8\nv: -65\nweights_exc: 0.1\nweights_inh: 0.25\ndelay_up: 1.5 * ms\ndelay_down: 0.8 * ms\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        240,
+        0
+      ],
+      "id": "dbfb4da1-4326-4a19-b98d-003436a99695",
+      "name": "Brunel_2000"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter, Werte und Einheiten\nconst regexParams = /\\b([a-zA-Z_]+):\\s*([\\d.-]+)\\s*(?:\\*\\s*([a-zA-Z_()]+))?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen, den Wert und optional die Einheit\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n  const paramUnit = match[3] ? match[3].trim() : null;\n\n  // Speichere die Parameter im Objekt, inkl. Einheit, falls vorhanden\n  parameters[paramName] = paramUnit ? `${paramValue} * ${paramUnit}` : paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        0
+      ],
+      "id": "460f228a-38d3-4adf-ac8d-15d82bd0826a",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_network",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code5').item.json }}",
+        "options": {
+          "response": {},
+          "timeout": 600000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        960,
+        0
+      ],
+      "id": "9f783fc7-f2b2-4b91-918f-3f1a1f200c7a",
+      "name": "Simulation_API5",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Brunel_2000. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.json.query }}\nRelevante Parameter: \n{{ $('Brunel_2000').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1240,
+        0
+      ],
+      "id": "48a5a698-3726-4275-aadf-c734dab6979f",
+      "name": "OpenAI5",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        340,
+        220
+      ],
+      "id": "a2412970-a29e-44a2-88da-2a2251eadd3e",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Mid8lkFo2uMmRyYL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T10:14:09.000Z",
+  "versionId": "c728cb28-923f-4eeb-bb89-3e28ca3cbfc6"
+}
