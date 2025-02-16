@@ -1,0 +1,561 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CUBA (Current-Based Adaptive Hodgkin-Huxley)": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hodgkin_Huxley_1952": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Izhikevich_2003": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Morris_Lecar_1981": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brunel_2000": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clopath_et_al_2010_homeostasis": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tsodyks_Pawelzik_Markram_1998": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "STDP (Spike-Timing Dependent Plasticity": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Distributed_Synchrony_Example": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Izhikevich_2007": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T16:41:33.783Z",
+  "id": "tDcFb5jxwWzkpyCj",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Brian2-Sub-Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        -240
+      ],
+      "id": "5e989977-78e3-49ae-8700-19beda8fa257",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=**Prompt für den AI-Agenten (mit iterativem Verhalten und neutraler Berichterstattung):**  \n\n### **Rolle:**  \nDu bist ein wissenschaftlicher Simulations-Agent, der neuronale und kognitive Prozesse präzise analysiert. Deine Aufgabe ist es, ein gegebenes Szenario mit verschiedenen biologisch inspirierten Simulationsmodellen zu untersuchen und durch iterative Anpassung die bestmögliche Simulation zu erstellen.  \n\n### **Aufgabe:**  \n- Erhalte ein Szenario und analysiere die relevanten neuronalen und synaptischen Prozesse.  \n- Wähle die passenden Simulationsmodelle aus der verfügbaren Modellbibliothek aus.  \n- Führe simulationsbasierte Berechnungen durch und passe die Simulation iterativ an, um das Szenario möglichst genau abzubilden.  \n- Dokumentiere wissenschaftlich die Ergebnisse und relevanten Muster aus den einzelnen Simulationsmodellen.  \n- Erstelle eine strukturierte Zusammenfassung der Simulationsausgaben ohne weiterführende Interpretationen oder Handlungsempfehlungen.  \n\n### **Ziel:**  \n- Die möglichst realistische Simulation der neuronalen Prozesse des gegebenen Szenarios.  \n- Eine wissenschaftlich fundierte und präzise Analyse der Ergebnisse, die auf validierten neuronalen Modellen basiert.  \n- Eine neutrale, objektive Berichterstattung über die Simulationsergebnisse.  \n\n### **Arbeitsweise:**  \n1. **Szenario-Verständnis:**  \n   - Analysiere die Problemstellung und extrahiere alle relevanten Faktoren.  \n   - Identifiziere die zentralen neuronalen Mechanismen, die im Szenario eine Rolle spielen könnten.  \n\n2. **Modellauswahl:**  \n   - Wähle auf Grundlage des Szenarios geeignete Simulationsmodelle aus.  \n   - Falls mehrere Modelle benötigt werden, kombiniere sie für eine umfassendere Simulation.  \n\n3. **Erste Simulation:**  \n   - Nutze die gewählten Modelle, um das Szenario mit den passenden Parametern zu simulieren.  \n   - Beachte wissenschaftliche Standards, wie reproduzierbare Berechnungen und nachvollziehbare Modellannahmen.  \n\n4. **Ergebnisanalyse:**  \n   - Vergleiche die Ausgaben der Modelle und identifiziere zentrale Muster und Abweichungen.  \n   - Dokumentiere wissenschaftlich relevante Daten und strukturiere die Ergebnisse präzise.  \n\n5. **Iterative Verbesserung:**  \n   - Falls die erste Simulation nicht ausreichend präzise ist, analysiere die Schwachstellen und passe die Parameter oder Modellauswahl an.  \n   - Wiederhole den Simulationsprozess mit verbesserten Parametern oder zusätzlichen Modellen.  \n   - Falls nötig, iteriere mehrmals, bis die Simulation das Szenario möglichst genau beschreibt.  \n\n6. **Ausgabe:**  \n   - Der finale Bericht enthält ausschließlich die dokumentierten Ergebnisse der Simulation.  \n   - Die Resultate werden sachlich dargestellt, geordnet nach den beteiligten Modellen und relevanten Parametern.  \n   - Es erfolgen keine weiterführenden Deutungen, Handlungsempfehlungen oder spekulativen Aussagen.  \n   - Der Bericht gibt eine präzise Darstellung der Simulationsergebnisse in Bezug auf das Szenario wieder.  \n\nMit diesem neutralen, ergebnisorientierten Vorgehen gewährleistet der Agent eine objektive wissenschaftliche Berichterstattung über die Simulationen.\n----------------------------------------------------------------------------\nZu simulierendes Szenario:\n{{ $json.chatInput }}\n\nWichtig: RUfe immer nur ein Tool gleichzeitig auf!",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        260,
+        0
+      ],
+      "id": "2c21cd60-851a-48f0-8de5-2e5f3bea72fe",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        60,
+        300
+      ],
+      "id": "6060c8b0-1cd6-4b7c-ba46-0b443e1cd9c7",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "5wSjIMdZLY3uXjre",
+          "name": "API_n8n_20.1"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        240,
+        300
+      ],
+      "id": "c5c4d5dd-10be-4627-801f-53ea1eab1677",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {
+        "name": "Conductance_Based_Adaptive_Hodgkin_Huxley",
+        "description": "Selbstbeschreibung: Simuliert biologisch realistische Neuronen mit leitwertbasierten Synapsen.\nWann aufrufen? Wenn detaillierte Feuerraten und Membranpotentiale simuliert werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "nbsaQaMuS7dAcdDt",
+          "mode": "list",
+          "cachedResultName": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        420,
+        520
+      ],
+      "id": "85827d69-e528-490c-9330-b0d2141cd40a",
+      "name": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)"
+    },
+    {
+      "parameters": {
+        "name": "Current_Based_Adaptive_Hodgkin_Huxley",
+        "description": "Selbstbeschreibung: Eine vereinfachte Variante des Hodgkin-Huxley-Modells mit strombasierten Synapsen.\nWann aufrufen? Wenn eine weniger rechenintensive neuronale Simulation benötigt wird.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.\n",
+        "workflowId": {
+          "__rl": true,
+          "value": "UMokNeRsrNXbtbyW",
+          "mode": "list",
+          "cachedResultName": "CUBA (Current-Based Adaptive Hodgkin-Huxley)"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        580,
+        520
+      ],
+      "id": "d80b3ba8-4733-4d82-b226-a840b0c89d1e",
+      "name": "CUBA (Current-Based Adaptive Hodgkin-Huxley)"
+    },
+    {
+      "parameters": {
+        "name": "Hodgkin_Huxley_1952",
+        "description": "Selbstbeschreibung: Ein detailliertes biophysikalisches Modell zur Beschreibung von Aktionspotentialen in Neuronen basierend auf ionischen Strömen durch Membrankanäle.\nWann aufrufen? Wenn präzise neuronale Erregbarkeit und Membrandynamik simuliert werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "JcjO8HcbcO3m2giT",
+          "mode": "list",
+          "cachedResultName": "Hodgkin_Huxley_1952"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        740,
+        520
+      ],
+      "id": "f5e3b832-300e-4bac-b4a2-09ba7ccd4515",
+      "name": "Hodgkin_Huxley_1952"
+    },
+    {
+      "parameters": {
+        "name": "Izhikevich_2003",
+        "description": "Selbstbeschreibung: Effizientes Modell für realistische neuronale Feuerungsmuster.\nWann aufrufen? Wenn eine rechenoptimierte Simulation neuronaler Aktivität benötigt wird.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "C72raI0eNjq223EB",
+          "mode": "list",
+          "cachedResultName": "Izhikevich_2003"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        900,
+        520
+      ],
+      "id": "b18701a2-8ff1-43e0-bf83-bac60e2713a6",
+      "name": "Izhikevich_2003"
+    },
+    {
+      "parameters": {
+        "name": "Morris_Lecar_1981",
+        "description": "Selbstbeschreibung: Ein Zwei-Variablen-Modell zur Beschreibung von neuronaler Erregbarkeit.\nWann aufrufen? Wenn oszillatorische Aktivitäten und Aktionspotentiale untersucht werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "am0ZPXz8q14oVzCe",
+          "mode": "list",
+          "cachedResultName": "Morris_Lecar_1981"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        520
+      ],
+      "id": "b3d67c8e-d92e-460a-8855-83566ff956f0",
+      "name": "Morris_Lecar_1981"
+    },
+    {
+      "parameters": {
+        "name": "Brunel_2000",
+        "description": "Selbstbeschreibung: Modell zur Simulation rekurrenter Netzwerke mit synchronisierten oder asynchronen Feuermustern.\nWann aufrufen? Wenn neuronale Netzwerke mit inhibitorischen und exzitatorischen Neuronen analysiert werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "pl8g8gvMysohXheF",
+          "mode": "list",
+          "cachedResultName": "Brunel_2000"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        520
+      ],
+      "id": "5d2efcc8-f6b4-4062-b23d-87d9e6c13e80",
+      "name": "Brunel_2000"
+    },
+    {
+      "parameters": {
+        "name": "Clopath_et_al_2010_homeostasis",
+        "description": "Selbstbeschreibung: Modell für synaptische Plastizität und homöostatische Anpassungen.\nWann aufrufen? Wenn Lernmechanismen in neuronalen Netzwerken untersucht werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "Z8AJ7Iu5f7P5rklW",
+          "mode": "list",
+          "cachedResultName": "Clopath_et_al_2010_homeostasis"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        520
+      ],
+      "id": "5c51bc57-64d4-4bf5-85bc-cca754d8bb96",
+      "name": "Clopath_et_al_2010_homeostasis"
+    },
+    {
+      "parameters": {
+        "name": "Tsodyks_Pawelzik_Markram_1998",
+        "description": "Selbstbeschreibung: Modell für Kurzzeitplastizität und synaptische Transmission.\nWann aufrufen? Wenn kurzfristige Anpassungen in neuronalen Verbindungen analysiert werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "hg3zJpSBs1byyo8k",
+          "mode": "list",
+          "cachedResultName": "Tsodyks_Pawelzik_Markram_1998"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        520
+      ],
+      "id": "c7d2e65d-c272-4f04-be7d-b1b0673a5cb6",
+      "name": "Tsodyks_Pawelzik_Markram_1998"
+    },
+    {
+      "parameters": {
+        "name": "Spike_Timing_Dependent_Plasticity",
+        "description": "Selbstbeschreibung: Modell für synaptische Anpassung basierend auf zeitlichen Spikemustern.\nWann aufrufen? Wenn lernbasierte synaptische Veränderungen simuliert werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "8034V3oeo6WWT9uB",
+          "mode": "list",
+          "cachedResultName": "STDP (Spike-Timing Dependent Plasticity)"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1740,
+        520
+      ],
+      "id": "aa922913-4700-4811-88d0-85a3e86e8dd8",
+      "name": "STDP (Spike-Timing Dependent Plasticity"
+    },
+    {
+      "parameters": {
+        "name": "Distributed_Synchrony_Example",
+        "description": "Selbstbeschreibung: Modell zur Untersuchung synchronisierter Feuermuster in neuronalen Netzwerken.\nWann aufrufen? Wenn neuronale Oszillationen oder rhythmische Aktivitäten analysiert werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "gxEKCRdOOOdj990W",
+          "mode": "list",
+          "cachedResultName": "Distributed Synchrony Example"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        520
+      ],
+      "id": "2a5cbe83-83ab-4dcb-9ae6-820956b0dcfe",
+      "name": "Distributed_Synchrony_Example"
+    },
+    {
+      "parameters": {
+        "name": "Izhikevich_2007",
+        "description": "Selbstbeschreibung: Erweiterung des Izhikevich-Modells zur Simulation komplexer Netzwerkdynamiken.\nWann aufrufen? Wenn realistische neuronale Netzwerke mit Feuerungsmustern und Plastizität simuliert werden sollen.\nEingabe: Empfängt ein Szenario, das es zu simulieren gilt.",
+        "workflowId": {
+          "__rl": true,
+          "value": "3LeAi3EkWSyHfJum",
+          "mode": "list",
+          "cachedResultName": "Izhikevich_2007"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        2100,
+        540
+      ],
+      "id": "9f3f9128-ac91-47c4-8f66-e31dc7dbbe18",
+      "name": "Izhikevich_2007"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -20,
+        0
+      ],
+      "id": "c0dd07f1-01a9-463a-a762-2c80adc6d6af",
+      "name": "When chat message received",
+      "webhookId": "43bb2020-14ab-490f-b33a-b315cf21167a"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-15T18:38:12.000Z",
+  "versionId": "52024538-f107-4315-8cc6-e69a7545de9c"
+}
