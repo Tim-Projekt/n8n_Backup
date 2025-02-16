@@ -1,0 +1,195 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Tsodyks_Pawelzik_Markram_1998",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code7": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tsodyks_Pawelzik_Markram_1998": {
+      "main": [
+        [
+          {
+            "node": "Code7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API7": {
+      "main": [
+        [
+          {
+            "node": "OpenAI7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Tsodyks_Pawelzik_Markram_1998",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T17:14:14.318Z",
+  "id": "hg3zJpSBs1byyo8k",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Tsodyks_Pawelzik_Markram_1998",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\ntau_mem\nBeschreibung: Membranzeitkonstante kortikaler Pyramidenneuronen (Koch & Segev, 1998; Dayan & Abbott, 2001).\nWertebereich: [Min: 10 ms, Typisch: 40.0 ms, Max: 100 ms]\nEinheit: Millisekunden (ms)\n\nR_in\nBeschreibung: Eingangswiderstand typischer Neuronen (Major et al., 2013; Spruston, 2008).\nWertebereich: [Min: 50 MΩ, Typisch: 100.0 MΩ, Max: 200 MΩ]\nEinheit: Megaohm (MΩ)\n\ntau_inact\nBeschreibung: Inaktivierungszeitkonstante für AMPA-vermittelte Synapsen (Häusser & Roth, 1997).\nWertebereich: [Min: 1 ms, Typisch: 3.0 ms, Max: 5 ms]\nEinheit: Millisekunden (ms)\n\nA_SE\nBeschreibung: Amplitude synaptischer Ströme in kortikalen Schaltkreisen (Markram et al., 1997).\nWertebereich: [Min: 50 pA, Typisch: 250.0 pA, Max: 500 pA]\nEinheit: Pikoampere (pA)\n\nU_SE\nBeschreibung: Ausnutzung synaptischer Ressourcen (U) im TPM-Modell (TPM 1998; Gupta et al., 2000).\nWertebereich: [Min: 0.1, Typisch: 0.6, Max: 0.7]\nEinheit: - (dimensionslos)\n\ntau_rec\nBeschreibung: Erholungszeit von synaptischer Depression (TPM 1998; Zucker & Regehr, 2002).\nWertebereich: [Min: 50 ms, Typisch: 800.0 ms, Max: 2000 ms]\nEinheit: Millisekunden (ms)\n\ntau_facil\nBeschreibung: Zeitkonstante der präsynaptischen Fazilitierung (TPM 1998; Dittman et al., 2000).\nWertebereich: [Min: 100 ms, Typisch: 530.0 ms, Max: 1000 ms]\nEinheit: Millisekunden (ms)\n\nstart\nBeschreibung: Startzeitpunkt eines Prozesses oder Stimulus.\nWertebereich: [Typisch: 100.0 ms]\nEinheit: Millisekunden (ms)\n\nstop\nBeschreibung: Endzeitpunkt eines Prozesses oder Stimulus.\nWertebereich: [Typisch: 1100.0 ms]\nEinheit: Millisekunden (ms)\n\nfrequency\nBeschreibung: Frequenz eines periodischen Signals oder Stimulus.\nWertebereich: [Typisch: 20.0 Hz]\nEinheit: Hertz (Hz)\n\nduration\nBeschreibung: Dauer eines Prozesses oder Stimulus.\nWertebereich: [Typisch: 1200.0 ms]\nEinheit: Millisekunden (ms)\n\nBeispieloutput:\ntau_mem: 40. * ms\nR_in: 100. * Mohm\ntau_inact: 3. * ms\nA_SE: 250. * pA\nU_SE: 0.6\ntau_rec: 800. * ms\ntau_facil: 530. * ms\nstart: 100. * ms\nstop: 1100. * ms\nfrequency: 20. * Hz\nduration: 1200. * ms\n\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -320,
+        -160
+      ],
+      "id": "48bc1def-3eaa-44e6-8cf7-8f21f7dd68e3",
+      "name": "Tsodyks_Pawelzik_Markram_1998"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -620,
+        -160
+      ],
+      "id": "c4a49fa9-a7b5-4a96-ad25-949301946fc6",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        120,
+        -160
+      ],
+      "id": "5afa5ea5-bdab-4191-981b-eb9cb1bbcab0",
+      "name": "Code7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_synaptic_response",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code7').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        -160
+      ],
+      "id": "b967e982-5b97-4943-bcf4-4e0a715068fe",
+      "name": "Simulation_API7"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Tsodyks_Pawelzik_Markram_1998. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.json.query }}\nRelevante Parameter: \n{{ $('Tsodyks_Pawelzik_Markram_1998').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        720,
+        -160
+      ],
+      "id": "45fc813b-03aa-4440-93e3-9af3c6200bee",
+      "name": "OpenAI7",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -300,
+        60
+      ],
+      "id": "5be9331b-f3d4-439a-9537-abcbb3502d10",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Mid8lkFo2uMmRyYL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T10:13:44.000Z",
+  "versionId": "0128780a-9a69-47d5-aee6-133001913211"
+}
