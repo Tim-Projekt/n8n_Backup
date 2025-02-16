@@ -1,0 +1,249 @@
+{
+  "active": false,
+  "connections": {
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API2": {
+      "main": [
+        [
+          {
+            "node": "OpenAI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hodgkin_Huxley_1952": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Hodgkin_Huxley_1952",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hodgkin_Huxley_1952",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T16:52:35.005Z",
+  "id": "JcjO8HcbcO3m2giT",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Hodgkin_Huxley_1952",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /El:\\s*([\\d.-]+)\\s*\\*?\\s*mV\\s*|ENa:\\s*([\\d.-]+)\\s*\\*?\\s*mV\\s*|EK:\\s*([\\d.-]+)\\s*\\*?\\s*mV\\s*|gl:\\s*([\\d.]+)\\s*\\*?\\s*mS\\s*\\/\\s*cm²\\s*|gNa0:\\s*([\\d.]+)\\s*\\*?\\s*mS\\s*\\/\\s*cm²\\s*|gK:\\s*([\\d.]+)\\s*\\*?\\s*mS\\s*\\/\\s*cm²\\s*|Cm:\\s*([\\d.]+)\\s*\\*?\\s*µF\\s*\\/\\s*cm²\\s*|Ri:\\s*([\\d.]+)\\s*\\*?\\s*ohm\\s*\\/\\s*cm\\s*|gNa:\\s*([\\d.]+)\\s*\\*?\\s*mS\\s*\\/\\s*cm²\\s*|m:\\s*([\\d.]+)\\s*|h:\\s*([\\d.]+)\\s*|n:\\s*([\\d.]+)\\s*|I:\\s*([\\d.]+)\\s*\\*?\\s*uA\\s*|gNa\\[5cm:10cm\\]:\\s*([\\d.]+)\\s*\\*?\\s*siemens\\s*\\/\\s*cm²/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  if (match[1]) parameters.El = parseFloat(match[1]);\n  if (match[2]) parameters.ENa = parseFloat(match[2]);\n  if (match[3]) parameters.EK = parseFloat(match[3]);\n  if (match[4]) parameters.gl = parseFloat(match[4]);\n  if (match[5]) parameters.gNa0 = parseFloat(match[5]);\n  if (match[6]) parameters.gK = parseFloat(match[6]);\n  if (match[7]) parameters.Cm = parseFloat(match[7]);\n  if (match[8]) parameters.Ri = parseFloat(match[8]);\n  if (match[9]) parameters.gNa = parseFloat(match[9]);\n  if (match[10]) parameters.m = parseFloat(match[10]);\n  if (match[11]) parameters.h = parseFloat(match[11]);\n  if (match[12]) parameters.n = parseFloat(match[12]);\n  if (match[13]) parameters.I = parseFloat(match[13]);\n  if (match[14]) parameters.gNa_5to10cm = parseFloat(match[14]);\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2120,
+        20
+      ],
+      "id": "b1c1841c-80e0-48cd-9b7c-95ed1c603ed9",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_morpho",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "El",
+              "value": "={{ $json.El }}"
+            },
+            {
+              "name": "=ENa",
+              "value": "={{ $json.ENa }}"
+            },
+            {
+              "name": "=EK",
+              "value": "={{ $json.EK }}"
+            },
+            {
+              "name": "gl",
+              "value": "={{ $json.gl }}"
+            },
+            {
+              "name": "gNa0",
+              "value": "={{ $json.gNa0 }}"
+            },
+            {
+              "name": "gK",
+              "value": "={{ $json.gK }}"
+            },
+            {
+              "name": "Cm",
+              "value": "={{ $json.Cm }}"
+            },
+            {
+              "name": "gNa",
+              "value": "={{ $json.gNa }}"
+            },
+            {
+              "name": "m",
+              "value": "={{ $json.m }}"
+            },
+            {
+              "name": "h",
+              "value": "={{ $json.h }}"
+            },
+            {
+              "name": "=n",
+              "value": "={{ $json.n }}"
+            },
+            {
+              "name": "I",
+              "value": "={{ $json.I }}"
+            },
+            {
+              "name": "gNa_5to10cm",
+              "value": "={{ $json.gNa_5to10cm }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1840,
+        20
+      ],
+      "id": "e20071ac-56d0-4a6d-995e-3ec3e282b892",
+      "name": "Simulation_API2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nEl\n\nBeschreibung: Ruhemembranpotenzial, das elektrische Potenzial an der Membran im Ruhezustand.\nWertebereich: [Min: 10.613, Typisch: 10.613, Max: 10.613]\nEinheit: mV\nENa\n\nBeschreibung: Natriumgleichgewichtspotential, das Potenzial, bei dem das Netto-Ionengleichgewicht für Natrium erreicht ist.\nWertebereich: [Min: 115, Typisch: 115, Max: 115]\nEinheit: mV\nEK\n\nBeschreibung: Kaliumgleichgewichtspotential, das Potenzial, bei dem das Netto-Ionengleichgewicht für Kalium erreicht ist.\nWertebereich: [Min: -12, Typisch: -12, Max: -12]\nEinheit: mV\ngl\n\nBeschreibung: Membranleitfähigkeit, beschreibt die Gesamtheit der Ionenkanäle, die den Ionenfluss durch die Membran bestimmen.\nWertebereich: [Min: 0.3, Typisch: 0.3, Max: 0.3]\nEinheit: mS/cm²\ngNa0\n\nBeschreibung: Natriumleitfähigkeit, beschreibt die Leitfähigkeit der Natriumkanäle in der Membran.\nWertebereich: [Min: 120, Typisch: 120, Max: 120]\nEinheit: mS/cm²\ngK\n\nBeschreibung: Kaliumleitfähigkeit, beschreibt die Leitfähigkeit der Kaliumkanäle in der Membran.\nWertebereich: [Min: 36, Typisch: 36, Max: 36]\nEinheit: mS/cm²\nCm\n\nBeschreibung: Membrankapazität, beschreibt die Fähigkeit der Membran, Ladung zu speichern.\nWertebereich: [Min: 1, Typisch: 1, Max: 1]\nEinheit: µF/cm²\nRi\n\nBeschreibung: Innenwiderstand, beschreibt den Widerstand der Axonmembran gegen den Stromfluss.\nWertebereich: [Min: 35.4, Typisch: 35.4, Max: 35.4]\nEinheit: ohm*cm\ngNa\n\nBeschreibung: Natriumleitfähigkeit im Neuron, beeinflusst die Geschwindigkeit und Stärke des Natriumstroms.\nWertebereich: [Min: 0, Typisch: 120, Max: 120]\nEinheit: mS/cm²\nm\n\nBeschreibung: Aktivierungsvariable für Natriumkanäle, beschreibt den Anteil der offenen Natriumkanäle.\nWertebereich: [Min: 0, Typisch: 0, Max: 0]\nEinheit: -\nh\n\nBeschreibung: Inaktivierungsvariable für Natriumkanäle, beschreibt den Anteil der inaktiven Natriumkanäle.\nWertebereich: [Min: 1, Typisch: 1, Max: 1]\nEinheit: -\nn\n\nBeschreibung: Aktivierungsvariable für Kaliumkanäle, beschreibt den Anteil der offenen Kaliumkanäle.\nWertebereich: [Min: 0.5, Typisch: 0.5, Max: 0.5]\nEinheit: -\nI\n\nBeschreibung: Eingespeister Strom, beschreibt den elektrischen Strom, der dem Neuron zugeführt wird.\nWertebereich: [Min: 0, Typisch: 0, Max: 1]\nEinheit: uA\ngNa[5cm:10cm]\n\nBeschreibung: Natriumleitfähigkeit in einem bestimmten Bereich (5cm bis 10cm), beeinflusst die elektrische Aktivität in diesem Abschnitt des Neurons.\nWertebereich: [Min: 0, Typisch: 0, Max: 0]\nEinheit: siemens/cm²\n\n\nBeispieloutput:\nEl: 10.613 mV\nENa: 115 mV\nEK: -12 mV\ngl: 0.3 mS/cm²\ngNa0: 120 mS/cm²\ngK: 36 mS/cm²\nCm: 1 uF/cm²\nRi: 35.4 ohm*cm\ngNa: 120 mS/cm²\nm: 0\nh: 1\nn: 0.5\nI: 0 amp\ngNa[5cm:10cm]: 0 siemens/cm²\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -2540,
+        20
+      ],
+      "id": "3f27e1b2-eac9-48ca-bb8d-7937448b4035",
+      "name": "Hodgkin_Huxley_1952"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -2860,
+        20
+      ],
+      "id": "e4c81d8a-46a5-413c-9eb5-b37e577149f2",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Hodgkin_Huxley_1952. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.json.query }}\nRelevante Parameter: \n{{ $('Hodgkin_Huxley_1952').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -1560,
+        20
+      ],
+      "id": "1f60b196-36cf-404a-8624-a1a0200ba7cc",
+      "name": "OpenAI2",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -2460,
+        240
+      ],
+      "id": "8ebfed69-2587-4006-861a-ec0685f4288c",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Mid8lkFo2uMmRyYL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T10:12:25.000Z",
+  "versionId": "99b84309-0ba3-4dbd-b382-47e3b8578a3f"
+}
