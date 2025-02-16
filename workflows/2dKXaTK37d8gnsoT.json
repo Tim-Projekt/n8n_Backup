@@ -1,0 +1,335 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Replace me with your logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Experiment": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Experiment",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-22T17:17:33.744Z",
+  "id": "2dKXaTK37d8gnsoT",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls="
+  },
+  "name": "The_Virtual_Brain",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Workflow Input Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -720,
+        420
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b5942df6-0160-4ef7-965d-57583acdc8aa",
+      "name": "Replace me with your logic",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        -460,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Rolle: Du bist ein analytischer Experte für Simulationen und deren Interpretationen, spezialisiert auf die Ableitung relevanter Erkenntnisse aus komplexen Ergebnissen.\nZiel: Deine Aufgabe ist es, die Bedeutung der Simulationsergebnisse klar und präzise zu erklären und ihren Bezug zur ursprünglichen Nutzerfrage herzustellen.\nArbeitsweise: Analysiere die Ergebnisse gründlich, identifiziere die wichtigsten Erkenntnisse, und erkläre, wie sie zur Beantwortung der gestellten Frage beitragen. Gib einen klaren und verständlichen Überblick darüber, wie die Ergebnisse interpretiert werden können.\n\nPrompt:\n\"Basierend auf den folgenden Simulationsergebnissen:\n{{ $json.text }}\n... erkläre detailliert, welche spezifischen Erkenntnisse sich daraus im Hinblick auf die folgende Frage ergeben:\n{{$json.chatInput}}\nKonzentriere dich dabei auf:\n\nDen direkten Bezug der Ergebnisse zur Fragestellung.\nDie Bedeutung der wichtigsten Trends oder Abweichungen in den Ergebnissen.\nMögliche Implikationen oder weiterführende Fragestellungen, die sich daraus ableiten lassen."
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1440,
+        600
+      ],
+      "id": "0d82c022-4f5b-4e4e-abf8-16ddaca4d6bd",
+      "name": "Basic LLM Chain2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Entwickle eine experimentelle Planung einer Simulation mit dem Neurosimulationstool ,,The Virtual Brain\", um die folgende Hypothese zu pberprüfen:\n{{ $json[\"text\"] }}\n\nDie experimentelle Planung soll nur das hier umfassen:\n\nZiel der Simulation: Wie kann die Simulation mit The Virtual Brain dazu dienen, die Hypothese zu überprüfen?\n----------------------------------------------------------------------------------------------\nParameterkonfiguration bzgl.:\nonset\nBeschreibung: Stimulusstartzeit\nBereich: 0–5000 ms\n\nT\nBeschreibung: Stimulus-Periode\nBereich: 100–10,000 ms\n\ntau\nBeschreibung: Stimulus-Impuls\nBereich: 10–200 ms\n\na\nBeschreibung: Verstärkungsfaktor\nBereich: 0.1–1.0\n\ntau_model\nBeschreibung: Zeitkonstante der Dynamik\nBereich: 1–10 ms\n\ncoupling_a\nBeschreibung: Kopplungsstärke\nBereich: 0.0001–0.01\n\ndt\nBeschreibung: Zeitauflösung\nBereich: 0.1–1.0 ms\n\nnsig\nBeschreibung: Rauschpegel\nBereich: 0.00001–0.001\n\nstimulus_weight\nBeschreibung: Regionen, in denen der Stimulus wirkt\nListe: z.B.: 14, 52, 11, 49\nJede Zahl steht für eine Gehirnregion. Die Nummern, der verfügbaren Gehirnregionen, siehst du unten in der Liste.\n\nSchreibe in deiner Antwort für die Parameterkonfiguration nur den Namen des Parameters und dahinter den Wert mit Einheit. Zum Beispiel so:\nonset: xy ms\n-------------------------------------------------------------------------------------------\nSimulationsdaten zur Analyse: \n1. Welches Gehirnareal\nWähle aus der folgenden Liste, an verfügbaren Gehirnarealen:\n\n\"Right primary auditory cortex - Region-Number-0\", \"Right secondary auditory cortex - Region-Number-1\", \"Right amygdala - Region-Number-2\", \"Right caudal cingulate area - Region-Number-3\", \"Right posterior cingulate cortex - Region-Number-4\", \"Right rostral cingulate cortex - Region-Number-5\", \"Right subgenual cingulate cortex - Region-Number-6\", \"Right frontal eye field - Region-Number-7\", \"Right gyrus (unspecified) - Region-Number-8\", \"Right hippocampus - Region-Number-9\", \"Right insular area - Region-Number-10\", \"Right inferior parietal cortex - Region-Number-11\", \"Right primary motor cortex - Region-Number-12\", \"Right parietal cortex, inferior - Region-Number-13\", \"Right parietal cortex, inferior-posterior - Region-Number-14\", \"Right parietal cortex, medial - Region-Number-15\", \"Right parietal cortex, superior - Region-Number-16\", \"Right prefrontal cortex, caudal lateral - Region-Number-17\", \"Right prefrontal cortex, dorsolateral - Region-Number-18\", \"Right prefrontal cortex, dorsomedial - Region-Number-19\", \"Right prefrontal cortex, medial - Region-Number-20\", \"Right prefrontal cortex, orbitofrontal - Region-Number-21\", \"Right prefrontal cortex, polar - Region-Number-22\", \"Right prefrontal cortex, ventrolateral - Region-Number-23\", \"Right parahippocampal cortex - Region-Number-24\", \"Right premotor cortex, dorsolateral - Region-Number-25\", \"Right premotor cortex, medial - Region-Number-26\", \"Right premotor cortex, ventrolateral - Region-Number-27\", \"Right primary somatosensory cortex - Region-Number-28\", \"Right secondary somatosensory cortex - Region-Number-29\", \"Right temporal cortex, caudal - Region-Number-30\", \"Right temporal cortex, inferior - Region-Number-31\", \"Right temporal cortex, polar - Region-Number-32\", \"Right temporal cortex, superior - Region-Number-33\", \"Right temporal cortex, ventral - Region-Number-34\", \"Right primary visual cortex - Region-Number-35\", \"Right secondary visual cortex - Region-Number-36\", \"Right corpus callosum - Region-Number-37\", \"Left primary auditory cortex - Region-Number-38\", \"Left secondary auditory cortex - Region-Number-39\", \"Left amygdala - Region-Number-40\", \"Left caudal cingulate area - Region-Number-41\", \"Left posterior cingulate cortex - Region-Number-42\", \"Left rostral cingulate cortex - Region-Number-43\", \"Left subgenual cingulate cortex - Region-Number-44\", \"Left frontal eye field - Region-Number-45\", \"Left gyrus (unspecified) - Region-Number-46\", \"Left hippocampus - Region-Number-47\", \"Left insular area - Region-Number-48\", \"Left inferior parietal cortex - Region-Number-49\", \"Left primary motor cortex - Region-Number-50\", \"Left parietal cortex, inferior - Region-Number-51\", \"Left parietal cortex, inferior-posterior - Region-Number-52\", \"Left parietal cortex, medial - Region-Number-53\", \"Left parietal cortex, superior - Region-Number-54\", \"Left prefrontal cortex, caudal lateral - Region-Number-55\", \"Left prefrontal cortex, dorsolateral - Region-Number-56\", \"Left prefrontal cortex, dorsomedial - Region-Number-57\", \"Left prefrontal cortex, medial - Region-Number-58\", \"Left prefrontal cortex, orbitofrontal - Region-Number-59\", \"Left prefrontal cortex, polar - Region-Number-60\", \"Left prefrontal cortex, ventrolateral - Region-Number-61\", \"Left parahippocampal cortex - Region-Number-62\", \"Left premotor cortex, dorsolateral - Region-Number-63\", \"Left premotor cortex, medial - Region-Number-64\", \"Left premotor cortex, ventrolateral - Region-Number-65\", \"Left primary somatosensory cortex - Region-Number-66\", \"Left secondary somatosensory cortex - Region-Number-67\", \"Left temporal cortex, caudal - Region-Number-68\", \"Left temporal cortex, inferior - Region-Number-69\", \"Left temporal cortex, polar - Region-Number-70\", \"Left temporal cortex, superior - Region-Number-71\", \"Left temporal cortex, ventral - Region-Number-72\", \"Left primary visual cortex - Region-Number-73\", \"Left secondary visual cortex - Region-Number-74\", \"Left corpus callosum - Region-Number-75\"\n\n... und schreibe die zu analysierende(n) Regionen in diesem Format. Achte darauf, dass den Namen des Gehirnareals in der Liste in keiner Weise verfälschst. Dies wird als Parameter an die Datenanalyse weitergegeben:\nz.B.: \"Gehirnareal: Left hippocampus - Region-Number-47; Left temporal cortex, ventral - Region-Number-72; ...\"\n2. Zeiträume und spezifischen Merkmale (statistische Merkmale, inhaltliche Merkmale etc.) sollen analysiert werden, um die Hypothese zu überprüfen?"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -360,
+        600
+      ],
+      "id": "3a0f0d30-e287-4fec-b551-9443ca8cc22d",
+      "name": "Experiment",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://c12f-91-65-113-114.ngrok-free.app/simulate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "onset",
+              "value": "={{ $json.onset }}"
+            },
+            {
+              "name": "T",
+              "value": "={{ $json.T }}"
+            },
+            {
+              "name": "tau",
+              "value": "={{ $json.tau }}"
+            },
+            {
+              "name": "a",
+              "value": "={{ $json.a }}"
+            },
+            {
+              "name": "tau_model",
+              "value": "={{ $json.tau_model }}"
+            },
+            {
+              "name": "coupling_a",
+              "value": "={{ $json.coupling_a }}"
+            },
+            {
+              "name": "dt",
+              "value": "={{ $json.dt }}"
+            },
+            {
+              "name": "nsig",
+              "value": "={{ $json.nsig }}"
+            },
+            {
+              "name": "stimulus_weight",
+              "value": "={{ $json.stimulus_weight }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        540
+      ],
+      "id": "3bde04a6-07ca-4d80-9cf1-61f19737ed34",
+      "name": "Simulation_API"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extrahiere die Gehirnregionen, die gefiltert werden sollen\nconst allowedBrainRegions = $('Code1').first().json.brainRegions || [];\n\n// Initialize an empty array for the output\nconst outputItems = [];\n\n// Loop through each input item\nitems.forEach((item) => {\n    // Extract the \"data\" object\n    const data = item.json.data || {};\n\n    // Initialize a new object to hold processed data\n    const newData = {};\n\n    // Loop through each key-value pair in \"data\"\n    Object.keys(data).forEach((key) => {\n        const value = data[key];\n\n        // Check if the key (Gehirnareal) in allowedBrainRegions\n        if (allowedBrainRegions.includes(key)) {\n            // If the brain region is in the allowed list, process the values\n            if (Array.isArray(value)) {\n                const processedValues = [];\n                let repeatCount = 1; // Counter for repeated numbers\n                let lastValue = null;\n\n                for (let i = 1; i < value.length; i++) {\n                    if (value[i] === value[i - 1]) {\n                        repeatCount++; // Increment counter for repeated numbers\n                    } else {\n                        // If the sequence breaks\n                        if (repeatCount >= 5) {\n                            // Insert message in place of repeated value\n                            processedValues.push(`Der Wert ${value[i - 1]} ändert sich für ${repeatCount} Zeiteinheiten nicht.`);\n                        } else {\n                            // Keep the previous values if they don't repeat >= 5 times\n                            processedValues.push(...value.slice(i - repeatCount, i));\n                        }\n                        repeatCount = 1; // Reset the counter\n                    }\n                }\n\n                // Handle the last sequence in the array\n                if (repeatCount >= 5) {\n                    processedValues.push(`Der Wert ${value[value.length - 1]} ändert sich für ${repeatCount} Zeiteinheiten nicht.`);\n                } else {\n                    processedValues.push(...value.slice(value.length - repeatCount));\n                }\n\n                // Only keep every 5th value in the processed array\n                newData[key] = processedValues.filter((_, index) => index % 5 === 0);\n            } else {\n                // If the value is not an array, keep it as is\n                newData[key] = value;\n            }\n        }\n    });\n\n    // Push the modified item to the output\n    outputItems.push({ json: { data: newData } });\n});\n\n// Return the processed items\nreturn outputItems;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        600
+      ],
+      "id": "3bed30c6-61f1-47c7-8181-67ccb559fd25",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein Datenanalyse AI und arbeitest detailliert, konsistent und wissenschaftlich. Du redest nichts schön, sondern arbeitest objektiv.\nEs wurden neuronale Simulationsdaten mit einer neuronalen Simulationssoftware wie z.B. The Virtual Brain erhoben. Jeder datenpunkt entspricht einer Zeiteinheit, der Wert des Datenpunkt entspricht der Neuronalen Aktivität zu dem spezifischen Zeitpunkt. Analysiere die Aktivitätsdaten im Bezug auf diese Hypothese:\n{{ $('Hypothesis').first().json.text }}\nBeschreibe deine Analyseergebnisse und belege sie mit Zahlen/Werten aus den Simulationsdaten.\n---------------------------------------------------------------------------------------------\nSimulationsdaten:\n{{ JSON.stringify($json.data) }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1040,
+        600
+      ],
+      "id": "eb944108-12b8-4439-8d2b-fe07cf51d9e8",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /onset:\\s*(\\d+)\\s*ms|T:\\s*(\\d+)\\s*ms|tau:\\s*(\\d+)\\s*ms|a:\\s*([\\d.]+)|tau_model:\\s*(\\d+)\\s*ms|coupling_a:\\s*([\\d.]+)|dt:\\s*([\\d.]+)\\s*ms|nsig:\\s*([\\d.]+)/g;\n\n// Regex zur Extraktion der Gehirnregionen\nconst regexRegions = /Gehirnareal:\\s*(.*)/;\n\n// Regex zur Extraktion des stimulus_weight Parameters (mit Werten wie 11, 49)\nconst regexStimulusWeight = /stimulus_weight:\\s*([\\d, ]+)/;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Gehirnregionen extrahieren\nconst brainRegionMatch = response.match(regexRegions);\n\n// stimulus_weight extrahieren\nconst stimulusWeightMatch = response.match(regexStimulusWeight);\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  if (match[1]) parameters.onset = parseFloat(match[1]);\n  if (match[2]) parameters.T = parseFloat(match[2]);\n  if (match[3]) parameters.tau = parseFloat(match[3]);\n  if (match[4]) parameters.a = parseFloat(match[4]);\n  if (match[5]) parameters.tau_model = parseFloat(match[5]);\n  if (match[6]) parameters.coupling_a = parseFloat(match[6]);\n  if (match[7]) parameters.dt = parseFloat(match[7]);\n  if (match[8]) parameters.nsig = parseFloat(match[8]);\n});\n\n// stimulus_weight verarbeiten, falls vorhanden\nif (stimulusWeightMatch && stimulusWeightMatch[1]) {\n  const stimulusWeight = stimulusWeightMatch[1]\n    .split(',')  // Trennt die Werte bei Kommas\n    .map(val => parseFloat(val.trim())); // Entfernt Leerzeichen und wandelt die Werte in Zahlen um\n  parameters.stimulus_weight = stimulusWeight;\n}\n\n// Gehirnregionen verarbeiten und als Array speichern, wenn sie gefunden werden\nif (brainRegionMatch && brainRegionMatch[1]) {\n  const regions = brainRegionMatch[1]\n    .split(';') // Trennt die Regionen bei Kommas\n    .map(region => region.trim()); // Entfernt zusätzliche Leerzeichen\n  parameters.brainRegions = regions;\n}\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        100,
+        600
+      ],
+      "id": "ea2ec310-8dc1-4aee-a053-507cdd427a35",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -280,
+        820
+      ],
+      "id": "fc78d25a-fed7-49ac-9b5f-95cff8910ebe",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        960
+      ],
+      "id": "a09484b7-3f85-4932-8cb3-f6e3860fe318",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1480,
+        980
+      ],
+      "id": "19762fe7-fd90-42f2-9f7c-df6f924e7aed",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-22T17:20:31.000Z",
+  "versionId": "0e03db1f-dbcc-44bd-8ca3-ed0f836bb797"
+}
