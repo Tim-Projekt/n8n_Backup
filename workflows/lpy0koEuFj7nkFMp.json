@@ -1,0 +1,55 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-01-30T20:21:25.767Z",
+  "id": "lpy0koEuFj7nkFMp",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls="
+  },
+  "name": "Paper_Generation",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Workflow Input Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "content": "LLM für Einführung und Hintergrund – Beschreibt Ziel, Motivation und Wichtigkeit.\nLLM für Methodenteil – Erklärt, wie der Forscher-Agent arbeitet und welche Simulationen durchgeführt werden.\nLLM für Datensammlung und Analyse – Erläutert, wie Daten gewonnen und analysiert wurden.\nLLM für die Ergebnisse – Präsentiert und diskutiert die wichtigsten Ergebnisse.\nLLM für Diskussion – Interpretiert die Daten und stellt sie in einen größeren Kontext.\nLLM für Fazit und Ausblick – Gibt einen Ausblick auf mögliche Weiterentwicklungen.",
+        "height": 280,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        400,
+        20
+      ],
+      "id": "7d6414eb-62f5-41a8-a727-af1895364280",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-30T20:22:27.000Z",
+  "versionId": "e9399434-c548-4a10-94f8-18c9b3d2c2c3"
+}
