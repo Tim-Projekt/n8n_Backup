@@ -1,0 +1,195 @@
+{
+  "active": false,
+  "connections": {
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Morris_Lecar_1981": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Morris_Lecar_1981",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API4": {
+      "main": [
+        [
+          {
+            "node": "OpenAI4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Morris_Lecar_1981",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T16:57:44.399Z",
+  "id": "am0ZPXz8q14oVzCe",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Morris_Lecar_1981",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nParameter: tfinal\nBeschreibung: Gesamtdauer der Simulation. Studien nutzen häufig Simulationen zwischen 100 ms und 500 ms, wobei typischerweise 200 ms gewählt werden.\nWertebereich: [Min: 100, Typisch: 200, Max: 500]\nEinheit: ms\n\nParameter: defaultclock.dt\nBeschreibung: Zeitauflösung der Simulation. Eine feine Auflösung (0.01–0.2 ms) ist notwendig, um schnelle dynamische Prozesse adäquat abzubilden.\nWertebereich: [Min: 0.01, Typisch: 0.1, Max: 0.2]\nEinheit: ms\n\nParameter: N_neurons\nBeschreibung: Anzahl der Neuronen im Netzwerk. Im klassischen Morris-Lecar-Setting wird oft nur ein einzelnes Neuron simuliert.\nWertebereich: [Min: 1, Typisch: 1, Max: 1]\nEinheit: –\n\nParameter: g_L\nBeschreibung: Leckleitfähigkeit, die das Ruhemembranpotential beeinflusst. Typischerweise etwa 2 mS; Variationen zwischen 1 und 3 mS ergeben ähnliche dynamische Eigenschaften.\nWertebereich: [Min: 1, Typisch: 2, Max: 3]\nEinheit: mS\n\nParameter: g_Ca\nBeschreibung: Calcium-Leitfähigkeit, die den Einfluss des Calciumstroms auf das Membranpotential bestimmt. Typischer Wert liegt bei ca. 4 mS.\nWertebereich: [Min: 2, Typisch: 4, Max: 6]\nEinheit: mS\n\nParameter: g_K\nBeschreibung: Kalium-Leitfähigkeit, verantwortlich für die Repolarisation des Membranpotentials. Ein typischer Wert von 8 mS wird meist im Bereich von 4 bis 12 mS angesetzt.\nWertebereich: [Min: 4, Typisch: 8, Max: 12]\nEinheit: mS\n\nParameter: V_L\nBeschreibung: Leckpotential, welches das Ruhemembranpotential definiert. Typischer Wert liegt bei -50 mV, mit einem typischen Schwankungsbereich zwischen -60 mV und -40 mV.\nWertebereich: [Min: -60, Typisch: -50, Max: -40]\nEinheit: mV\n\nParameter: V_Ca\nBeschreibung: Calcium-Umkehrpotential, das die Richtung des Calciumstroms bestimmt. Üblicherweise wird ein Wert um 100 mV verwendet (Bereich: 80–120 mV).\nWertebereich: [Min: 80, Typisch: 100, Max: 120]\nEinheit: mV\n\nParameter: V_K\nBeschreibung: Kalium-Umkehrpotential, das den Kaliumstrom charakterisiert. Der in der Literatur häufig zitierte Wert ist -70 mV, mit möglichen Variationen zwischen -90 mV und -70 mV.\nWertebereich: [Min: -90, Typisch: -70, Max: -70]\nEinheit: mV\n\nParameter: lambda_n__max\nBeschreibung: Maximale Aktivierungsrate der n-Variable, die die Dynamik der Aktivierung steuert. Typischer Wert ist ca. 1/15 ms⁻¹ (~0.067 ms⁻¹), im Bereich von 0.05 bis 0.1 ms⁻¹.\nWertebereich: [Min: 0.05, Typisch: 0.067, Max: 0.1]\nEinheit: ms⁻¹\n\nParameter: V_1\nBeschreibung: Parameter für m_inf (Halbsättigungspunkt der m-Aktivierungsfunktion). Typischer Wert liegt bei etwa 10 mV, variabel zwischen 5 und 15 mV.\nWertebereich: [Min: 5, Typisch: 10, Max: 15]\nEinheit: mV\n\nParameter: V_2\nBeschreibung: Parameter für m_inf, der die Steilheit der m-Aktivierungsfunktion beschreibt. Typischer Wert ca. 15 mV; üblicher Bereich: 10–20 mV.\nWertebereich: [Min: 10, Typisch: 15, Max: 20]\nEinheit: mV\n\nParameter: V_3\nBeschreibung: Parameter für n_inf (Halbsättigungspunkt der n-Aktivierungsfunktion). Typischer Wert liegt bei etwa -1 mV, mit einem möglichen Bereich von -5 bis 3 mV.\nWertebereich: [Min: -5, Typisch: -1, Max: 3]\nEinheit: mV\n\nParameter: V_4\nBeschreibung: Parameter für n_inf, der die Steilheit der n-Aktivierungsfunktion bestimmt. Typischer Wert ist ca. 14.5 mV; üblicher Bereich: 10–20 mV.\nWertebereich: [Min: 10, Typisch: 14.5, Max: 20]\nEinheit: mV\n\nParameter: C\nBeschreibung: Membrankapazität, die die zeitliche Integration des Membranpotentials beeinflusst. Typischer Wert beträgt 20 µF, mit einem Bereich von 10 bis 30 µF.\nWertebereich: [Min: 10, Typisch: 20, Max: 30]\nEinheit: µF\n\nParameter: I\nBeschreibung: Grundstrom (Strominjektion) für das Neuron. Er regelt die Anregung und liegt typischerweise bei 90 pA, variierend von 80 bis 120 pA.\nWertebereich: [Min: 80, Typisch: 90, Max: 120]\nEinheit: pA\n\nParameter: v\nBeschreibung: Anfangswert des Membranpotentials. Ein Wert nahe -35 mV entspricht oft dem relevanten dynamischen Bereich (zwischen -40 und -30 mV).\nWertebereich: [Min: -40, Typisch: -35, Max: -30]\nEinheit: mV\n\nParameter: n\nBeschreibung: Anfangswert der Aktivierungsvariable, der typischerweise im Ruhezustand angesiedelt ist. Üblicherweise wird der Wert 0 gewählt, mit kleinen Abweichungen bis ca. 0.1.\nWertebereich: [n_inf]\nEinheit: –\n\nBeispieloutput:\ntfinal: 220 * ms\ndefaultclock.dt: 0.01 * ms\nN_neurons: 17\ng_L: 2 * mS\ng_Ca: 4 * mS\ng_K: 8 * mS\nV_L: -50 * mV\nV_Ca: 100 * mV\nV_K: -70 * mV\nlambda_n__max: 1.0 / (15 * ms)\nV_1: 10 * mV\nV_2: 15 * mV\nV_3: -1 * mV\nV_4: 14.5 * mV\nC: 20 * uF\nI: (np.arange(17) * 25 + 100) * uA\nv: -50 * mV\nn: 'n_inf' (Anfangswert für die Aktivierungsvariable)\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b7ac18ef-3ad3-4859-a31e-bd2e08045155",
+      "name": "Morris_Lecar_1981"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        0
+      ],
+      "id": "f2073aba-54a9-4305-a5e1-7ff29c10f418",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_vn_reduced",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code4').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        780,
+        0
+      ],
+      "id": "3e802dea-327b-4701-a410-26ea1fbd31c8",
+      "name": "Simulation_API4"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -400,
+        0
+      ],
+      "id": "4e8eaca6-55d7-4e59-832a-a2eb92b4c77e",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Izhikevich_2003. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.json.query }}\nRelevante Parameter: \n{{ $('Morris_Lecar_1981').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1100,
+        0
+      ],
+      "id": "0cc3f1e0-44ed-4a36-a439-2ff0d3184249",
+      "name": "OpenAI4",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        100,
+        220
+      ],
+      "id": "30db1bc6-37ff-4f6e-8b45-e7c23f695e6a",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Mid8lkFo2uMmRyYL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T10:14:29.000Z",
+  "versionId": "c18db186-4cfa-48b1-a249-e2325c059596"
+}
