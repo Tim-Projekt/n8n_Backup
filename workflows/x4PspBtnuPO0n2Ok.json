@@ -1,0 +1,90 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Szenarien",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Szenarien",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-13T22:30:31.528Z",
+  "id": "x4PspBtnuPO0n2Ok",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Sub-Szenarien-Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        40,
+        320
+      ],
+      "id": "8106af5e-9d4f-4453-b5a0-97b946d1117c",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein wissenschaftlicher Assistent mit umfassendem Wissen über neuronale Simulationssoftware wie „The Virtual Brain (TVB)“, „NEST“ und „Brian2“. Deine Aufgabe ist es, eine gegebene wissenschaftliche Hypothese in ein konkretes Simulationsszenario zu übersetzen. Dabei sollst du realistische Sub-Szenarien entwerfen, die spezifische Aspekte der Hypothese untersuchen.\n\nBerücksichtige dabei:\n\nThe Virtual Brain (TVB): Großflächige, makroskopische Gehirnregion-Simulationen.\nNEST: Hochpräzise neuronale Netzwerke und Spike-basierte Simulationen.\nBrian2: Flexible und präzise Modellierung kleiner neuronaler Netzwerke.\nErstelle ein simulationsbasiertes Sub-Szenario, das die Hypothese testet:\n\nJedes Sub-Szenario stellt eine spezifische experimentelle Simulation dar.\nDefiniere das Ziel jeder Simulation klar.\nLege die Simulationsparameter fest (z. B. Art der neuronalen Aktivität, Modelltypen).\nWähle die geeignete Simulationssoftware und begründe die Wahl.\nBeschreibe die erwarteten Outputs jeder Simulation.\nBeispielhypothese:\n„Neuronale Veränderungen in einer Gehirnregion beeinflussen die Netzwerkaktivität im gesamten Gehirn.“\n\nOutput-Format:\n\nSub-Szenario 1: Simulation der normalen großflächigen Gehirnaktivität\n\nZiel: Erstellung eines Referenzmodells der normalen Netzwerkdynamik.\nSimulation: Makroskopische Hirnregionenmodellierung mit realen Konnektivitätsdaten.\nSoftware: The Virtual Brain (TVB) – geeignet für großflächige Simulationen.\nOutputs: Zeitreihen der Netzwerkaktivität und funktionale Konnektivitätsmuster.\nSub-Szenario 2: Modellierung lokaler neuronaler Störungen\n\nZiel: Untersuchung der Auswirkungen lokal veränderter neuronaler Eigenschaften.\nSimulation: Modifikation der Spiking-Dynamik in einer spezifischen Region.\nSoftware: Brian2 – flexibel für detaillierte Modellierung einzelner neuronaler Gruppen.\nOutputs: Feuerraten und Spike-Zeitreihen der betroffenen Neuronenpopulation.\nSub-Szenario 3: Integration lokaler Veränderungen in ein großflächiges Netzwerk\n\nZiel: Analyse der Wechselwirkungen zwischen lokalen Veränderungen und globaler Aktivität.\nSimulation: Verbindung der lokalen neuronalen Veränderungen mit der gesamten Netzwerkdynamik.\nSoftware: The Virtual Brain (TVB) – ermöglicht großflächige Analyse neuronaler Interaktionen.\nOutputs: Veränderungen in funktionaler Konnektivität und Synchronisation.\nHypothese:\n{{ $('Workflow Input Trigger').item.json }}\n\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "27fbcd5f-6fa6-4f41-8398-66fbdcc877c6",
+      "name": "Szenarien"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -320,
+        0
+      ],
+      "id": "b18026d3-1b95-4b70-936c-29b92087a1ef",
+      "name": "Workflow Input Trigger"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-13T22:31:32.000Z",
+  "versionId": "5454653f-0590-4558-af83-6ba976287d9b"
+}
