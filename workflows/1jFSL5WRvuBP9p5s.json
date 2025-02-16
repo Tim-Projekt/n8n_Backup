@@ -1,0 +1,68 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-10T19:07:07.840Z",
+  "id": "1jFSL5WRvuBP9p5s",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Google_Sheets_Blackboard",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1d09d9ba-6582-448d-9627-774d3a1670b9",
+      "name": "When chat message received",
+      "webhookId": "ad05b30f-0d47-48bd-9fd6-8210098aa77d"
+    },
+    {
+      "parameters": {
+        "resource": "spreadsheet",
+        "title": "Test_10.02",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        220,
+        0
+      ],
+      "id": "f1944088-3f7d-4011-86f8-fe4c95bf8d6e",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "3uTjYvp314bcrdV3",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-10T19:20:01.000Z",
+  "versionId": "69b12fd4-77ad-4442-9cfb-a3d943b398d1"
+}
