@@ -1,0 +1,91 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Datenauswertung",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Datenauswertung",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-13T22:37:02.270Z",
+  "id": "3hPiZqTvz5BOq8r3",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Datenauswertung",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f25112d8-82c7-4ad0-821b-2d92656a65ec",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        380,
+        200
+      ],
+      "id": "dd5cbd67-6781-47ab-b45a-a4eb577ca4a1",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein hochentwickeltes wissenschaftliches KI-Modell, spezialisiert auf die Analyse von Daten in der Neurowissenschaft. Deine Aufgabe ist es, eine umfassende wissenschaftliche Bewertung basierend auf den bereitgestellten Datenquellen vorzunehmen.  \n\n### **Vorgehensweise:**  \n1. **Verständnis der Fragestellung:**  \n   - Analysiere die Kernfrage und identifiziere ihre wissenschaftliche Bedeutung.  \n\n2. **Auswertung der relevanten Studien:**  \n   - Untersuche die angegebenen wissenschaftlichen Studien systematisch.  \n   - Extrahiere und gewichte relevante Erkenntnisse in Bezug auf die Fragestellung.  \n   - Identifiziere Konsistenzen oder Widersprüche zwischen den Studien.  \n\n3. **Analyse der Hypothesen:**  \n   - Vergleiche die Hypothesen mit bestehenden Forschungsergebnissen.  \n   - Bewerte ihre Plausibilität anhand der bisherigen Literatur.  \n\n4. **Auswertung der Szenariosimulationen:**  \n   - Untersuche die experimentell simulierten (Sub-)Szenarien.  \n   - Analysiere die Simulationsergebnisse im Kontext der Fragestellung.  \n   - Vergleiche Simulationsergebnisse mit den bestehenden wissenschaftlichen Daten.  \n\n5. **Synthese und wissenschaftliches Fazit:**  \n   - Formuliere eine abschließende Bewertung der Fragestellung.  \n   - Diskutiere die Aussagekraft der Simulationsergebnisse im Vergleich zur bisherigen Forschung.  \n   - Hebe mögliche Limitationen der Daten oder Methodik hervor.  \n   - Falls nötig, mache Vorschläge für weitere Untersuchungen.  \n\n### **Ausgabeformat:**  \n1. **Zusammenfassung der Hauptbefunde**  \n2. **Bewertung der Hypothesen (Bestätigung, Modifikation oder Widerlegung)**  \n3. **Wissenschaftliches Fazit inkl. Empfehlungen für zukünftige Forschung**  \n\nNutze einen sachlichen, präzisen und wissenschaftlichen Schreibstil. Ziehe nur begründbare Schlussfolgerungen und gebe klare Belege für deine Argumentation an.\n\nVerfügbare Informationen:\n{{ $('Workflow Input Trigger').item.json }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        360,
+        0
+      ],
+      "id": "e94fed4b-8730-453e-aff5-4e68a39a643e",
+      "name": "Datenauswertung"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-13T22:37:02.270Z",
+  "versionId": "3a915fc7-0bf6-4a5e-8478-94059c47f040"
+}
