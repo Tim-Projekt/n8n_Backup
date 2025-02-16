@@ -1,0 +1,3591 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Splitter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CUBA (Current-Based Adaptive Hodgkin-Huxley)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hodgkin_Huxley_1952",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Izhikevich_2003",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Morris_Lecar_1981",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Brunel_2000",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Clopath_et_al_2010_homeostasis",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tsodyks_Pawelzik_Markram_1998",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "STDP (Spike-Timing Dependent Plasticity)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Distributed Synchrony Exampl",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Izhikevich_2007",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Filename",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "CUBA (Current-Based Adaptive Hodgkin-Huxley)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Code12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hodgkin_Huxley_1952",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Filename2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Izhikevich_2003",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Filename3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Morris_Lecar_1981",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Filename4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Brunel_2000",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Filename5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model7": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Clopath_et_al_2010_homeostasis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "Filename6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Tsodyks_Pawelzik_Markram_1998",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code7": {
+      "main": [
+        [
+          {
+            "node": "Filename7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model9": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "STDP (Spike-Timing Dependent Plasticity)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code8": {
+      "main": [
+        [
+          {
+            "node": "Filename8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model10": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Distributed Synchrony Exampl",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "Filename9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model11": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Izhikevich_2007",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code10": {
+      "main": [
+        [
+          {
+            "node": "Filename10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API1": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CUBA (Current-Based Adaptive Hodgkin-Huxley)": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hodgkin_Huxley_1952": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Izhikevich_2003": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Morris_Lecar_1981": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API2": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API3": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API4": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API5": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brunel_2000": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clopath_et_al_2010_homeostasis": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tsodyks_Pawelzik_Markram_1998": {
+      "main": [
+        [
+          {
+            "node": "Code7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "STDP (Spike-Timing Dependent Plasticity)": {
+      "main": [
+        [
+          {
+            "node": "Code8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Distributed Synchrony Exampl": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Izhikevich_2007": {
+      "main": [
+        [
+          {
+            "node": "Code10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API6": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API7": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API8": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API9": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API10": {
+      "main": [
+        [
+          {
+            "node": "Read/Write Files from Disk10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code11": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Splitter": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "OpenAI2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "OpenAI3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "OpenAI4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "OpenAI5": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "OpenAI6": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 6
+          }
+        ]
+      ]
+    },
+    "OpenAI7": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 7
+          }
+        ]
+      ]
+    },
+    "OpenAI8": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 8
+          }
+        ]
+      ]
+    },
+    "OpenAI9": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 9
+          }
+        ]
+      ]
+    },
+    "OpenAI10": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 9
+          }
+        ]
+      ]
+    },
+    "Code12": {
+      "main": [
+        [
+          {
+            "node": "Filename1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model12": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Metaebene - Szenario",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code13": {
+      "main": [
+        [
+          {
+            "node": "Metaebene - Szenario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort1": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename1": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename2": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename3": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort3": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename4": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort4": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename5": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort5": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort6": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort7": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort8": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename8": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename7": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename6": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename9": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort9": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filename10": {
+      "main": [
+        [
+          {
+            "node": "Ganzer_Speicherort10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort10": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ganzer_Speicherort2": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk2": {
+      "main": [
+        [
+          {
+            "node": "OpenAI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk3": {
+      "main": [
+        [
+          {
+            "node": "OpenAI3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk4": {
+      "main": [
+        [
+          {
+            "node": "OpenAI4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk5": {
+      "main": [
+        [
+          {
+            "node": "OpenAI5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk6": {
+      "main": [
+        [
+          {
+            "node": "OpenAI6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk7": {
+      "main": [
+        [
+          {
+            "node": "OpenAI7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk8": {
+      "main": [
+        [
+          {
+            "node": "OpenAI8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk9": {
+      "main": [
+        [
+          {
+            "node": "OpenAI9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read/Write Files from Disk10": {
+      "main": [
+        [
+          {
+            "node": "OpenAI10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-22T20:09:28.386Z",
+  "id": "LHJsZNJbtICBszV2",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Brian2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -1060,
+        3900
+      ],
+      "id": "567f45bd-a219-4e31-a53e-e4a7b9eda8b1",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Wähle aus der folgenden Liste die Modelle aus, die am besten geeignet sind, die Hypothese:\n{{ $('Workflow Input Trigger').item.json.description }}\nzu testen. Gib ausschließlich den Index/die Nummer zurück. Keine Einleitung, kein Abschluss und keine zusätzlichen Informationen. Achte auf korrekte Schreibung (kein Punkt, kein Leerzeichen hinter der Nummer).\n\nSimulationsmodell:\n1. COBAHH (Conductance-Based Adaptive Hodgkin-Huxley) – Ein komplexes und biologisch realistisches Modell für neuronales Verhalten.\n2. CUBA (Current-Based Adaptive Hodgkin-Huxley) – Eine vereinfachte Version für Netzwerksimulationen.\n3. Hodgkin_Huxley_1952 – Das klassische Modell, das die Grundlage für viele weitere Modelle bildet.\n4. Izhikevich_2003 – Effizientes Modell, das realistische Spiking-Verhalten bei geringer Rechenleistung ermöglicht.\n5. Morris_Lecar_1981 – Ein zwei-dimensionales Modell zur Untersuchung von Membranpotential-Dynamiken.\n6. Brunel_2000 – Modell für stochastische Netzwerke und synchrone Oszillationen.\n7. Clopath_et_al_2010_homeostasis – Modell zur Untersuchung von Synapsen-Plastizität.\n8. Tsodyks_Pawelzik_Markram_1998 – Ein Modell zur Kurzzeitplastizität synaptischer Verbindungen.\n9. STDP (Spike-Timing Dependent Plasticity) – Standardmodell für synaptisches Lernen.\n10. Distributed Synchrony Example – Simulation synchroner Oszillationen in neuronalen Netzwerken.\n11. Izhikevich_2007 - simuliert effizient neuronale Spikes und Dopamin-abhängiges STDP in großskaligen Netzwerken.\n\nDeine Response würde z.B. so aussehen:\n4\n8\n11"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -1080,
+        3740
+      ],
+      "id": "9c88386f-764a-4eab-9cd2-3fe42012f034",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ced75611-89f3-4f50-8448-ad87609bc452",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 2,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "37889139-9a5c-47c6-904d-e54bf285fad7",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 3,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "dda204bb-abc6-4b95-b7ae-ba4454ac3ad0",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 4,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "52c71c25-324d-43b9-a843-d86f6746380f",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "85e2dcf2-ceb2-4cfb-9e2f-d1a12f7bb444",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 6,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5187fbb3-7521-4f36-b47f-7b62f4b0e162",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 7,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "eba08033-3002-45b4-96e6-73e0f5a2075a",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 8,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e0382790-2062-45e6-a4a2-5624cb567735",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 9,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d7bad83e-9e64-475d-a27a-3d30a33b0642",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 10,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "da396460-79e7-4523-8d70-95cc6aeef3cd",
+                    "leftValue": "={{ $json.number }}",
+                    "rightValue": 11,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -40,
+        3000
+      ],
+      "id": "d7efdc35-23a5-4abd-8d62-9212737bf721",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "content": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley) – Ein komplexes und biologisch realistisches Modell für neuronales Verhalten.\nCUBA (Current-Based Adaptive Hodgkin-Huxley) – Eine vereinfachte Version für Netzwerksimulationen.\nHodgkin_Huxley_1952 – Das klassische Modell, das die Grundlage für viele weitere Modelle bildet.\nIzhikevich_2003 – Effizientes Modell, das realistische Spiking-Verhalten bei geringer Rechenleistung ermöglicht.\nMorris_Lecar_1981 – Ein zwei-dimensionales Modell zur Untersuchung von Membranpotential-Dynamiken.\nBrunel_2000 – Modell für stochastische Netzwerke und synchrone Oszillationen.\nClopath_et_al_2010_homeostasis – Modell zur Untersuchung von Synapsen-Plastizität.\nTsodyks_Pawelzik_Markram_1998 – Ein Modell zur Kurzzeitplastizität synaptischer Verbindungen.\nSTDP (Spike-Timing Dependent Plasticity) – Standardmodell für synaptisches Lernen.\nDistributed Synchrony Example – Simulation synchroner Oszillationen in neuronalen Netzwerken.\nIzhikevich_2007 - simuliert effizient neuronale Spikes und Dopamin-abhängiges STDP in großskaligen Netzwerken.",
+        "height": 480,
+        "width": 400
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1100,
+        3160
+      ],
+      "id": "d43018ee-f08f-4179-ba16-1dda9c9f9eae",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3540,
+        2240
+      ],
+      "id": "4f55e007-c939-4f93-9a70-2e50742c6cb2",
+      "name": "Simulation_API"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der neuen Parameter und Werte, jetzt auch mit \\n-Trennzeichen\nconst regexParams = /area:\\s*([\\d.]+)\\s*\\n*|Cm:\\s*([\\d.]+)\\s*\\n*|gl:\\s*([\\d.]+)\\s*\\n*|El:\\s*([\\d.-]+)\\s*\\n*|EK:\\s*([\\d.-]+)\\s*\\n*|ENa:\\s*([\\d.-]+)\\s*\\n*|g_na:\\s*([\\d.-]+)\\s*\\n*|g_kd:\\s*([\\d.-]+)\\s*\\n*|VT:\\s*([\\d.-]+)\\s*\\n*|taue:\\s*([\\d.-]+)\\s*\\n*|taui:\\s*([\\d.-]+)\\s*\\n*|Ee:\\s*([\\d.-]+)\\s*\\n*|Ei:\\s*([\\d.-]+)\\s*\\n*|we:\\s*([\\d.-]+)\\s*\\n*|wi:\\s*([\\d.-]+)\\s*\\n*/g;\n\n// Regex zur Extraktion der Gehirnregionen\nconst regexRegions = /Gehirnareal:\\s*(.*)/;\n\n// Regex zur Extraktion des stimulus_weight Parameters (mit Werten wie 11, 49)\nconst regexStimulusWeight = /stimulus_weight:\\s*([\\d, ]+)/;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Gehirnregionen extrahieren\nconst brainRegionMatch = response.match(regexRegions);\n\n// stimulus_weight extrahieren\nconst stimulusWeightMatch = response.match(regexStimulusWeight);\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  if (match[1]) parameters.area = parseFloat(match[1]);\n  if (match[2]) parameters.Cm = parseFloat(match[2]);\n  if (match[3]) parameters.gl = parseFloat(match[3]);\n  if (match[4]) parameters.El = parseFloat(match[4]);\n  if (match[5]) parameters.EK = parseFloat(match[5]);\n  if (match[6]) parameters.ENa = parseFloat(match[6]);\n  if (match[7]) parameters.g_na = parseFloat(match[7]);\n  if (match[8]) parameters.g_kd = parseFloat(match[8]);\n  if (match[9]) parameters.VT = parseFloat(match[9]);\n  if (match[10]) parameters.taue = parseFloat(match[10]);\n  if (match[11]) parameters.taui = parseFloat(match[11]);\n  if (match[12]) parameters.Ee = parseFloat(match[12]);\n  if (match[13]) parameters.Ei = parseFloat(match[13]);\n  if (match[14]) parameters.we = parseFloat(match[14]);\n  if (match[15]) parameters.wi = parseFloat(match[15]);\n});\n\n// stimulus_weight verarbeiten, falls vorhanden\nif (stimulusWeightMatch && stimulusWeightMatch[1]) {\n  const stimulusWeight = stimulusWeightMatch[1]\n    .split(',')  // Trennt die Werte bei Kommas\n    .map(val => parseFloat(val.trim())); // Entfernt Leerzeichen und wandelt die Werte in Zahlen um\n  parameters.stimulus_weight = stimulusWeight;\n}\n\n// Gehirnregionen verarbeiten und als Array speichern, wenn sie gefunden werden\nif (brainRegionMatch && brainRegionMatch[1]) {\n  const regions = brainRegionMatch[1]\n    .split(';') // Trennt die Regionen bei Semikolon\n    .map(region => region.trim()); // Entfernt zusätzliche Leerzeichen\n  parameters.brainRegions = regions;\n}\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2520,
+        2120
+      ],
+      "id": "00e7eeff-4ad2-4994-9bca-efb88152ab35",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – COBAHH (Conductance-Based Adaptive Hodgkin-Huxley). Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename').item.json.filename }}",
+        "options": {
+          "detail": "auto",
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4740,
+        2280
+      ],
+      "id": "3905b5a1-0c40-4a43-b5d5-f2289fdd5bcb",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        2500
+      ],
+      "id": "7ac47ff6-0c18-4f21-a1fc-3024b67ab61a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_spikes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "taum",
+              "value": "={{ $('Code1').item.json.taum }}"
+            },
+            {
+              "name": "taue",
+              "value": "={{ $('Code1').item.json.taue }}"
+            },
+            {
+              "name": "taui",
+              "value": "={{ $('Code1').item.json.taui }}"
+            },
+            {
+              "name": "Vt",
+              "value": "={{ $('Code1').item.json.Vt }}"
+            },
+            {
+              "name": "Vr",
+              "value": "={{ $('Code1').item.json.Vr }}"
+            },
+            {
+              "name": "El",
+              "value": "={{ $('Code1').item.json.El }}"
+            },
+            {
+              "name": "we",
+              "value": "={{ $('Code12').item.json.we }}"
+            },
+            {
+              "name": "wi",
+              "value": "={{ $('Code12').item.json.wi }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3620,
+        2500
+      ],
+      "id": "fd107596-7626-42d4-b675-278e792ba243",
+      "name": "Simulation_API1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der neuen Parameter und Werte ohne \"* mV\" oder \"* ms\"\nconst regexParams = /taum:\\s*([\\d.]+)\\s*(?=\\s*\\n*)|taue:\\s*([\\d.]+)\\s*(?=\\s*\\n*)|taui:\\s*([\\d.]+)\\s*(?=\\s*\\n*)|Vt:\\s*([\\d.-]+)\\s*(?=\\s*\\n*)|Vr:\\s*([\\d.-]+)\\s*(?=\\s*\\n*)|El:\\s*([\\d.-]+)\\s*(?=\\s*\\n*)|we:\\s*([^\\n]+)\\s*(?=\\s*\\n*)|wi:\\s*([^\\n]+)\\s*(?=\\s*\\n*)/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  if (match[1]) parameters.taum = parseFloat(match[1]);\n  if (match[2]) parameters.taue = parseFloat(match[2]);\n  if (match[3]) parameters.taui = parseFloat(match[3]);\n  if (match[4]) parameters.Vt = parseFloat(match[4]);\n  if (match[5]) parameters.Vr = parseFloat(match[5]);\n  if (match[6]) parameters.El = parseFloat(match[6]);\n  if (match[7]) parameters.we = match[7].trim();\n  if (match[8]) parameters.wi = match[8].trim();\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2320,
+        2460
+      ],
+      "id": "6352a106-040d-46a9-8f4a-42b4f1717855",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1640,
+        2920
+      ],
+      "id": "274421dc-4ef6-48cb-8b18-bf8814ad29c7",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der neuen Parameter und Werte ohne \"* mV\" oder \"* ms\"\nconst regexParams = /El:\\s*([\\d.-]+)\\s*\\*?\\s*mV\\s*|ENa:\\s*([\\d.-]+)\\s*\\*?\\s*mV\\s*|EK:\\s*([\\d.-]+)\\s*\\*?\\s*mV\\s*|gl:\\s*([\\d.]+)\\s*\\*?\\s*msiemens\\s*\\/\\s*cm\\*\\*2\\s*|gNa0:\\s*([\\d.]+)\\s*\\*?\\s*msiemens\\s*\\/\\s*cm\\*\\*2\\s*|gK:\\s*([\\d.]+)\\s*\\*?\\s*msiemens\\s*\\/\\s*cm\\*\\*2\\s*|Cm:\\s*([\\d.]+)\\s*\\*?\\s*uF\\s*\\/\\s*cm\\*\\*2\\s*|Ri:\\s*([\\d.]+)\\s*\\*?\\s*ohm\\s*\\/\\s*cm\\s*|gNa:\\s*([\\d.]+)\\s*\\*?\\s*msiemens\\s*\\/\\s*cm\\*\\*2\\s*|m:\\s*([\\d.]+)\\s*|h:\\s*([\\d.]+)\\s*|n:\\s*([\\d.]+)\\s*|I:\\s*([\\d.]+)\\s*\\*?\\s*amp\\s*|gNa\\[5\\*cm:10\\*cm\\]:\\s*([\\d.]+)\\s*\\*?\\s*siemens\\s*\\/\\s*cm\\*\\*2/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  if (match[1]) parameters.El = parseFloat(match[1]);\n  if (match[2]) parameters.ENa = parseFloat(match[2]);\n  if (match[3]) parameters.EK = parseFloat(match[3]);\n  if (match[4]) parameters.gl = parseFloat(match[4]);\n  if (match[5]) parameters.gNa0 = parseFloat(match[5]);\n  if (match[6]) parameters.gK = parseFloat(match[6]);\n  if (match[7]) parameters.Cm = parseFloat(match[7]);\n  if (match[8]) parameters.Ri = parseFloat(match[8]);\n  if (match[9]) parameters.gNa = parseFloat(match[9]);\n  if (match[10]) parameters.m = parseFloat(match[10]);\n  if (match[11]) parameters.h = parseFloat(match[11]);\n  if (match[12]) parameters.n = parseFloat(match[12]);\n  if (match[13]) parameters.I = parseFloat(match[13]);\n  if (match[14]) parameters.gNa_5to10cm = parseFloat(match[14]);\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        2700
+      ],
+      "id": "5b5952c9-717d-462c-a3f8-41baa854521d",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_morpho",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "El",
+              "value": "={{ $json.El }}"
+            },
+            {
+              "name": "=ENa",
+              "value": "={{ $json.ENa }}"
+            },
+            {
+              "name": "=EK",
+              "value": "={{ $json.EK }}"
+            },
+            {
+              "name": "gl",
+              "value": "={{ $json.gl }}"
+            },
+            {
+              "name": "gNa0",
+              "value": "={{ $json.gNa0 }}"
+            },
+            {
+              "name": "gK",
+              "value": "={{ $json.gK }}"
+            },
+            {
+              "name": "Cm",
+              "value": "={{ $json.Cm }}"
+            },
+            {
+              "name": "gNa",
+              "value": "={{ $json.gNa }}"
+            },
+            {
+              "name": "m",
+              "value": "={{ $json.m }}"
+            },
+            {
+              "name": "h",
+              "value": "={{ $json.h }}"
+            },
+            {
+              "name": "=n",
+              "value": "={{ $json.n }}"
+            },
+            {
+              "name": "I",
+              "value": "={{ $json.I }}"
+            },
+            {
+              "name": "gNa_5to10cm",
+              "value": "={{ $json.gNa_5to10cm }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3580,
+        2740
+      ],
+      "id": "b7c2700d-8d87-4883-b457-99a34e8d418a",
+      "name": "Simulation_API2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1660,
+        3180
+      ],
+      "id": "187bac5f-aef1-4724-9252-41809f5a9cb7",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        2880
+      ],
+      "id": "164efb40-407c-496e-b491-6601997bb901",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_network",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code3').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3600,
+        2900
+      ],
+      "id": "3110cbdb-936c-4363-bb60-cfc1b7b3cb3e",
+      "name": "Simulation_API3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1740,
+        3340
+      ],
+      "id": "0925c4c8-d19a-4626-b571-f05561295276",
+      "name": "OpenAI Chat Model5",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2660,
+        3080
+      ],
+      "id": "a28e0086-9d6c-4e7c-951c-87c59ee6c685",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_vn_reduced",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code4').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3600,
+        3080
+      ],
+      "id": "31a5a5e8-e0ea-491f-90d2-c38b4a03eeed",
+      "name": "Simulation_API4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1660,
+        3400
+      ],
+      "id": "aed3ff94-d04c-4675-889f-65d631b5f2d8",
+      "name": "OpenAI Chat Model6",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter, Werte und Einheiten\nconst regexParams = /\\b([a-zA-Z_]+):\\s*([\\d.-]+)\\s*(?:\\*\\s*([a-zA-Z_()]+))?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen, den Wert und optional die Einheit\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n  const paramUnit = match[3] ? match[3].trim() : null;\n\n  // Speichere die Parameter im Objekt, inkl. Einheit, falls vorhanden\n  parameters[paramName] = paramUnit ? `${paramValue} * ${paramUnit}` : paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2580,
+        3300
+      ],
+      "id": "432f211e-dbb5-4b0d-888d-b42cd03612d3",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_network",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code5').item.json }}",
+        "options": {
+          "response": {},
+          "timeout": 600000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3660,
+        3280
+      ],
+      "id": "9a24c400-e970-4346-a71e-2647a7fca0f2",
+      "name": "Simulation_API5",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1700,
+        3600
+      ],
+      "id": "5972c526-0cde-42b7-a70d-a8367c0c4433",
+      "name": "OpenAI Chat Model7",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2600,
+        3520
+      ],
+      "id": "bfe1a0c4-3cff-49fd-bdb8-01d074cc663a",
+      "name": "Code6"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_plasticity",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code6').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3720,
+        3520
+      ],
+      "id": "936329cc-2ebb-4cd3-8736-cb7dafc3b97e",
+      "name": "Simulation_API6"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1700,
+        3800
+      ],
+      "id": "0413bd6b-464a-4846-84da-e604a8acbb67",
+      "name": "OpenAI Chat Model8",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2660,
+        3760
+      ],
+      "id": "14e7e953-3cd8-4d3a-9ba0-46bcda5f7658",
+      "name": "Code7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_synaptic_response",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code7').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3740,
+        3700
+      ],
+      "id": "11354417-394e-4189-bc44-3d707e53743a",
+      "name": "Simulation_API7"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1640,
+        4000
+      ],
+      "id": "51816a2e-1294-41bf-b583-6373059658fe",
+      "name": "OpenAI Chat Model9",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2620,
+        3940
+      ],
+      "id": "9164ad18-ba83-4340-8d26-015a1fb7ee1f",
+      "name": "Code8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_stdp",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code8').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3760,
+        3940
+      ],
+      "id": "3f4dbfdb-1534-4f31-9f7c-644b32721c4f",
+      "name": "Simulation_API8"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1700,
+        4340
+      ],
+      "id": "db64907e-2310-413e-b98d-5b1918362820",
+      "name": "OpenAI Chat Model10",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        4180
+      ],
+      "id": "437d768e-e487-4dfc-85bc-ea9e5f0d0fcd",
+      "name": "Code9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_neuron_activity",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code9').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3780,
+        4120
+      ],
+      "id": "2373a9b7-9987-4cf5-a385-8c2b895bebec",
+      "name": "Simulation_API9"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1640,
+        4660
+      ],
+      "id": "82cc6181-d44b-48ff-9dbf-20f2ce55699a",
+      "name": "OpenAI Chat Model11",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2700,
+        4480
+      ],
+      "id": "3dd6b270-8bdd-4a6d-940c-3228ac7fe3f8",
+      "name": "Code10"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$node[\"Code11\"].json[\"text\"]}}/simulate_dopamine_modulated_stdp",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code10').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3820,
+        4400
+      ],
+      "id": "c64a755b-5002-415d-94a2-f1d3ddd9e1f3",
+      "name": "Simulation_API10"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – CUBA (Current-Based Adaptive Hodgkin-Huxley). Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('CUBA (Current-Based Adaptive Hodgkin-Huxley)').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename1').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4740,
+        2520
+      ],
+      "id": "effbd5c8-4bfe-4bc4-ac75-ffcad5080b9b",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\ntaum: Membranzeitkonstante (20 ms), beschreibt die Geschwindigkeit, mit der sich das Membranpotenzial verändert.\ntaue: Zeitkonstante für den exzitatorischen Input (5 ms), beschreibt die Geschwindigkeit, mit der sich der exzitatorische synaptische Effekt verändert.\ntaui: Zeitkonstante für den inhibitorischen Input (10 ms), beschreibt die Geschwindigkeit, mit der sich der inhibitorische synaptische Effekt verändert.\nVt: Schwellenpotenzial (-50 mV), das Potenzial, bei dem ein Neuron feuert.\nVr: Rücksetzpotenzial (-60 mV), das Potenzial, auf das das Neuron nach einem Feuern zurückgesetzt wird.\nEl: Ruhemembranpotenzial (-49 mV), das elektrische Potenzial an der Membran im Ruhezustand.\nwe: Exzitatorisches synaptisches Gewicht (berechnet als 60 * 0.27 / 10 mV), beschreibt die Stärke des exzitatorischen Inputs.\nwi: Inhibitorisches synaptisches Gewicht (berechnet als -20 * 4.5 / 10 mV), beschreibt die Stärke des inhibitorischen Inputs.\nCe: Synapse für exzitatorische Verbindungen, bestimmt, wie exzitatorische Inputs auf das Neuron wirken.\nCi: Synapse für inhibitorische Verbindungen, bestimmt, wie inhibitorische Inputs auf das Neuron wirken.\n\nBeispieloutput:\ntaum: 20 * ms  \ntaue: 5 * ms  \ntaui: 10 * ms  \nVt: -50 * mV  \nVr: -60 * mV  \nEl: -49 * mV  \nwe: (60 * 0.27 / 10)\nwi: (-20 * 4.5 / 10)\nCe: Synapses(P, P, on_pre='ge += we')  \nCi: Synapses(P, P, on_pre='gi += wi') \n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1580,
+        2400
+      ],
+      "id": "ded6991f-13c3-4b74-9de7-c076ab7fc125",
+      "name": "CUBA (Current-Based Adaptive Hodgkin-Huxley)"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nEl: Ruhemembranpotenzial, das elektrische Potenzial an der Membran im Ruhezustand.\nENa: Natriumgleichgewichtspotential, das Potenzial, bei dem das Netto-Ionengleichgewicht für Natrium erreicht ist.\nEK: Kaliumgleichgewichtspotential, das Potenzial, bei dem das Netto-Ionengleichgewicht für Kalium erreicht ist.\ngl: Membranleitfähigkeit, beschreibt die Gesamtheit der Ionenkanäle, die den Ionenfluss durch die Membran bestimmen.\ngNa0: Natriumleitfähigkeit, beschreibt die Leitfähigkeit der Natriumkanäle in der Membran.\ngK: Kaliumleitfähigkeit, beschreibt die Leitfähigkeit der Kaliumkanäle in der Membran.\nCm: Membrankapazität, beschreibt die Fähigkeit der Membran, Ladung zu speichern.\nRi: Innenwiderstand, beschreibt den Widerstand der Axonmembran gegen den Stromfluss.\ngNa: Natriumleitfähigkeit im Neuron, beeinflusst die Geschwindigkeit und Stärke des Natriumstroms.\nm: Aktivierungsvariable für Natriumkanäle, beschreibt den Anteil der offenen Natriumkanäle.\nh: Inaktivierungsvariable für Natriumkanäle, beschreibt den Anteil der inaktiven Natriumkanäle.\nn: Aktivierungsvariable für Kaliumkanäle, beschreibt den Anteil der offenen Kaliumkanäle.\nI: Eingespeister Strom, beschreibt den elektrischen Strom, der dem Neuron zugeführt wird.\ngNa[5cm:10cm]: Natriumleitfähigkeit in einem bestimmten Bereich, beeinflusst die elektrische Aktivität in diesem Abschnitt des Neurons.\n\nBeispieloutput:\nEl: 10.613 * mV  \nENa: 115 * mV  \nEK: -12 * mV  \ngl: 0.3 * msiemens / cm**2  \ngNa0: 120 * msiemens / cm**2  \ngK: 36 * msiemens / cm**2  \nCm: 1 * uF / cm**2  \nRi: 35.4 * ohm * cm  \ngNa: 120 * msiemens / cm**2  \nm: 0  \nh: 1  \nn: 0.5  \nI: 0 * amp  \ngNa[5*cm:10*cm]: 0 * siemens / cm**2  \n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1620,
+        2700
+      ],
+      "id": "46524c8a-ca25-44b8-adb5-094e505e42ea",
+      "name": "Hodgkin_Huxley_1952"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\ntfinal: Gesamtdauer der Simulation.\ndt: Zeitauflösung (Zeitschrittgröße).\nNe: Anzahl der erregenden Neuronen.\nNi: Anzahl der hemmenden Neuronen.\na_exc: Parameter für die Erregungsdynamik (erregende Neuronen).\nb_exc: Parameter für die Erregungsdynamik (erregende Neuronen).\nc_exc: Membranpotential für erregende Neuronen.\nd_exc: Parameter für die Erregungsdynamik (erregende Neuronen).\na_inh: Parameter für die Hemmungsdynamik (hemmende Neuronen).\nb_inh: Parameter für die Hemmungsdynamik (hemmende Neuronen).\nc_inh: Membranpotential für hemmende Neuronen.\nd_inh: Parameter für die Hemmungsdynamik (hemmende Neuronen).\nI: Exogener Input (Strom).\nI_noise_exc: Rauschkomponente für erregende Neuronen.\nI_noise_inh: Rauschkomponente für hemmende Neuronen.\nv: Startwert für das Membranpotential.\nweights_exc: Gewichtungen der Synapsen für erregende Verbindungen.\nweights_inh: Gewichtungen der Synapsen für hemmende Verbindungen.\ndelay_up: Verzögerung für synaptische Aufwärtsübertragung.\ndelay_down: Verzögerung für synaptische Abwärtsübertragung.\n\nBeispieloutput:\ntfinal: 1000 * ms\ndt: 1 * ms\nNe: 800\nNi: 200\na_exc: 0.02\nb_exc: 0.2\nc_exc: -50.0 * mV\nd_exc: 5.6\na_inh: 0.06\nb_inh: 0.2\nc_inh: -65 * mV\nd_inh: 2\nI: 10.0\nI_noise_exc: 5.0\nI_noise_inh: 2.0\nv: -65 * mV\nweights_exc: 0.5\nweights_inh: 0.4\ndelay_up: 0 * ms\ndelay_down: 1 * ms\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1580,
+        2920
+      ],
+      "id": "c237b43f-4149-40ca-af2d-97bcba678855",
+      "name": "Izhikevich_2003"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nAllgemeine Parameter\ntfinal: Gesamtdauer der Simulation.\ndefaultclock.dt: Zeitauflösung der Simulation.\nNetzwerkspezifische Parameter\nN_neurons: Anzahl der Neuronen im Netzwerk.\nNeuronenmodelle\ng_L: Leckleitfähigkeit.\ng_Ca: Calcium-Leitfähigkeit.\ng_K: Kalium-Leitfähigkeit.\nV_L: Leckpotential.\nV_Ca: Calcium-Umkehrpotential.\nV_K: Kalium-Umkehrpotential.\nlambda_n__max: Maximale Zeitkonstante für n.\nV_1, V_2: Parameter für m_inf.\nV_3, V_4: Parameter für n_inf.\nC: Membrankapazität.\nI: Grundstrom für jedes Neuron.\nv: Anfangswert des Membranpotentials.\nn: Anfangswert für die Aktivierungsvariable.\n\nBeispieloutput:\ntfinal: 220 * ms\ndefaultclock.dt: 0.01 * ms\nN_neurons: 17\ng_L: 2 * mS\ng_Ca: 4 * mS\ng_K: 8 * mS\nV_L: -50 * mV\nV_Ca: 100 * mV\nV_K: -70 * mV\nlambda_n__max: 1.0 / (15 * ms)\nV_1: 10 * mV\nV_2: 15 * mV\nV_3: -1 * mV\nV_4: 14.5 * mV\nC: 20 * uF\nI: (np.arange(17) * 25 + 100) * uA\nv: -50 * mV (Anfangswert für Potenzial, V_L)\nn: 'n_inf' (Anfangswert für die Aktivierungsvariable)\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1600,
+        3180
+      ],
+      "id": "1bcf437a-4e10-4cd6-8d8a-e1ae34b83780",
+      "name": "Morris_Lecar_1981"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Hodgkin_Huxley_1952. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('Hodgkin_Huxley_1952').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename2').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4740,
+        2740
+      ],
+      "id": "223a72f4-7134-4b00-889e-ff89665052cc",
+      "name": "OpenAI2",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Izhikevich_2003. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('Izhikevich_2003').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename3').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4760,
+        2980
+      ],
+      "id": "99144888-c13b-4ddb-b3d8-df9480bb6714",
+      "name": "OpenAI3",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Izhikevich_2003. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('Morris_Lecar_1981').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename4').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4740,
+        3140
+      ],
+      "id": "5e58e3ae-beee-47c6-9aff-a7b3a1c12af4",
+      "name": "OpenAI4",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Brunel_2000. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('Brunel_2000').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename5').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4740,
+        3280
+      ],
+      "id": "f3dbcf64-5c0b-4f2e-96e2-64548cbef2df",
+      "name": "OpenAI5",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:  \ntfinal: Simulationsdauer in Millisekunden  \ndt: Zeitschritt der Simulation in Millisekunden  \nNe: Anzahl exzitatorischer Neuronen  \nNi: Anzahl inhibitorischer Neuronen  \na_exc: Parameter für exzitatorische Neuronen  \nb_exc: Parameter für exzitatorische Neuronen  \nc_exc: Parameter für exzitatorische Neuronen  \nd_exc: Parameter für exzitatorische Neuronen  \na_inh: Parameter für inhibitorische Neuronen  \nb_inh: Parameter für inhibitorische Neuronen  \nc_inh: Parameter für inhibitorische Neuronen  \nd_inh: Parameter für inhibitorische Neuronen  \nI: Eingangsstrom für Neuronen  \nI_noise_exc: Rauschstrom für exzitatorische Neuronen  \nI_noise_inh: Rauschstrom für inhibitorische Neuronen  \nv: Membranpotential  \nweights_exc: Gewichte der exzitatorischen Synapsen  \nweights_inh: Gewichte der inhibitorischen Synapsen  \ndelay_up: Verzögerung der exzitatorischen Synapsen in Millisekunden  \ndelay_down: Verzögerung der inhibitorischen Synapsen in Millisekunden\n\nBeispieloutput:\ntfinal: 1000 * ms\ndt: 0.1 * ms\nNe: 800\nNi: 200\na_exc: 0.02\nb_exc: 0.2\nc_exc: -65\nd_exc: 8\na_inh: 0.1\nb_inh: 0.2\nc_inh: -65\nd_inh: 2\nI: 5\nI_noise_exc: 1\nI_noise_inh: 1\nv: -65\nweights_exc: 0.1\nweights_inh: -0.5\ndelay_up: 1.5 * ms\ndelay_down: 0.5 * ms\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1620,
+        3280
+      ],
+      "id": "579c0d26-efa9-4a3a-a472-3b028268c242",
+      "name": "Brunel_2000"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nPlasticity Parameters:\nV_rest: Ruhespannung\nV_thresh: Schwellenwert für das Spike\nTheta_low: Depolarisations-Schwelle für Plastizität\nx_reset: Spike-Trace Reset-Wert\ntaux: Spike-Trace Zeitkonstante\nA_LTD: Depression Amplitude\nA_LTP: Potentiation Amplitude\ntau_lowpass1: Zeitkonstante für Low-Pass Filter\ntau_lowpass2: Zeitkonstante für Low-Pass Filter\ntau_homeo: Homeostatische Zeitkonstante\nv_target: Ziel-Depolarisation\nNeuron Parameters:\ngleak: Leckleitfähigkeit\nC: Membrankapazität\ntau_AMPA: AMPA-Synapse Zeitkonstante\nE_AMPA: Reversal Potential für AMPA\nampa_max_cond: Maximale AMPA-Leitfähigkeit\nw_max: Maximales AMPA-Gewicht\nSimulations-Parameter:\ndefaultclock.dt: Zeitschrittweite\nNr_neurons: Anzahl der Neuronen\nNr_inputs: Anzahl der Eingangsneuronen\ninput_rate: Eingangsrate\ninit_weight: Initiales Synapsen-Gewicht\nfinal_t: Endzeit der Simulation\ninput_time: Dauer des Inputs\n\nBeispieloutput:\nV_rest: -70. * mV\nV_thresh: -55. * mV\nTheta_low: V_rest\nx_reset: 1.\ntaux: 15. * ms\nA_LTD: 1.5e-4\nA_LTP: 1.5e-2\ntau_lowpass1: 40. * ms\ntau_lowpass2: 30. * ms\ntau_homeo: 1000. * ms\nv_target: 12. * mV**2\n\ngleak: 30. * nS\nC: 300. * pF\ntau_AMPA: 2. * ms\nE_AMPA: 0. * mV\nampa_max_cond: 5.e-8 * siemens\nw_max: 1.\n\ndefaultclock.dt: 500. * us\nNr_neurons: 1\nNr_inputs: 5\ninput_rate: 35. * Hz\ninit_weight: 0.5\nfinal_t: 20. * second\ninput_time: 100. * ms\n\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1640,
+        3460
+      ],
+      "id": "4089c72c-e0a8-4b42-b5b9-09775b94eb1c",
+      "name": "Clopath_et_al_2010_homeostasis"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nNeuron-Parameter:\ntau_mem: Membranzeitkonstante\nR_in: Eingangsresistenz\nSynapse-Parameter:\ntau_inact: Inaktivierungszeitkonstante\nA_SE: Synaptische Stärke\nU_SE: Nutzung der synaptischen Effizienz\ntau_rec: Erholungszeitkonstante\ntau_facil: Zeitkonstante der Facilitation\nStimulus-Parameter:\nstart: Startzeit des Stimulus\nstop: Endzeit des Stimulus\nfrequency: Frequenz des Stimulus\nSimulations-Parameter:\nduration: Gesamtdauer der Simulation\n\nBeispieloutput:\ntau_mem: 40. * ms\nR_in: 100. * Mohm\ntau_inact: 3. * ms\nA_SE: 250. * pA\nU_SE: 0.6\ntau_rec: 800. * ms\ntau_facil: 530. * ms\nstart: 100. * ms\nstop: 1100. * ms\nfrequency: 20. * Hz\nduration: 1200. * ms\n\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1640,
+        3720
+      ],
+      "id": "51186328-b2ce-47b2-b0bc-7696f9a912ba",
+      "name": "Tsodyks_Pawelzik_Markram_1998"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nN: Anzahl der Neuronen im Poisson-Input. (MAX_N = 50)\ntaum: Membranzeitkonstante für Neuronen. (MAX_TAUM = 5.0 * ms)\ntaupre: Zeitkonstante für die präsynaptische Hebb-Regel. (MAX_TAUPRE = 10.0 * ms)\ntaupost: Zeitkonstante für die postsynaptische Hebb-Regel. (MAX_TAUPOST = 10.0 * ms)\nEe: Umkehrpotenzial des exzitatorischen Inputs. (MAX_EE = 0.0 * mV)\nvt: Schwellenwert für das Neuron. (MAX_VT = -54.0 * mV)\nvr: Reset-Spannung für das Neuron. (MAX_VR = -60.0 * mV)\nEl: Ruhepotenzial des Neurons. (MAX_EL = -74.0 * mV)\ntaue: Zeitkonstante für den exzitatorischen Input. (MAX_TAUE = 2.0 * ms)\nF: Poisson-Feuerrate für den Input. (MAX_F = 5.0 * Hz)\ngmax: Maximale Gewichtung der Synapse. (MAX_GMAX = 0.005)\ndApre: Änderung der präsynaptischen Aktivität. (MAX_dAPRE = 0.005)\ndApost: Änderung der postsynaptischen Aktivität (abgeleitet von dApre, taupre und taupost).\n\n\nBeispieloutput:\nN: 50\ntaum: 5.0 * ms\ntaupre: 10.0 * ms\ntaupost: 10.0 * ms\nEe: 0.0 * mV\nvt: -54.0 * mV\nvr: -60.0 * mV\nEl: -74.0 * mV\ntaue: 2.0 * ms\nF: 5.0 * Hz\ngmax: 0.005\ndApre: 0.005\ndApost: -0.005 * taupre / taupost * 1.05 * gmax\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1620,
+        3920
+      ],
+      "id": "1ecade1c-8a6b-41ae-a224-682b3f7881ae",
+      "name": "STDP (Spike-Timing Dependent Plasticity)"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nNeuronparameter:\n\ntheta: Schwellenpotential\nEl: Ruhepotential\nvmean: Mittleres Membranpotential\ntaum: Membranzeitkonstante\ntaue: Exzitatorische Zeitkonstante\ntaui: Inhibitorische Zeitkonstante\nEingangsparameter:\n\np: Stärke synchroner Inputs\nne: Exzitatorische Neuronen\nni: Inhibitorische Neuronen\nlambdac: Kohärenzrate\nlambdae: Exzitatorische Rate\nlambdai: Inhibitorische Rate\nSynapsenparameter:\n\nwe: Exzitatorisches Gewicht\nwi: Inhibitorisches Gewicht\nNeuronGruppe:\n\nN: Neuronenzahl\nmodel: Differentialgleichungen\nreset: Reset-Verhalten\nthreshold: Aktivierungsschwelle\nrefractory: Refraktärzeit\nmethod: Berechnungsmethode\n\nBeispieloutput:\ntheta: -55. * mV\nEl: -65. * mV\nvmean: -65. * mV\ntaum: 5. * ms\ntaue: 3. * ms\ntaui: 10. * ms\np: 15\nne: 4000\nni: 1000\nlambdac: 40. * Hz\nlambdae: 1. * Hz\nlambdai: 1. * Hz\nwe: 0.5 * mV / (taum / taue) ** (taum / (taue - taum))\nwi: (vmean - El - lambdae * ne * we * taue) / (lambdae * ni * taui)\nN: 2\nreset: 'v = El'\nthreshold: 'v > theta'\nrefractory: 5. * ms\nmethod: 'exact'\n\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1640,
+        4120
+      ],
+      "id": "14bc2ec6-fd69-4aee-bbf0-dc504214ca82",
+      "name": "Distributed Synchrony Exampl"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nSimulation Duration\n\nsimulation_duration\nNeurons\n\ntaum (Membranspannungszeitkonstante)\nEe (Gleichgewichtspotential für erregende Synapsen)\nvt (Schwellenpotential)\nvr (Resetpotenzial)\nEl (Ruhepotential)\ntaue (Zeitkonstante für erregende Synapsen)\nSTDP (Spike-Timing-Dependent Plasticity)\n\ntaupre (Prä-Synaptische Zeitkonstante)\ntaupost (Post-Synaptische Zeitkonstante)\ngmax (Maximale synaptische Leitfähigkeit)\ndApre (Prä-Synaptische Änderung)\ndApost (Post-Synaptische Änderung)\nDopamine Signaling\n\ntauc (Dopamin Zeitkonstante für zelluläre Dynamik)\ntaud (Dopamin Zeitkonstante für postsynaptische Effekte)\ntaus (Zeitraum für Dopamin-Modulation)\nepsilon_dopa (Dopamin-Modulationsfaktor)\nStimuli Section\n\ninput_indices (Indizes der Eingabeneuronen)\ninput_times (Zeiten der Eingabespike)\nSTDP Section\n\nmode (Modus für STDP: klassisch oder dopaminmoduliert)\ns (Initiale synaptische Stärke)\nc (Synaptische Variablen für STDP)\nd (Weitere Synaptische Variablen für STDP)\nDopamine Signaling Section\n\ndopamine_indices (Indizes der Dopamin-Quellen)\ndopamine_times (Zeiten der Dopamin-Impulse)\n\nBeispieloutput:\nsimulation_duration: 6. * second\ntaum: 10. * ms\nEe: 0. * mV\nvt: -54. * mV\nvr: -60. * mV\nEl: -74. * mV\ntaue: 5. * ms\ntaupre: 20. * ms\ntaupost: taupre\ngmax: 0.01\ndApre: 0.01\ndApost: -dApre * taupre / taupost * 1.05\ndApost *= gmax\ndApre *= gmax\ntauc: 1000. * ms\ntaud: 200. * ms\ntaus: 1. * ms\nepsilon_dopa: 5e-3\ninput_indices: array([0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0])\ninput_times: array([500, 550, 1000, 1010, 1500, 1510, 3500, 3550, 4000, 4010, 4500, 4510]) * ms\ns: 100. * mV\nmode: 0\nc: 1e-10\nd: 0\ndopamine_indices: array([0, 0, 0])\ndopamine_times: array([3520, 4020, 4520]) * ms\n\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1580,
+        4440
+      ],
+      "id": "c9a9156d-7b61-401a-a2a2-888e08cd782c",
+      "name": "Izhikevich_2007"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Clopath_et_al_2010_homeostasis. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('Clopath_et_al_2010_homeostasis').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename6').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4840,
+        3500
+      ],
+      "id": "fb12750c-b2df-4ffd-9049-d91ca30db6ae",
+      "name": "OpenAI6",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Tsodyks_Pawelzik_Markram_1998. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('Tsodyks_Pawelzik_Markram_1998').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename7').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4920,
+        3740
+      ],
+      "id": "5ecec634-0534-4605-963e-8005025cddb7",
+      "name": "OpenAI7",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – STDP (Spike-Timing Dependent Plasticity). Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('STDP (Spike-Timing Dependent Plasticity)').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename8').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4940,
+        3940
+      ],
+      "id": "7e0554bb-2607-47f9-ac52-9988b741fbcb",
+      "name": "OpenAI8",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Distributed Synchrony Example. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('Distributed Synchrony Exampl').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.\n",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename9').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4920,
+        4140
+      ],
+      "id": "d9908fc7-a632-42c7-a46e-d50289aedcbf",
+      "name": "OpenAI9",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Izhikevich_2007. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: {{$node[\"Workflow Input Trigger\"].json[\"description\"]}}\nRelevante Parameter: {{ $('Izhikevich_2007').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal {{$node[\"Code11\"].json[\"analysis_tokens\"]}} Tokens umfassen.\n",
+        "imageUrls": "={{$node[\"Code11\"].json[\"Bilder_Upload_URL\"]}}//{{ $('Filename10').item.json.filename }}",
+        "options": {
+          "maxTokens": "={{$node[\"Code11\"].json[\"analysis_tokens\"]}}"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4920,
+        4300
+      ],
+      "id": "e8ecba03-a49e-45b6-ab52-996552e70700",
+      "name": "OpenAI10",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "items = items || []; // Falls items undefined ist, wird es als leeres Array initialisiert\n\nitems[0] = {\n  json: {\n    text: \"https://5994-91-65-113-114.ngrok-free.app\",\n    Bilder_Upload_URL: \"https://dallas-turns-specialty-repair.trycloudflare.com\",\n    createdAt: new Date().toISOString(),\n    analysis_tokens: 300\n  }\n};\n\n// Sicherstellen, dass es nur ein Item gibt\nitems.length = 1;\n\nreturn items;\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1380,
+        3740
+      ],
+      "id": "7339c679-0d6f-4aa0-b659-011896e95154",
+      "name": "Code11"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        320,
+        3760
+      ],
+      "id": "7c17a821-b180-49a7-9126-772a89aa8631",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Hole den Input-Daten (angenommen, der Input ist im Format, wie du es beschrieben hast)\nconst input = $input.first().json.text;\n\n// Teile den Text in einzelne Zeilen auf\nconst lines = input.split('\\n');\n\n// Erstelle ein neues Array mit den extrahierten Zahlen\nconst numbers = lines.map(line => {\n    return { json: { number: parseInt(line.trim(), 10) } };\n});\n\n// Rückgabe der neuen Items\nreturn numbers;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        3740
+      ],
+      "id": "2d074b9a-ac6a-46e2-9e98-103ad1cf7f4e",
+      "name": "Splitter"
+    },
+    {
+      "parameters": {
+        "numberInputs": 10
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        6020,
+        3520
+      ],
+      "id": "9cd98c3d-d583-409a-a23e-bb17113e55fa",
+      "name": "Merge"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        520,
+        3740
+      ],
+      "id": "966cee8a-77bd-4b17-b115-b8d924187db2",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "jsCode": "const we = $input.first().json.we;  // String mit mathematischem Ausdruck\nconst wi = $input.first().json.wi;  // String mit mathematischem Ausdruck\n\nfunction evaluateExpression(expression) {\n    try {\n        return eval(expression);  // Berechnet den Ausdruck\n    } catch (error) {\n        throw new Error(`Fehler beim Berechnen des Ausdrucks: ${expression}`);\n    }\n}\n\n// Berechnung der Werte\nconst weValue = evaluateExpression(we);\nconst wiValue = evaluateExpression(wi);\n\n// Beide Werte als ein Item zurückgeben\nreturn [\n    { json: { we: weValue, wi: wiValue } }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2540,
+        2460
+      ],
+      "id": "d0e30fa2-4fe9-4404-bb1f-47a63f1ebdd0",
+      "name": "Code12"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein wissenschaftlich arbeitendes KI-Modell mit Fokus auf die Analyse und Synthese neurowissenschaftlicher Simulationsergebnisse. Dir werden mehrere Analyseergebnisse aus unterschiedlichen neurowissenschaftlichen Modellen zu einem bestimmten Szenario bereitgestellt. Deine Aufgabe ist es, die übergeordneten Zusammenhänge zwischen diesen Ergebnissen zu identifizieren und das Szenario im Hinblick auf das vorgegebene Simulationsziel zu bewerten.\n\nAnforderungen an deine Analyse:\nZusammenführung der Ergebnisse: Falls die Daten kohärent sind, erstelle eine übergeordnete Synthese, die die Ergebnisse in einen logischen Zusammenhang bringt. Falls Widersprüche oder Inkonsistenzen zwischen den Ergebnissen bestehen, weise darauf hin und diskutiere mögliche Ursachen.\nObjektivität & Wissenschaftlichkeit: Arbeite streng wissenschaftlich, nutze präzise Terminologie, argumentiere logisch und beziehe dich auf etablierte Erkenntnisse der Neurowissenschaften.\nProblemidentifikation: Falls es methodische oder datenspezifische Unsicherheiten gibt (z. B. unzureichende Datenmenge, methodische Limitationen, statistische Unsicherheiten), kommuniziere diese klar.\nDetaillierte Beurteilung des Szenarios: Analysiere das Szenario unter Berücksichtigung aller vorliegenden Daten und bewerte, inwiefern das Ziel der Simulation erreicht wurde.\nStruktur deines Outputs:\nZusammenfassung der Analyseergebnisse: Eine klare und systematische Darstellung der gelieferten Daten.\nSynthese & Interpretation: Falls möglich, eine kohärente und übergeordnete Bewertung der Ergebnisse.\nKritische Reflexion: Analyse potenzieller Unsicherheiten, möglicher methodischer Probleme oder offener Fragen.\nFazit: Ein wissenschaftlich fundiertes Urteil über das Szenario und dessen Relevanz für das Simulationsziel.\nFalls essenzielle Daten fehlen oder keine schlüssige Synthese möglich ist, stelle Hypothesen auf, formuliere weiterführende Forschungsfragen und weise darauf hin, welche zusätzlichen Daten für eine fundierte Bewertung nötig wären.\n-------------------------------------------------------------------\nAnalyseergebnisse:\n{{ $json.combinedText }}\nSimuliertes Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        6760,
+        3680
+      ],
+      "id": "61e92173-cf63-499a-b644-4408e3b58e20",
+      "name": "Metaebene - Szenario"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        6780,
+        3820
+      ],
+      "id": "90dc4bdf-a42c-45c9-8395-6c9413f37960",
+      "name": "OpenAI Chat Model12",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        6280,
+        3680
+      ],
+      "id": "4276e34a-9844-4066-b55c-9513800669b7",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1700,
+        3740
+      ],
+      "id": "203da895-cbf1-48d5-b75f-89ed56629ac5",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Funktion, um alle Inhalte zusammenzuführen\nconst allContent = items.reduce((acc, item) => {\n  // Durchlaufe jedes Element im 'data' Array und füge den 'content' zusammen\n  if (item.json.data && Array.isArray(item.json.data)) {\n    item.json.data.forEach(dataItem => {\n      if (dataItem.content) {\n        acc += '\\n' + dataItem.content; // Füge den Text hinzu, mit einem Zeilenumbruch\n      }\n    });\n  }\n  return acc;\n}, ''); // Startwert ist ein leerer String\n\n// Erstelle das neue Item mit dem zusammengefügten Text\nreturn [\n  {\n    json: {\n      combinedText: allContent.trim() // Der trim() entfernt unnötige Leerzeichen am Anfang und Ende\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        6500,
+        3680
+      ],
+      "id": "b4119a3f-e67b-44de-b63b-3a5c76ba8cfd",
+      "name": "Code13"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1620,
+        2260
+      ],
+      "id": "63875977-2993-404e-8045-a8990ab8088c",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\narea: Die Fläche, die mit einem bestimmten Zustand oder Bereich in Verbindung steht --> Zellmembranfläche.\nCm: Membrankapazität, die die Fähigkeit einer Membran beschreibt, elektrische Ladung zu speichern.\ngl: Leckleitfähigkeit der Membran, die den ionischen Fluss durch Leckströme beschreibt.\nEl: Ruhemembranpotenzial, das elektrische Potenzial an der Membran im Ruhezustand.\nEK: Kalisum-Potential, das Gleichgewichtspotential für Kaliumionen.\nENa: Natriumgleichgewichtspotential, das Gleichgewichtspotential für Natriumionen.\ng_na: Natrium-Leitfähigkeit, die die Fähigkeit der Membran beschreibt, Natriumionen zu leiten.\ng_kd: Kalium-Leitfähigkeit, die die Fähigkeit der Membran beschreibt, Kaliumionen zu leiten.\nVT: Membranpotenzial, bei dem eine bestimmte Reaktion oder ein Ereignis ausgelöst wird, z.B. das Aktionspotenzial.\ntaue: Exponentielle Zeitkonstante für die Depolarisation oder Repolarisation eines Membranpotentials.\ntaui: Zeitkonstante für den Einfluss der Inhibitoren auf das Membranpotenzial.\nEe: Exzitatorisches Gleichgewichtspotential, das Potenzial, bei dem ein exzitatorischer Strom weder einströmt noch ausströmt.\nEi: Inhibitorisches Gleichgewichtspotential, das Potenzial, bei dem ein inhibitorischer Strom weder einströmt noch ausströmt.\nwe: Gewicht des exzitatorischen Inputs, der den Einfluss von exzitatorischen Reizen auf das System beschreibt.\nwi: Gewicht des inhibitorischen Inputs, der den Einfluss von inhibitorischen Reizen auf das System beschreibt.\n\nBeispieloutput:\narea: 20000  \nCm: 1  \ngl: 5e-5  \nEl: -60  \nEK: -90  \nENa: 50  \ng_na: 100  \ng_kd: 30  \nVT: -63  \ntaue: 5  \ntaui: 10  \nEe: 0  \nEi: -80  \nwe: 6  \nwi: 67  \n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{$node[\"Workflow Input Trigger\"].json[\"description\"]}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1600,
+        2080
+      ],
+      "id": "bd87ddd7-03cf-464e-9f04-8b79b2b59ea2",
+      "name": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4120,
+        2220
+      ],
+      "id": "1ecec4f1-051f-44ab-a14c-f742b8c191bf",
+      "name": "Read/Write Files from Disk"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3040,
+        2200
+      ],
+      "id": "fbe082e7-27d9-4447-8446-4a47f0a7b934",
+      "name": "Filename"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3260,
+        2180
+      ],
+      "id": "67c44e6e-dff4-4101-8780-092d774284d3",
+      "name": "Ganzer_Speicherort"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3060,
+        2460
+      ],
+      "id": "4be1f7c0-6a85-4c38-8fc6-616c5c742594",
+      "name": "Filename1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3240,
+        2440
+      ],
+      "id": "5373658d-5cde-449a-a8ea-2c709ae9fce8",
+      "name": "Ganzer_Speicherort1"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort1').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4100,
+        2460
+      ],
+      "id": "cb5a5747-8475-4bf1-a751-3319423d6ebc",
+      "name": "Read/Write Files from Disk1"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3060,
+        2720
+      ],
+      "id": "51419a2b-8601-4135-83c5-57c941a79a8e",
+      "name": "Filename2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3260,
+        2700
+      ],
+      "id": "259df421-8d6c-43bb-a36f-355969a9fc33",
+      "name": "Ganzer_Speicherort2"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3080,
+        2900
+      ],
+      "id": "93b11548-4844-462f-b30e-7232afbc4a04",
+      "name": "Filename3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3260,
+        2880
+      ],
+      "id": "b9adef0d-0bfc-4c0c-876c-18bb4b5b7328",
+      "name": "Ganzer_Speicherort3"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3100,
+        3060
+      ],
+      "id": "8820a3e0-9ab7-45ca-a681-558cdb78a1ce",
+      "name": "Filename4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3320,
+        3080
+      ],
+      "id": "205f3a14-1c9c-4c14-b3ec-29a52757c167",
+      "name": "Ganzer_Speicherort4"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3100,
+        3260
+      ],
+      "id": "5774ff8e-6189-4360-87ad-502f4ec3977c",
+      "name": "Filename5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3340,
+        3280
+      ],
+      "id": "e4c27dfd-b2d8-465e-8258-878562144261",
+      "name": "Ganzer_Speicherort5"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3080,
+        3500
+      ],
+      "id": "0dfa7a70-55fb-4807-a20c-1855c1a9c20f",
+      "name": "Filename6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3380,
+        3540
+      ],
+      "id": "58f4235b-5474-4520-926c-bd02f219b443",
+      "name": "Ganzer_Speicherort6"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3100,
+        3700
+      ],
+      "id": "e7358e57-b47f-42b8-8d74-6ed61ae9b7b7",
+      "name": "Filename7"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3340,
+        3720
+      ],
+      "id": "30567dc0-05e7-44fe-9109-ff9e93d31531",
+      "name": "Ganzer_Speicherort7"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3120,
+        3940
+      ],
+      "id": "0476940a-9ec8-495f-8667-035c0780e89d",
+      "name": "Filename8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3400,
+        3940
+      ],
+      "id": "499a7ec6-810c-45dc-8bc8-d87f26afd95b",
+      "name": "Ganzer_Speicherort8"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3100,
+        4160
+      ],
+      "id": "644cbcb0-a308-4db8-8196-831396187d4f",
+      "name": "Filename9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3380,
+        4160
+      ],
+      "id": "7b27f258-c6ed-4cf9-a2fc-e3c6be9580a1",
+      "name": "Ganzer_Speicherort9"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3100,
+        4480
+      ],
+      "id": "fa8b814a-4ab6-4718-a77d-cdbc7a801cff",
+      "name": "Filename10"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
+              "name": "=Speicherort",
+              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3380,
+        4460
+      ],
+      "id": "2082025b-6156-4aae-8371-6804c08532be",
+      "name": "Ganzer_Speicherort10"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort2').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4120,
+        2680
+      ],
+      "id": "ff07b5bc-5a66-48d9-85e0-ae3d16ec4eeb",
+      "name": "Read/Write Files from Disk2"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort3').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4140,
+        2880
+      ],
+      "id": "cd318767-e9e1-436c-a0ea-1245b73c6fb4",
+      "name": "Read/Write Files from Disk3"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort4').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4180,
+        3080
+      ],
+      "id": "b0cea627-d65f-45a3-9570-790c064c1c55",
+      "name": "Read/Write Files from Disk4"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort5').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4260,
+        3240
+      ],
+      "id": "30fc5d3b-5708-41b2-b5a5-e3e94cab1528",
+      "name": "Read/Write Files from Disk5",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort6').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4260,
+        3480
+      ],
+      "id": "af0fae85-8516-4b40-92dd-b1a92a7e4a6b",
+      "name": "Read/Write Files from Disk6"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort7').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4320,
+        3680
+      ],
+      "id": "c42fdd46-770d-442a-9bce-73dd96196f8b",
+      "name": "Read/Write Files from Disk7"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort8').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4280,
+        3900
+      ],
+      "id": "a15cc6e2-618b-4b6f-8d8c-d7ad972e3bb8",
+      "name": "Read/Write Files from Disk8"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort9').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4300,
+        4100
+      ],
+      "id": "2e74948c-47a6-4bbc-9fef-a2ef1080a767",
+      "name": "Read/Write Files from Disk9"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $('Ganzer_Speicherort10').item.json.Speicherort }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        4340,
+        4380
+      ],
+      "id": "1ff03e84-b83a-40ab-b31e-237a8316b98a",
+      "name": "Read/Write Files from Disk10"
+    },
+    {
+      "parameters": {
+        "content": "Input:\nwissenschaftliches spezifisches Szenario",
+        "height": 80,
+        "width": 300
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1780,
+        3940
+      ],
+      "id": "a44be56a-3986-427c-ac45-501e8f16c83c",
+      "name": "Sticky Note2"
+    }
+  ],
+  "pinData": {
+    "Aggregate": [
+      {
+        "json": {
+          "data": [
+            {
+              "content": "### Analyse & Insights\n\n**Kernaussagen:**\nDie simulierten Daten zeigen ausgeprägte Schwankungen im Membranpotential (v) der Neuronen im Zeitverlauf, mit auffälligen Spikes und Rückkehr zu Ruhepotential. Die Erregung scheint insbesondere bei Neuron 1 ausgeprägt, während Neuronen 10 und 100 eine stabilere Aktivierung zeigen. Der Zustand sämtlicher Neuronen ist durch intermittierende Schübe von Hyperpolarisation gekennzeichnet, möglicherweise infolge von adaptiven Kanälen oder Rückkopplungsmechanismen innerhalb des Modells.\n\n**Interpretation & Relevanz:**\nDiese Beobachtungen deuten auf einen komplexen dynamischen Regelungsmechanismus hin, der möglicherweise neuronale Calcium-abhängige Veränderungen reflektiert. Die Unterschiede in den Aktivitäten der Neuronen weisen auf eine mögliche Heterogenität innerhalb der neuronalen Population hin, die nicht in den bisherigen Annahmen des Modells erfasst ist. Unerwartete Abweichungen könnten die Hypothese stützen, dass neuronale Populationsdynamiken durch externe Störungen, wie z.B. synaptische Eingaben, verstärkt werden.\n\n### Handlungsimplikationen\nDie Erkenntnisse könnten entscheidend sein für die Entwicklung adaptiver Modelle, die das neuronale Verhalten unter variablen Bedingungen besser vorhersagen. Eine mögliche Konsequenz besteht darin, Simulationen zu implementieren, die synaptische"
+            },
+            {
+              "content": "### Kernaussagen\n\nDie Simulation zeigt klare neuronale Aktionspotentiale, die durch die spezifischen Ionengleichgewichtspotentiale und Leitfähigkeiten moduliert werden. Der steady-state Ruhepotential von -70 mV wird durch den Natrium (Na⁺) und Kalium (K⁺) Ionenfluss beeinflusst. Die Werte für gNa und gK verweisen auf hohes Na⁺ und moderates K⁺ Leiten, was eine prägnante Erregung zeigt, insbesondere im Bereich von 5 bis 10 cm.\n\n### Interpretation & Relevanz\n\nDie beobachteten Trends deuten auf eine rasche Depolarisation des Membranpotentials hin, gefolgt von einer signifikanten Repolarisation, was den klassischen Hodgkin-Huxley-Natur von Aktionspotentialen widerspiegelt. Eine unerwartete Abweichungen könnte auf erhöhte Natriumkanalaktivität oder Membranleitfähigkeit hindeuten, was alternative Mechanismen oder Modifikationen bei der Betrachtung von Globale-Ionen-Kanal-Interaktionen andeutet.\n\n### Handlungsimplikationen\n\nErkenntnisse aus dieser Analyse können zur Verfeinerung neuronaler Modelle beitragen, indem sie die präzisen Parameter für Ionenkonduktivität und deren dynamische Wechselwirkungen optimieren. In Experimentplanungen könnten Variationen von gNa in spezifischen neuronalen Typen untersucht werden, um deren Rolle in der"
+            },
+            {
+              "content": "### Analyse & Insights\n\n**Kernaussagen:**\nDie Simulation zeigt deutliche Unterschiede zwischen exzitatorischen und inhibitorischen Neuronen. Die exzitatorischen Neuronen (Ne = 1000) dominieren, während die inhibitorischen (Ni = 300) eine Stabilisierung in der neuronalen Dynamik bewirken. Die höheren Gewichtungen der exzitatorischen Synapsen (0.6) im Vergleich zu den inhibitorischen (0.3) deuten auf eine starke Erregung hin, die für neuronale Netzwerke typisch ist.\n\n**Interpretation & Relevanz:**\nDie beobachteten dynamischen Muster, insbesondere die Stabilität des Membranpotentials (v(t)), legen nahe, dass die hohen exzitatorischen Inputs (I: 15.0) und das Rauschverhalten (I_noise_exc: 3.0, I_noise_inh: 1.5) zu stabilen Erregungsmustern führen. Unerwartete Schwankungen könnten durch intermittierende inhibitorische Rückmeldungen verursacht werden, was auf dynamische Balance hinweist. Dies könnte die Hyperpolarisationserwartung untergraben und darauf hinweisen, dass inhibitory regulierte Netzwerke trotz starker exzitatorischer Inputs stabil bleiben können.\n\n**Handlungsimplikationen:**\nDie Ergebnisse verbessern unser Verständnis der Erregungs- und Hemmungsbalance in neuronalen Netzwerken. Sie liefern Hinweise darauf, dass eine"
+            },
+            {
+              "content": "### Analyse & Insights\n\n**Biologische und physikalische Prozesse:**  \nDie Simulation zeigt synaptische Gewichtsdynamiken innerhalb eines neuronalen Netzwerks mit 50 Neuronen. Die Parameter deuten auf Mechanismen der Langzeitpotenzierung (LTP) und Langzeitdepression (LTD) hin, welche durch die Werte von A_LTP (2.0e-2) und A_LTD (1.0e-4) kontrolliert werden – Schlüsselprozesse für synaptische Plastizität.\n\n**Zentrale Trends:**  \nDie Gewichtswerte bleiben überwiegend nahe der maximalen Grenze (0.8), mit auffälligen, sporadischen Abnahmen und Erhöhungen. Diese Schwankungen weisen auf starke synaptische Konkurrenz hin, in der Neuronen um synaptische Ressourcen konkurrieren. Die zyklische Natur der Gewichtsanpassungen könnte auf eine dynamische Balance zwischen LTP und LTD hinweisen.\n\n### Interpretation & Relevanz\n\n**Bedeutung der Trends:**  \nDie stabilen hohen Gewichtswerte deuten darauf hin, dass der synaptische Wettbewerb signifikante Veränderungen in der neuronalen Informationsverarbeitung und -speicherung verursacht. Die Erhöhungen könnten mit verstärktem Inputs oder Aktivität korrelieren, was die Notwendigkeit von effizientem Ressourcenmanagement unterstreicht.\n\n**Unerwartete Abweichungen:**  \nDie plötzlichen Abfälle in den Gewichtswerten"
+            },
+            {
+              "content": "### Kernaussagen\n\nDie Simulation zeigt die Auswirkungen von Spike-Timing Abhängiger Plastizität (STDP) auf synaptische Gewichtungen zwischen Neuronen. Zu Beginn der Simulation sind die Gewichtungen über die synaptischen Indizes verteilt, mit einer Konzentration um 0,7 bis 0,8. Ein signifikanter Trend in der nachfolgenden Analyse ist die Erhöhung des synaptischen Gewichts auf Werte nahe 1, was für effiziente synaptische Übertragung spricht.\n\n### Interpretation & Relevanz\n\nDie Gewichtszunahme insbesondere in der letzten Phase deutet auf eine verstärkte Hebb'sche Plastizität hin, was offenbar durch zeitlich korrelierte Aktivität zwischen Presynapse und Postsynapse gefördert wurde. Die fluktuierenden Gewichtungen im Zeitverlauf lassen auf eine dynamische Anpassung der synaptischen Übertragung während der Simulation schließen. Unerwartete Abweichungen könnten durch die Varianzen in neuronalen Feuerraten oder unerwarteten Rückkopplungseffekten erklärt werden.\n\n### Handlungsimplikationen\n\nDiese Erkenntnisse könnten implizieren, dass in zukünftigen Modellen Überlegungen zu variierenden Frequenzen und den zeitlichen Beziehungen zwischen Neuronen fundiert werden sollten. Das Verständnis dieser dynamischen Prozesse könnte zur Entwicklung präziserer experimenteller Designs führen, um spezifische Mechanismen der synaptischen Plastizität zu untersuchen."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-13T22:34:03.000Z",
+  "versionId": "77a5cdb9-97d6-4ede-bb84-5f3f61f26ae1"
+}
