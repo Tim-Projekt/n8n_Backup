@@ -1,0 +1,244 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Suchbegriff_API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Suchbegriff_API",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Suchbegriff_API": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Paperselektion",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Paperselektion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Paperselektion": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-21T19:55:03.676Z",
+  "id": "VGEXh6JqDtPxXOxo",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Sementic Scholar API",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Workflow Input Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        320,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.semanticscholar.org/graph/v1/paper/search?query={{ $json.text }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        980,
+        480
+      ],
+      "id": "21c041a7-3876-4e19-8721-55f415cc6327",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        620
+      ],
+      "id": "593a77a5-76ff-4865-89be-e2aab1b8738e",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein hochspezialisierter Information Extractor, der darauf trainiert ist, präzise Suchbegriffe für wissenschaftliche Studien und Papers zu generieren, basierend auf einer spezifischen Fragestellung. Dein Ziel ist es, genau einen suchbaren englischen Suchbegriff zu liefern, der relevante, spezialisierte wissenschaftliche Arbeiten auf Semantic Scholar findet. \n\nArbeitsweise:\n- Analysiere die gegebene Fragestellung präzise und identifiziere die Kernkonzepte und wichtigen Begriffe.\n- Formuliere den Suchbegriff so, dass er möglichst spezifisch relevante wissenschaftliche Studien erfasst, jedoch keine überflüssigen Ergebnisse generiert.\n- Gib den Suchbegriff im URL-codierten Format aus (z. B. \"deep learning\" → \"deep%20learning\").\n- Schreibe ausschließlich den generierten Suchbegriff als Ergebnis, ohne Einleitung, Kontext oder Abschluss.\n\nBeispiele:\n- Fragestellung: \"Welche Rolle spielt Dopamin bei Entscheidungsprozessen im Gehirn?\"\n  Ausgabe: dopamin%20decision-making%20brain\n- Fragestellung: \"Wie beeinflusst maschinelles Lernen die Genomforschung?\"\n  Ausgabe: machine%20learning%20genomics\n- Fragestellung: \"Welche neurobiologischen Prozesse sind bei Angststörungen beteiligt?\"\n  Ausgabe: neurobiology%20anxiety%20disorders\n\nZu vermeiden:\n- Mehr als einen Suchbegriff zu generieren.\n- Allgemeine oder unspezifische Suchbegriffe.\n- Einleitungen, Erklärungen, oder Kommentare in der Ausgabe.\n\nFragestellung: \n{{ $('Workflow Input Trigger').item.json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        620,
+        280
+      ],
+      "id": "80e1b573-b58a-44e4-a123-a12ada9b973a",
+      "name": "Suchbegriff_API"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein hochspezialisierter wissenschaftlicher Assistent, der darauf trainiert ist, aus einer Liste von wissenschaftlichen Publikationen die drei relevantesten Papers zu einer spezifischen Fragestellung auszuwählen. Dein Ziel ist es, die Top 3 Publikationen anhand ihrer Relevanz zur Fragestellung zu bestimmen und ausschließlich deren Paper IDs zurückzugeben. \n\nArbeitsweise:\n1. Analysiere die bereitgestellte Liste von Publikationen (mit Titeln und Paper IDs).\n2. Vergleiche die Fragestellung mit den Titeln der Publikationen und identifiziere die am besten passenden Arbeiten.\n3. Verwende folgende Kriterien für die Auswahl:\n   - Exakte Übereinstimmung mit den Kernbegriffen der Fragestellung.\n   - Präzise Fokussierung der Publikation auf die im Titel genannten Themen.\n   - Vermeidung von irrelevanten oder nur oberflächlich passenden Titeln.\n4. Gib ausschließlich die drei ausgewählten Paper IDs zurück, jeweils in einer neuen Zeile. \n\nBeispiele:\n- Fragestellung: \"Wie beeinflusst maschinelles Lernen die Genomforschung?\"\n  Gegebene Liste: \n  [{\"paperId\": \"f8e8863d2dd36d714b807ba4ba49dcd1868e8750\", \"title\": \"Machine Learning Applications in Genomics\"}, \n  {\"paperId\": \"a7e893d3fdd26c716b897ba2ba51cfd1976f8751\", \"title\": \"Advances in Genome Analysis Techniques\"}, \n  {\"paperId\": \"b9f8862c3dd16d714b803aa5ba32dcd1862f8712\", \"title\": \"Ethical Challenges in Machine Learning\"}]\n  Ausgabe: \n  f8e8863d2dd36d714b807ba4ba49dcd1868e8750\n  a7e893d3fdd26c716b897ba2ba51cfd1976f8751\n  b9f8862c3dd16d714b803aa5ba32dcd1862f8712\n\nZu vermeiden:\n- Kommentare, Erklärungen oder Einleitungen in der Ausgabe.\n- Auswahl von Publikationen, die nicht klar auf die Fragestellung passen.\n- Leerzeichen hinter oder vor der PaperID\n- mehrere Papers/paperIDs auszuwählen\n-------------------------------------------------------------------------------\nGrundsätzliche Fragestellung:\n{{ $('Workflow Input Trigger').item.json.query }}\nListe mit Publikationsmetadaten:\n{{ $json.publications }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1460,
+        480
+      ],
+      "id": "94157b06-8f96-4d3f-bd69-90d92628b979",
+      "name": "Paperselektion"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1480,
+        640
+      ],
+      "id": "8d5e9985-4bcb-46ed-8ee5-847563dc86fb",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Alle Publikationsdaten extrahieren\nconst publications = $json.data;\n\n// Umwandeln der Liste in ein JSON-Format\nconst publicationsString = JSON.stringify(publications);\n\n// Rückgabe als ein einzelnes Item mit den Publikationen im JSON-String-Format\nreturn [\n  {\n    json: {\n      publications: publicationsString // Verlinken als String\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        260
+      ],
+      "id": "48c8e20c-2540-40c7-bd9a-92336e0d8214",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.semanticscholar.org/graph/v1/paper/{{ $json.output }}\n?fields=abstract,title,year\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2020,
+        480
+      ],
+      "id": "38ef2f72-267e-4579-85e5-c97fd8d27d5c",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Beispiel-Input\nconst inputText = $input.first().json.text;\n\n// Funktion zum Truncieren des Texts bei der ersten Leerstelle\nfunction truncateAtFirstSpace(input) {\n    const firstSpaceIndex = input.indexOf(' ');\n    if (firstSpaceIndex !== -1) {\n        return input.substring(0, firstSpaceIndex);\n    }\n    return input;\n}\n\n// Verarbeite den Input\nconst output = truncateAtFirstSpace(inputText);\n\n// Rückgabe im richtigen Format für n8n (Array von Objekten)\nreturn [\n  {\n    json: {\n      output: output\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1820,
+        280
+      ],
+      "id": "c87df91c-1c78-4f56-97b8-d3d6f8f90a92",
+      "name": "Code1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-25T16:25:32.000Z",
+  "versionId": "a0bf7a00-bf23-46b0-bcb7-4e4ac7c717b4"
+}
