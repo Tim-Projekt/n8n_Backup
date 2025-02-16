@@ -1,0 +1,253 @@
+{
+  "active": false,
+  "connections": {
+    "Simulation_API1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Code12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CUBA (Current-Based Adaptive Hodgkin-Huxley)": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code12": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "CUBA (Current-Based Adaptive Hodgkin-Huxley)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "CUBA (Current-Based Adaptive Hodgkin-Huxley)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T16:49:25.940Z",
+  "id": "UMokNeRsrNXbtbyW",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "CUBA (Current-Based Adaptive Hodgkin-Huxley)",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_spikes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "taum",
+              "value": "={{ $('Code1').item.json.taum }}"
+            },
+            {
+              "name": "taue",
+              "value": "={{ $('Code1').item.json.taue }}"
+            },
+            {
+              "name": "taui",
+              "value": "={{ $('Code1').item.json.taui }}"
+            },
+            {
+              "name": "Vt",
+              "value": "={{ $('Code1').item.json.Vt }}"
+            },
+            {
+              "name": "Vr",
+              "value": "={{ $('Code1').item.json.Vr }}"
+            },
+            {
+              "name": "El",
+              "value": "={{ $('Code1').item.json.El }}"
+            },
+            {
+              "name": "we",
+              "value": "={{ $('Code12').item.json.we }}"
+            },
+            {
+              "name": "wi",
+              "value": "={{ $('Code12').item.json.wi }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        0
+      ],
+      "id": "1a83e77d-443b-4c52-b2f3-1d210cd189b7",
+      "name": "Simulation_API1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der neuen Parameter und Werte ohne \"* mV\" oder \"* ms\"\nconst regexParams = /taum:\\s*([\\d.]+)\\s*(?=\\s*\\n*)|taue:\\s*([\\d.]+)\\s*(?=\\s*\\n*)|taui:\\s*([\\d.]+)\\s*(?=\\s*\\n*)|Vt:\\s*([\\d.-]+)\\s*(?=\\s*\\n*)|Vr:\\s*([\\d.-]+)\\s*(?=\\s*\\n*)|El:\\s*([\\d.-]+)\\s*(?=\\s*\\n*)|we:\\s*([^\\n]+)\\s*(?=\\s*\\n*)|wi:\\s*([^\\n]+)\\s*(?=\\s*\\n*)/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  if (match[1]) parameters.taum = parseFloat(match[1]);\n  if (match[2]) parameters.taue = parseFloat(match[2]);\n  if (match[3]) parameters.taui = parseFloat(match[3]);\n  if (match[4]) parameters.Vt = parseFloat(match[4]);\n  if (match[5]) parameters.Vr = parseFloat(match[5]);\n  if (match[6]) parameters.El = parseFloat(match[6]);\n  if (match[7]) parameters.we = match[7].trim();\n  if (match[8]) parameters.wi = match[8].trim();\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "id": "31b38d3b-1012-4ca1-95ad-c37b5805e31d",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nParameter: taum\nBeschreibung: Membranzeitkonstante, beschreibt die Geschwindigkeit der Änderung des Membranpotenzials\nWertebereich: [Min: 10, Typisch: 20, Max: 30]\nEinheit: ms\n\nParameter: taue\nBeschreibung: Zeitkonstante für den exzitatorischen Input, bestimmt die Dynamik des exzitatorischen Effekts\nWertebereich: [Min: 3, Typisch: 5, Max: 10]\nEinheit: ms\n\nParameter: taui\nBeschreibung: Zeitkonstante für den inhibitorischen Input, bestimmt die Dynamik des inhibitorischen Effekts\nWertebereich: [Min: 5, Typisch: 10, Max: 20]\nEinheit: ms\n\nParameter: Vt\nBeschreibung: Schwellenpotenzial, ab dem ein Neuron feuert\nWertebereich: [Min: -55, Typisch: -50, Max: -45]\nEinheit: mV\n\nParameter: Vr\nBeschreibung: Rücksetzpotenzial, auf das das Membranpotenzial nach einem Spike zurückgesetzt wird\nWertebereich: [Min: -70, Typisch: -60, Max: -50]\nEinheit: mV\n\nParameter: El\nBeschreibung: Ruhemembranpotenzial, das elektrische Potential im Ruhezustand\nWertebereich: [Min: -55, Typisch: -49, Max: -45]\nEinheit: mV\n\nParameter: we\nBeschreibung: Exzitatorisches synaptisches Gewicht (berechnet als 60·0.27/10); beeinflusst die Stärke des exzitatorischen Inputs\nWertebereich: [Min: 10, Typisch: 16.2, Max: 25]\nEinheit: mV\n\nParameter: wi\nBeschreibung: Inhibitorisches synaptisches Gewicht (berechnet als –20·4.5/10); beeinflusst die Stärke des inhibitorischen Inputs\nWertebereich: [Min: -15, Typisch: -9, Max: -5]\nEinheit: mV\n\nCe: Synapse für exzitatorische Verbindungen, bestimmt, wie exzitatorische Inputs auf das Neuron wirken.\nCi: Synapse für inhibitorische Verbindungen, bestimmt, wie inhibitorische Inputs auf das Neuron wirken.\n\nBeispieloutput:\ntaum: 20\ntaue: 5\ntaui: 10\nVt: -50\nVr: -60\nEl: -49\nwe: 16.2\nwi: -9\nCe: Synapses(P, P, on_pre='ge += we')  \nCi: Synapses(P, P, on_pre='gi += wi') \n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.query }}\n\nVermeide jegliche Sonderzeichen oder Kommentare. Nur der Output!"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b3e575f2-83cc-47f2-adbf-9c3cd96ec958",
+      "name": "CUBA (Current-Based Adaptive Hodgkin-Huxley)"
+    },
+    {
+      "parameters": {
+        "jsCode": "const we = $input.first().json.we;  // String mit mathematischem Ausdruck\nconst wi = $input.first().json.wi;  // String mit mathematischem Ausdruck\n\nfunction evaluateExpression(expression) {\n    try {\n        return eval(expression);  // Berechnet den Ausdruck\n    } catch (error) {\n        throw new Error(`Fehler beim Berechnen des Ausdrucks: ${expression}`);\n    }\n}\n\n// Berechnung der Werte\nconst weValue = evaluateExpression(we);\nconst wiValue = evaluateExpression(wi);\n\n// Beide Werte als ein Item zurückgeben\nreturn [\n    { json: { we: weValue, wi: wiValue } }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        0
+      ],
+      "id": "46fd3c6d-a19c-4a45-8993-6df46d9b8ffb",
+      "name": "Code12"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        0
+      ],
+      "id": "0c2698d7-7725-42c4-9ba8-f74c0951fd3a",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – CUBA (Current-Based Adaptive Hodgkin-Huxley). Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.json.query }}\nRelevante Parameter: \n{{ $('CUBA (Current-Based Adaptive Hodgkin-Huxley)').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1200,
+        0
+      ],
+      "id": "c8152776-d63b-4351-a156-607d2465294c",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        0,
+        180
+      ],
+      "id": "d3ee6124-6b76-4de4-af5c-e57eecc7f5cf",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Mid8lkFo2uMmRyYL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T10:15:12.000Z",
+  "versionId": "d6bde62d-7196-4965-832e-673716f9e87c"
+}
