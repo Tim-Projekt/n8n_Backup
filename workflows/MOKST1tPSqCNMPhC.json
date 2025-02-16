@@ -1,0 +1,200 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hypothesis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Hypothesis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Feedback": {
+      "main": [
+        [
+          {
+            "node": "Hypothesis- Überarbeitet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Feedback",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hypothesis- Überarbeitet",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hypothesis": {
+      "main": [
+        [
+          {
+            "node": "Feedback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-13T22:26:20.386Z",
+  "id": "MOKST1tPSqCNMPhC",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Hypothesis-Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Rolle: Du bist ein interdisziplinärer Wissenschaftler mit Expertise in Neurowissenschaften und neuronalen Dynamiken. Deine Aufgabe ist es, neuartige, überprüfbare und relevante Hypothesen zu entwickeln, die ausschließlich neuronale Prozesse und Dynamiken im Gehirn beschreiben und durch simulationsbasierte Experimente validiert werden können.\n\nZiel: Entwickle eine neurowissenschaftliche Hypothese, die:\n\nAuf die gegebene Fragestellung eingeht.\nKonkrete neuronale Mechanismen oder Dynamiken beschreibt (z. B. synaptische Plastizität, neuronale Netzwerke, oszillatorische Aktivitäten, Spike-Timing, etc.).\nSimulationsbasiert überprüfbar ist.\nWissenschaftlich fundiert, innovativ und präzise formuliert ist.\nArbeitsweise:\n\nAnalysiere die Fragestellung und identifiziere relevante neuronale Prozesse oder Strukturen.\nEntwickle eine plausible Hypothese, die eine kausale Beziehung zwischen den neuronalen Dynamiken beschreibt.\nGib an, welche Parameter oder Mechanismen der Hypothese in Simulationen überprüft werden könnten.\nBeschreibe mögliche Vorhersagen und wie diese Ergebnisse die Hypothese stützen oder widerlegen könnten.\nBeispiel-Input:\nFragestellung: \"Wie beeinflusst die synchrone Aktivierung spezifischer Neuronenpopulationen im Hippocampus die Langzeitpotenzierung (LTP)?\"\n\nBeispiel-Output:\nHypothese: \"Die synchrone Aktivierung von CA3-Pyramidenzellen und CA1-Interneuronen fördert die Langzeitpotenzierung durch verstärkte Spike-Timing-Dependent-Plasticity (STDP) in den dendritischen Verzweigungen von CA1-Neuronen.\"\nParameter/Mechanismen: \"Spike-Timing, synaptische Plastizität (LTP), dendritische Calciumspitzen in CA1-Neuronen.\"\n\nAchte darauf, dass die Hypothese ohne Vorwissen und ohne Probanden in Simulationssoftware überprüfbar ist. Vermeide jegliche Einleitung oder Abschluss sowie allgemeine Lifestyle-Empfehlungen.\n\nInformationen/Fragestellung:\n{{ $('Workflow Input Trigger').item.json }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b4e53737-87be-46a4-ab9c-568bc17fe794",
+      "name": "Hypothesis"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        20,
+        200
+      ],
+      "id": "1a12a55a-76d7-49d8-9332-5c8a00142540",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -320,
+        0
+      ],
+      "id": "480b1ca6-efa7-42d7-a1f9-a82cd68de29c",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Rolle: Du bist ein erfahrener Neurowissenschaftler und Methodenspezialist mit Fokus auf wissenschaftliche Hypothesenentwicklung und experimentelle Validierung. Deine Aufgabe ist es, konstruktives Feedback zu einer neurowissenschaftlichen Hypothese zu geben, um deren Qualität und Überprüfbarkeit zu verbessern.\n\nZiel: Gib präzises und umsetzbares Feedback, das:\n\nSchwachstellen oder Unklarheiten in der Hypothese aufdeckt.\nVorschläge zur Präzisierung und Verbesserung der Hypothese liefert.\nHinweise gibt, wie die Hypothese simulationsfreundlicher und überprüfbarer gemacht werden kann.\nAuf wissenschaftliche Plausibilität und innovative Ansätze achtet.\nArbeitsweise:\n\nAnalysiere die Hypothese und identifiziere Unklarheiten, ungenaue Formulierungen oder nicht überprüfbare Aspekte.\nGib Feedback zu spezifischen Elementen der Hypothese, wie z. B.:\nKlarheit und Genauigkeit der Formulierungen.\nWissenschaftliche Fundierung und Plausibilität.\nÜberprüfbarkeit durch Simulationen oder Experimente.\nFormuliere präzise Verbesserungsvorschläge, um die Hypothese robuster und testbarer zu machen.\nBegründe dein Feedback kurz und nachvollziehbar, damit der Entwickler der Hypothese es leicht umsetzen kann.\nBeispiel-Input:\nHypothese: \"Die synchrone Aktivierung von CA1- und CA3-Neuronen im Hippocampus verstärkt die Plastizität hippocampaler Netzwerke und verbessert dadurch die Effizienz des räumlichen Lernens.\"\n\nBeispiel-Output:\n\nKlarheit und Genauigkeit: Der Begriff \"synchrone Aktivierung\" könnte präzisiert werden. Meinst du Synchronisation auf der Ebene der Spike-Timing-Dependent-Plasticity (STDP) oder auf einem anderen Zeitskalen-Niveau?\nWissenschaftliche Fundierung: Die Verbindung zwischen CA1- und CA3-Neuronen in Bezug auf räumliches Lernen ist plausibel, aber welche molekularen Mechanismen (z. B. NMDA-Rezeptoren) möchtest du genauer betrachten?\nÜberprüfbarkeit: Vorschlag: Definiere spezifische Messparameter, wie z. B. Änderungen in der Long-Term Potentiation (LTP) als Folge synchroner Aktivität, um die Hypothese überprüfbar zu machen.\nVerbesserungsvorschlag: Ergänze einen klaren Zusammenhang zwischen Synchronisation und den Lernaufgaben, z. B.: \"Die synchrone Aktivierung von CA1- und CA3-Neuronen bei Gamma-Frequenzen erhöht die LTP im Hippocampus und beschleunigt die Lernrate bei räumlichen Navigationsaufgaben.\"\n\n---------------------------------------------------------------------------\nHypothese:\n{{ $json.text }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        540,
+        0
+      ],
+      "id": "90536497-8c45-48f3-965e-612f19dcbdc0",
+      "name": "Feedback"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        300
+      ],
+      "id": "d2254f7f-fb99-4b9a-8ca4-a0a90bf193a0",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1080,
+        320
+      ],
+      "id": "855cec2a-d90f-40d5-8ca0-358dec8564f3",
+      "name": "OpenAI Chat Model5",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Verbessere diese Hypothese:\n{{ $('Hypothesis').item.json.text }}\n... unter Berücksichtigung dieses kritischen Feedbacks:\n{{ $json.text }}\nAchte darauf, alle Schwächen und Unklarheiten der ursprünglichen Hypothese zu adressieren und die Formulierungen zu präzisieren. Verwende klar definierte wissenschaftliche Begriffe und führe konkrete Änderungen ein, um die Hypothese präziser und testbarer zu machen."
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1060,
+        0
+      ],
+      "id": "bfd3ce31-28ca-42d9-a1a1-d492f9888619",
+      "name": "Hypothesis- Überarbeitet"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-13T22:29:30.000Z",
+  "versionId": "bcebe7a3-66f1-4bff-bcf5-a999be93b617"
+}
