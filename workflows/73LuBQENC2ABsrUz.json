@@ -1,0 +1,223 @@
+{
+  "active": false,
+  "connections": {
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Research_Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Research_Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sementic Scholar API1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Research_Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PubMed API1": {
+      "ai_tool": [
+        [
+          {
+            "node": "Research_Agent1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Research_Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-20T17:59:56.832Z",
+  "id": "73LuBQENC2ABsrUz",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Research_Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        40,
+        500
+      ],
+      "id": "029d1e4c-8dc7-4823-88f2-9696ecb474c9",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Durchsuche den Cyberspace mithilfe deiner APIs/Tools nach neurowissenschaftlichen Informationen/Studien zu dieser Fragestellung:\n{{ $json.chatInput }}\nExtrahiere relevante wissenschaftliche und technische Daten und liefere eine objektive, faktenbasierte Zusammenfassung der wichtigsten Ergebnisse, ohne eine Einleitung, Schlussfolgerung oder Erklärungen hinzuzufügen. Achte darauf, alle Informationen präzise und sachlich zu formulieren, dabei jedoch keine persönlichen oder subjektiven Meinungen zu äußern.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        200,
+        260
+      ],
+      "id": "7ba668db-6b90-4fd1-8620-f95ce27bcb9e",
+      "name": "Research_Agent1"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        720,
+        560
+      ],
+      "id": "d5a94f73-6d44-4303-902c-ad77f009ae48",
+      "name": "Wikipedia1"
+    },
+    {
+      "parameters": {
+        "name": "Sementic_Scholar_API",
+        "description": "The Semantic Scholar API provides abstracts and metadata from scholarly articles, ideal for academic research and exploring interdisciplinary topics. Its semantic search finds relevant papers based on meaning, not just keywords.\n\nWhen to Use:\nFor peer-reviewed academic research\nTo discover relevant papers across fields\n\nStrengths\nHigh-quality, peer-reviewed content\nAdvanced semantic search\nDetailed metadata (citations, references)\n\nWeaknesses\nLimited in medical/biomedical topics (use PubMed)\nNot suited for general knowledge (use Wikipedia)",
+        "workflowId": {
+          "__rl": true,
+          "value": "VGEXh6JqDtPxXOxo",
+          "mode": "list",
+          "cachedResultName": "Sementic Scholar API"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "Input"
+          ],
+          "schema": [
+            {
+              "id": "Input",
+              "displayName": "Input",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        420,
+        560
+      ],
+      "id": "d4746d3e-b789-4978-b1ed-5519a94a7d0d",
+      "name": "Sementic Scholar API1"
+    },
+    {
+      "parameters": {
+        "name": "Pub_Med_API",
+        "description": "The PubMed API provides access to abstracts, metadata, and references from millions of biomedical articles, ideal for medical research and clinical studies.\n\nWhen to Use\n\nFor reliable, peer-reviewed biomedical research\nTo find articles on specific medical topics or treatments\nFor citation and metadata gathering\nStrengths\n\nExtensive database of peer-reviewed articles\nPrecise search with filters\nRegularly updated\nFlexible data output (XML, JSON)\nWeaknesses\n\nLimited full-text access\nComplex search syntax\nNot directly compatible with AI/ML applications",
+        "workflowId": {
+          "__rl": true,
+          "value": "gTLWuvBMcEt6I3RY",
+          "mode": "list",
+          "cachedResultName": "Pub_Med_API_Sub_Workflow"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "term"
+          ],
+          "schema": [
+            {
+              "id": "term",
+              "displayName": "term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        560,
+        560
+      ],
+      "id": "ce02c5e4-7dd4-4526-a914-6bdd2d2200b2",
+      "name": "PubMed API1"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "chatInput"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        260
+      ],
+      "id": "e22ef9eb-9217-48e5-8f52-170bacfe0e8c",
+      "name": "Workflow Input Trigger"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-13T17:54:53.000Z",
+  "versionId": "59b97983-eebf-4c14-94c3-39818404daa8"
+}
