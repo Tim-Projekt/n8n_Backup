@@ -1,0 +1,108 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        []
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Hypothesis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hypothesis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-20T18:18:05.057Z",
+  "id": "6PucMFW784RTpqkw",
+  "meta": {
+    "templateId": "VMiAxXa3lCAizGB5f7dVZQSFfg3FtHkdTKvLuupqBls=",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Hypothesis_LLM",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Workflow Input Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        0,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e980db44-4803-465f-9f9a-3d701c872896",
+      "name": "When chat message received",
+      "webhookId": "d7aca77f-4ea0-4f09-a45a-067eeb1f8ed6"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Formuliere eine wissenschaftlich überprüfbare Hypothese/Ansatz aus klar definierten wissenschaftlichen Domänen, um die folgende Fragestellung zu lösen. Vermeide jegliche Einleitung oder Abschluss sowie allgemeine Lifestyle-Empfehlungen. Konzentriere dich ausschließlich auf Mechanismen und Methoden, die experimentell getestet werden können und direkt mit neuronalen Dynamiken im Gehirn zu tun haben. Gehe davon aus, dass sich die Hypothese sehr einfach mit einer Simulationssoftware überprüfen lassen muss, auch für nicht-Forscher ohne Probanden und ohne Vorwissen.\nDies ist die Fragestellung:\n{{$json.chatInput}}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        300,
+        0
+      ],
+      "id": "9e5f7a15-d5d9-40e6-ac03-65e1f260b83a",
+      "name": "Hypothesis"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        300,
+        260
+      ],
+      "id": "34d718a9-9f20-4aaf-b2d5-63b3bcb0bcbb",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-22T17:19:19.000Z",
+  "versionId": "2f3311ff-f1bc-4d8f-8035-f74a7390f00c"
+}
