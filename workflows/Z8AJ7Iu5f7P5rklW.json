@@ -1,0 +1,195 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Clopath_et_al_2010_homeostasis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code6": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clopath_et_al_2010_homeostasis": {
+      "main": [
+        [
+          {
+            "node": "Code6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API6": {
+      "main": [
+        [
+          {
+            "node": "OpenAI6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Clopath_et_al_2010_homeostasis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T17:12:21.945Z",
+  "id": "Z8AJ7Iu5f7P5rklW",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Clopath_et_al_2010_homeostasis",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nParameter:\nV_rest\nBeschreibung:\nRuhespannung. Das Membranpotential eines Neurons, wenn es nicht aktiv durch synaptische Eingänge oder Aktionspotentiale beeinflusst wird.  Typischerweise ein negativer Wert, der durch Leckströme und die Ungleichverteilung von Ionen über die Zellmembran bestimmt wird.\nWertebereich:\n[Min: -80 mV, Typisch: -65 mV, Max: -50 mV]\nEinheit:\nmV\n\nParameter:\nV_thresh\nBeschreibung:\nSchwellenwert für das Spike. Das Membranpotential, bei dem ein Aktionspotential ausgelöst wird. Überschreitet das Membranpotential diesen Wert, öffnen sich spannungsgesteuerte Natriumkanäle, was zu einem schnellen Aufstrich (Depolarisation) führt.\nWertebereich:\n[Min: -55 mV, Typisch: -50 mV, Max: -40 mV]\nEinheit:\nmV\n\nParameter:\nTheta_low\nBeschreibung:\nDepolarisations-Schwelle für Plastizität. Eine Schwelle unterhalb des Spike-Schwellenwerts, die Depolarisationen repräsentiert, welche subzelluläre Plastizitätsmechanismen auslösen können, ohne ein volles Aktionspotential zu generieren. Diese Schwelle liegt typischerweise zwischen Ruhepotential und Spike-Schwellenwert.\nWertebereich:\n[Min: -75 mV, Typisch: -70 mV, Max: -55 mV]\nEinheit:\nmV\n\nParameter:\nx_reset\nBeschreibung:\nSpike-Trace Reset-Wert. Der Wert, auf den der Spike-Trace (eine Variable, die die jüngste Spiking-Aktivität des Neurons widerspiegelt) nach einem Aktionspotential zurückgesetzt wird. Oft auf Null gesetzt, um einen definierten Ausgangspunkt für die Trace-Dynamik zu schaffen.\nWertebereich:\n[Min: 0, Typisch: 0, Max: 0]\nEinheit:\n\n(dimensionslos)\nParameter:\ntaux\nBeschreibung:\nSpike-Trace Zeitkonstante.  Die Zeitkonstante, die den exponentiellen Zerfall des Spike-Traces bestimmt.  Ein größerer Wert bedeutet ein langsameres Abklingen des Traces und eine längere Gedächtnisspur der Spiking-Aktivität.\nWertebereich:\n[Min: 10 ms, Typisch: 20 ms, Max: 50 ms]\nEinheit:\nms\n\nParameter:\nA_LTD\nBeschreibung:\nDepressions-Amplitude. Ein dimensionsloser Faktor, der die Stärke der synaptischen Depression (LTD) bei der synaptischen Plastizität bestimmt.  Multipliziert mit dem Plastizitätssignal, um die tatsächliche Änderung des synaptischen Gewichts zu bestimmen.\nWertebereich:\n[Min: 1x10⁻⁵, Typisch: 6x10⁻⁵, Max: 1x10⁻⁴]\nEinheit:\n\n(dimensionslos)\nParameter:\nA_LTP\nBeschreibung:\nPotentiation-Amplitude. Ein dimensionsloser Faktor, der die Stärke der synaptischen Potentiation (LTP) bei der synaptischen Plastizität bestimmt. Multipliziert mit dem Plastizitätssignal, um die tatsächliche Änderung des synaptischen Gewichts zu bestimmen.\nWertebereich:\n[Min: 1x10⁻⁵, Typisch: 6x10⁻⁵, Max: 1x10⁻⁴]\nEinheit:\n\n(dimensionslos)\nParameter:\ntau_lowpass1\nBeschreibung:\nZeitkonstante für Low-Pass Filter 1. Die Zeitkonstante eines ersten Low-Pass-Filters, das in der Regel für schnellere Filterprozesse in neuronalen Modellen verwendet wird. Filtert hochfrequente Schwankungen und glättet Signale.\nWertebereich:\n[Min: 5 ms, Typisch: 10 ms, Max: 20 ms]\nEinheit:\nms\n\nParameter:\ntau_lowpass2\nBeschreibung:\nZeitkonstante für Low-Pass Filter 2. Die Zeitkonstante eines zweiten Low-Pass-Filters, das typischerweise für langsamere Filterprozesse verwendet wird.  Ermöglicht die Filterung von Signalen auf einer langsameren Zeitskala als tau_lowpass1.\nWertebereich:\n[Min: 50 ms, Typisch: 100 ms, Max: 200 ms]\nEinheit:\nms\n\nParameter:\ntau_homeo\nBeschreibung:\nHomeostatische Zeitkonstante. Die Zeitkonstante, die die Geschwindigkeit homeostatischer Regulationsprozesse bestimmt. Homeostase operiert typischerweise langsamer als synaptische Plastizität.\nWertebereich:\n[Min: 1000 ms, Typisch: 1000 ms, Max: 10000 ms]\nEinheit:\nms\n\nParameter:\nv_target\nBeschreibung:\nZiel-Depolarisation. Der Membranpotentialwert, den das homeostatische System des Neurons anzustreben versucht.  Führt zu homeostatischen Anpassungen der neuronalen Erregbarkeit, um das Membranpotential um diesen Zielwert zu stabilisieren.\nWertebereich:\n[Min: -65 mV, Typisch: -60 mV, Max: -55 mV]\nEinheit:\nmV\n\nParameter:\ngleak\nBeschreibung:\nLeckleitfähigkeit. Die Leitfähigkeit der Zellmembran für Leckströme im Ruhezustand. Bestimmt, wie leicht Ionen passiv durch die Membran fließen können und beeinflusst das Ruhemembranpotential und den Eingangswiderstand.\nWertebereich:\n[Min: 5 nS, Typisch: 10 nS, Max: 20 nS]\nEinheit:\nnS\n\nParameter:\nC\nBeschreibung:\nMembrankapazität. Die Kapazität der Zellmembran, Ladung zu speichern.  Hängt von der Größe und Oberfläche des Neurons ab und beeinflusst die zeitliche Dynamik von Membranpotentialänderungen.\nWertebereich:\n[Min: 100 pF, Typisch: 200 pF, Max: 500 pF]\nEinheit:\npF\n\nParameter:\ntau_AMPA\nBeschreibung:\nAMPA-Synapse Zeitkonstante. Die Zeitkonstante, die das An- und Abklingen von AMPA-Rezeptor-vermittelten synaptischen Strömen bestimmt. AMPA-Synapsen sind schnell und für die schnelle exzitatorische Übertragung im Gehirn wichtig.\nWertebereich:\n[Min: 1 ms, Typisch: 2 ms, Max: 5 ms]\nEinheit:\nms\n\nParameter:\nE_AMPA\nBeschreibung:\nReversal Potential für AMPA. Das Umkehrpotential für AMPA-Rezeptor-vermittelte Ströme. Bei diesem Membranpotential kehrt die Richtung des Ionenflusses durch AMPA-Kanäle um. Für AMPA-Rezeptoren liegt es typischerweise nahe bei 0 mV.\nWertebereich:\n[Min: 0 mV, Typisch: 0 mV, Max: 0 mV]\nEinheit:\nmV\n\nParameter:\nampa_max_cond\nBeschreibung:\nMaximale AMPA-Leitfähigkeit. Die maximale Leitfähigkeit der AMPA-Synapse, die die maximale Stärke der synaptischen Verbindung bestimmt. Beeinflusst das Ausmaß der postsynaptischen Potentiale (EPSPs).\nWertebereich:\n[Min: 0.5 nS, Typisch: 1 nS, Max: 2 nS]\nEinheit:\nnS\n\nParameter:\nw_max\nBeschreibung:\nMaximales AMPA-Gewicht. Der maximale Wert, den das synaptische Gewicht der AMPA-Synapse erreichen kann.  Oft auf 1 normalisiert, wenn es sich um ein relatives Gewicht handelt. Definiert die obere Grenze für die synaptische Stärke.\nWertebereich:\n[Min: 1, Typisch: 1, Max: 1]\nEinheit:\n\n(dimensionslos)\nParameter:\ndefaultclock.dt\nBeschreibung:\nZeitschrittweite. Die Größe des Zeitschritts, der für die numerische Integration der Differentialgleichungen in der Simulation verwendet wird.  Kleinere Zeitschritte erhöhen die Genauigkeit, aber auch die Rechenzeit.\nWertebereich:\n[Min: 2.5 ms, Typisch: 5 ms, Max: 10 ms]\nEinheit:\nms\n\nParameter:\nNr_neurons\nBeschreibung:\nAnzahl der Neuronen. Die Anzahl der simulierten Neuronen in der Simulation. Für Einzelneuronensimulationen typischerweise 1.\nWertebereich:\n[Min: 1, Typisch: 1, Max: 1]\nEinheit:\n\n(Anzahl)\nParameter:\nNr_inputs\nBeschreibung:\nAnzahl der Eingangsneuronen. Die Anzahl der simulierten Eingangsneuronen, die externen Input zum simulierten Neuron liefern. Für einfache Eingangs-Szenarien oft 1.\nWertebereich:\n[Min: 1, Typisch: 1, Max: 1]\nEinheit:\n\n(Anzahl)\nParameter:\ninput_rate\nBeschreibung:\nEingangsrate. Die Frequenz des externen Inputs, der von den Eingangsneuronen kommt, typischerweise in Hertz (Spikes pro Sekunde) angegeben.\nWertebereich:\n[Min: 1 Hz, Typisch: 10 Hz, Max: 50 Hz]\nEinheit:\nHz\n\nParameter:\ninit_weight\nBeschreibung:\nInitiales Synapsen-Gewicht. Der Startwert des synaptischen Gewichts der AMPA-Synapse zu Beginn der Simulation.  Oft ein intermediärer Wert, um Plastizität in beide Richtungen (Potentiation und Depression) zu ermöglichen.\nWertebereich:\n[Min: 0.1, Typisch: 0.5, Max: 0.9]\nEinheit:\n\n(dimensionslos)\nParameter:\nfinal_t\nBeschreibung:\nEndzeit der Simulation. Die Gesamtdauer der Simulation in Millisekunden. Bestimmt, wie lange die neuronale Aktivität und Plastizität simuliert werden.\nWertebereich:\n[Min: 1000 ms, Typisch: 10000 ms, Max: 20000 ms]\nEinheit:\nms\n\nParameter:\ninput_time\nBeschreibung:\nDauer des Inputs.  Die Zeitspanne, über die der externe Input an das simulierte Neuron angelegt wird. Kann kürzer oder gleich der final_t sein.\nWertebereich:\n[Min: 1000 ms, Typisch: 2000 ms, Max: 3000 ms]\nEinheit:\nms\n\nBeispieloutput:\nV_rest: -65. * mV\nV_thresh: -50. * mV\nTheta_low: -70. * mV\nx_reset: 0.\ntaux: 20. * ms\nA_LTD: 6e-5\nA_LTP: 6e-5\ntau_lowpass1: 10. * ms\ntau_lowpass2: 100. * ms\ntau_homeo: 1000. * ms\nv_target: -60. * mV\n\ngleak: 10. * nS\nC: 200. * pF\ntau_AMPA: 2. * ms\nE_AMPA: 0. * mV\nampa_max_cond: 1. * nS\nw_max: 1.\n\ndefaultclock.dt: 5 * ms\nNr_neurons: 1\nNr_inputs: 1\ninput_rate: 10. * Hz\ninit_weight: 0.5\nfinal_t: 2000. * ms\ninput_time: 2000. * ms\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        300,
+        120
+      ],
+      "id": "3018b12b-541f-4b6b-ab1b-15e23200dba3",
+      "name": "Clopath_et_al_2010_homeostasis"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        120
+      ],
+      "id": "352806e4-7ce6-445c-ab63-2688fa3ed305",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        120
+      ],
+      "id": "673ae67d-f797-4129-8006-a98b629429dc",
+      "name": "Code6"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_plasticity",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code6').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1000,
+        120
+      ],
+      "id": "cc153d47-3177-408c-8fc0-bfbd2e6953c9",
+      "name": "Simulation_API6"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Clopath_et_al_2010_homeostasis. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.json.query }}\nRelevante Parameter: \n{{ $('Clopath_et_al_2010_homeostasis').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1300,
+        120
+      ],
+      "id": "fa7caa22-1691-4db8-a49d-c97c9d4cfa9f",
+      "name": "OpenAI6",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        320,
+        340
+      ],
+      "id": "3594ec40-9a8b-47ac-8b5f-b4bf77153658",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Mid8lkFo2uMmRyYL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T10:11:45.000Z",
+  "versionId": "f4f2b8a6-0db2-4d95-9eb4-63f57d262319"
+}
