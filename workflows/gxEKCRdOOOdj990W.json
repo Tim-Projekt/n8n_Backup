@@ -1,0 +1,195 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Distributed Synchrony Exampl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Distributed Synchrony Exampl": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API9": {
+      "main": [
+        [
+          {
+            "node": "OpenAI9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Distributed Synchrony Exampl",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T17:18:21.816Z",
+  "id": "gxEKCRdOOOdj990W",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Distributed Synchrony Example",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "7a8ebc2b-57ba-472d-95e1-3f0120eb7712",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nParameter: theta\nBeschreibung: Schwellenwert für das Membranpotenzial, ab dem ein Aktionspotenzial ausgelöst wird.\nWertebereich: [Min: -55, Typisch: -55, Max: -45]\nEinheit: mV\n\nParameter: El\nBeschreibung: Ruhepotenzial der Zelle, typisch für das Membranpotenzial eines ruhenden Neurons.\nWertebereich: [Min: -70, Typisch: -65, Max: -60]\nEinheit: mV\n\nParameter: vmean\nBeschreibung: Durchschnittliches Membranpotenzial eines Neurons über die Zeit.\nWertebereich: [Min: -70, Typisch: -65, Max: -60]\nEinheit: mV\n\nParameter: taum\nBeschreibung: Membranzeitkonstante, bestimmt die Geschwindigkeit der Spannungsänderung.\nWertebereich: [Min: 3, Typisch: 5, Max: 10]\nEinheit: ms\n\nParameter: taue\nBeschreibung: Zeitkonstante für exzitatorische Synapsen, beeinflusst die Dauer exzitatorischer Postsynaptischer Potenziale.\nWertebereich: [Min: 1, Typisch: 3, Max: 5]\nEinheit: ms\n\nParameter: taui\nBeschreibung: Zeitkonstante für inhibitorische Synapsen, beeinflusst die Dauer inhibitorischer Postsynaptischer Potenziale.\nWertebereich: [Min: 5, Typisch: 10, Max: 15]\nEinheit: ms\n\nParameter: p\nBeschreibung: Anzahl der Verbindungen pro Neuron (Verbindungsdichte).\nWertebereich: [Min: 2, Typisch: 5, Max: 10]\nEinheit: (keine)\n\nParameter: ne\nBeschreibung: Anzahl der exzitatorischen Neuronen im Netzwerk.\nWertebereich: [Min: 2000, Typisch: 4000, Max: 6000]\nEinheit: (keine)\n\nParameter: ni\nBeschreibung: Anzahl der inhibitorischen Neuronen im Netzwerk.\nWertebereich: [Min: 500, Typisch: 1000, Max: 1500]\nEinheit: (keine)\n\nParameter: lambdac\nBeschreibung: Feuerrate der gesamten Population (mittlere Aktivität der Neuronen).\nWertebereich: [Min: 20, Typisch: 40, Max: 60]\nEinheit: Hz\n\nParameter: lambdae\nBeschreibung: Feuerrate der exzitatorischen Neuronen.\nWertebereich: [Min: 0.5, Typisch: 1, Max: 2]\nEinheit: Hz\n\nParameter: lambdai\nBeschreibung: Feuerrate der inhibitorischen Neuronen.\nWertebereich: [Min: 0.5, Typisch: 1, Max: 2]\nEinheit: Hz\n\nParameter: we\nBeschreibung: Gewicht der exzitatorischen Synapsen, bestimmt die Stärke der exzitatorischen Signale.\nWertebereich: [Min: 0.1, Typisch: 0.5 / (taum / taue) ** (taum / (taue - taum)), Max: 0.2]\nEinheit: mV\n\nParameter: wi\nBeschreibung: Gewicht der inhibitorischen Synapsen, bestimmt die Stärke der inhibitorischen Signale.\nWertebereich: [Min: -2, Typisch: (vmean - El - lambdae * eta * taue) / (lambdae * ni * taui), Max: -0.5]\nEinheit: mV\n\nParameter: N\nBeschreibung: Neuronenzahl in der Simulation\nWertebereich: [Min: 2, Typisch: 2, Max: 2]\nEinheit: (keine)\n\nParameter: resetv\nBeschreibung: Definition des Membranpotenzials nach einem Reset (nach einem Aktionspotenzial).\nWertebereich: [Min: v = El, Typisch: v = El, Max: v = El]\nEinheit: (keine)\n\nParameter: threshold\nBeschreibung: Bedingung, unter der ein Aktionspotenzial ausgelöst wird.\nWertebereich: [Min: v > theta, Typisch: v > theta, Max: v > theta]\nEinheit: (keine)\n\nParameter: refractory\nBeschreibung: Refraktärzeit, während der das Neuron nach einem Aktionspotenzial nicht erneut feuern kann.\nWertebereich: [Min: 5, Typisch: 5, Max: 5]\nEinheit: ms\n\nParameter: method\nBeschreibung: Lösungsverfahren für die Differentialgleichungen.\nWertebereich: [Min: exact, Typisch: exact, Max: exact]\nEinheit: (keine)\n\nBeispieloutput:\ntheta: -55. * mV\nEl: -65. * mV\nvmean: -65. * mV\ntaum: 5. * ms\ntaue: 3. * ms\ntaui: 10. * ms\np: 5\nne: 4000\nni: 1000\nlambdac: 40. * Hz\nlambdae: 1. * Hz\nlambdai: 1. * Hz\nwe: 0.5 * mV / (taum / taue) ** (taum / (taue - taum))\nwi: (vmean - El - lambdae * ne * we * taue) / (lambdae * ni * taui)\nN: 2\nreset: 'v = El'\nthreshold: 'v > theta'\nrefractory: 5. * ms\nmethod: 'exact'\n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        340,
+        0
+      ],
+      "id": "b147b8de-ea17-4676-adb7-d26c596b42c7",
+      "name": "Distributed Synchrony Exampl"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        740,
+        0
+      ],
+      "id": "aec72ef5-d00a-4055-bb1f-79789d4e8432",
+      "name": "Code9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_neuron_activity",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code9').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1000,
+        0
+      ],
+      "id": "be76ffd7-be57-43a1-bab0-204cbbf835b4",
+      "name": "Simulation_API9"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – Distributed Synchrony Example. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.json.query }}\nRelevante Parameter: \n{{ $('Distributed Synchrony Exampl').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.\n",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1300,
+        0
+      ],
+      "id": "7376716e-31bc-461f-9b2a-dc3851f87b2f",
+      "name": "OpenAI9",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        440,
+        220
+      ],
+      "id": "dd606672-50e8-40ba-a1fd-00c473d64588",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Mid8lkFo2uMmRyYL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T10:12:05.000Z",
+  "versionId": "95cabf27-3588-4e43-b863-389cf98c64e9"
+}
