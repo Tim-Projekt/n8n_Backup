@@ -1,0 +1,288 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Experiment-Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Research_Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daten-Analyst-Makro": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daten-Analyst-Simulationsdaten": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prompt-Planer": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-01-20T17:46:25.090Z",
+  "id": "q9XwECuReR4D5PeL",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Multi-Agent-System",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "da685a3a-2ade-4a37-bbb1-03c30f36c9fd",
+      "name": "When chat message received",
+      "webhookId": "776fac6d-32d6-41c3-9048-2fa38a8b8e61"
+    },
+    {
+      "parameters": {
+        "agent": "planAndExecuteAgent",
+        "promptType": "define",
+        "text": "Du bist ein \"Plan and Execute\"-Agent, der Sub-Agents koordiniert um Forschungsfragen zu beantworten. Du arbeitest pragmatisch, gründlich und strategisch.\n-----------------------------------------------\nDein übergeordnetes Ziel ist es, diese Forschungsfrage zu beantworten:\n{{ $json.chatInput }}\n------------------------------------------------\nUm die Forschungsfrage zu beantworten hast du mehrere Sub-Agents, die spezifische Aufgaben erfüllen können (Tools):\n- Hypothesis_Agent --> Ein LLM, dass eine neurowissenschaftliche Hypothese aufstellt um die Forschungsfrage zu beantworten.",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        220,
+        0
+      ],
+      "id": "41cd3fef-ae82-450d-b7c6-f8371edce6d1",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        300
+      ],
+      "id": "749bdd36-b606-4aaa-abbe-d53f650c5f71",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "ViRWh1gIi6TNtbzo",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "Experiement_Agent",
+        "description": "Rufe dieses Tool auf um neurowissenschaftliche Hypothesen mittels Simulationssoftware zu simulieren. Zurückgegeben werden unverarbeitet Simulationsdaten. ",
+        "workflowId": {
+          "__rl": true,
+          "value": "91wr8ujNILCt5aVF",
+          "mode": "list",
+          "cachedResultName": "Experiment_Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ],
+      "id": "f68a8402-a347-48e1-8830-2f845ec6b474",
+      "name": "Experiment-Agent"
+    },
+    {
+      "parameters": {
+        "name": "Research_Agent",
+        "description": "Rufe diesen Agent auf um das Internet nach wissenschaftlichen Studien/Ergebnissen zu durchsuchen. Du bekommst eine Zusammenfassung zu den Informationen aus dem Internet.",
+        "workflowId": {
+          "__rl": true,
+          "value": "73LuBQENC2ABsrUz",
+          "mode": "list",
+          "cachedResultName": "Research_Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        280,
+        300
+      ],
+      "id": "2c23917c-841f-4f0d-9bc7-3b76aea8dd42",
+      "name": "Research_Agent"
+    },
+    {
+      "parameters": {
+        "name": "Daten_Analyst_Makro",
+        "description": "Rufe dieses Tool auf um zu überprüfen ob die Nutzerfrage beantwortet werden kann.",
+        "workflowId": {
+          "__rl": true,
+          "value": "r1IC4kcYq5JuBnpE",
+          "mode": "list",
+          "cachedResultName": "Daten_Analyst_Agent_Makroebene"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        840,
+        300
+      ],
+      "id": "bacc0e74-45a8-41c3-8661-9ae57e27cf1b",
+      "name": "Daten-Analyst-Makro"
+    },
+    {
+      "parameters": {
+        "name": "Data_Analysis",
+        "description": "Rufe diesen Agenten auf um Simulationsdaten auszuwerten und so von Daten zu Erkenntnissen zu kommen. Du bekommst eine Zusammenfassung der Analyseergebnisse in textueller Form zurück.",
+        "workflowId": {
+          "__rl": true,
+          "value": "DB0dXAOR3VBk4Oae",
+          "mode": "list",
+          "cachedResultName": "Data_Analysis_Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        640,
+        300
+      ],
+      "id": "f4561101-e61c-429b-9836-82632c3a1a9e",
+      "name": "Daten-Analyst-Simulationsdaten"
+    },
+    {
+      "parameters": {
+        "name": "Prompt_Planer",
+        "description": "Rufe dieses Tool nach jeder erfolgreichen Execution eines Sub-Workflow auf, um den Prompt für das nächste LLM/den nächsten/Agent zu generieren.",
+        "workflowId": {
+          "__rl": true,
+          "value": "rCqGQYm9AeiHWhYU",
+          "mode": "list",
+          "cachedResultName": "Prompt-Planer"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        100,
+        300
+      ],
+      "id": "f28456f1-7b1a-441f-998f-a34bb8b3943a",
+      "name": "Prompt-Planer"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-21T12:09:05.000Z",
+  "versionId": "7e2d31d0-0a8c-4c82-8ea7-db9140f632d8"
+}
