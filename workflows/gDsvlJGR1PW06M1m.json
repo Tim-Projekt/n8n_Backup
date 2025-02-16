@@ -1,0 +1,716 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Hypothesis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hypothesis": {
+      "main": [
+        [
+          {
+            "node": "Feedback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hypothesis",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Feedback": {
+      "main": [
+        [
+          {
+            "node": "Hypothesis- Überarbeitet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Feedback",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hypothesis- Überarbeitet",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hypothesis- Überarbeitet": {
+      "main": [
+        [
+          {
+            "node": "Szenarien",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Szenarien",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brian2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me2": {
+      "main": [
+        [
+          {
+            "node": "Nest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "The Virtual Brain": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Nest": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ],
+        [
+          {
+            "node": "Replace Me2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "Brian2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Datenaufbereitung",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Datenauswertung",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datenauswertung": {
+      "main": [
+        [
+          {
+            "node": "Decision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datenaufbereitung": {
+      "main": [
+        [
+          {
+            "node": "Datenauswertung",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Decision",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Decision": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Execute Workflow4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "The Virtual Brain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Szenarien": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2025-02-11T22:36:29.932Z",
+  "id": "gDsvlJGR1PW06M1m",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Forscher-Workflow-2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -3940,
+        440
+      ],
+      "id": "f8a79b09-57b3-4ac1-ae22-d280a0d5226d",
+      "name": "When chat message received",
+      "webhookId": "7182d6be-4ac8-4e3d-bd13-568b1e6f7f55"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Rolle: Du bist ein interdisziplinärer Wissenschaftler mit Expertise in Neurowissenschaften und neuronalen Dynamiken. Deine Aufgabe ist es, neuartige, überprüfbare und relevante Hypothesen zu entwickeln, die ausschließlich neuronale Prozesse und Dynamiken im Gehirn beschreiben und durch simulationsbasierte Experimente validiert werden können.\n\nZiel: Entwickle eine neurowissenschaftliche Hypothese, die:\n\nAuf die gegebene Fragestellung eingeht.\nKonkrete neuronale Mechanismen oder Dynamiken beschreibt (z. B. synaptische Plastizität, neuronale Netzwerke, oszillatorische Aktivitäten, Spike-Timing, etc.).\nSimulationsbasiert überprüfbar ist.\nWissenschaftlich fundiert, innovativ und präzise formuliert ist.\nArbeitsweise:\n\nAnalysiere die Fragestellung und identifiziere relevante neuronale Prozesse oder Strukturen.\nEntwickle eine plausible Hypothese, die eine kausale Beziehung zwischen den neuronalen Dynamiken beschreibt.\nGib an, welche Parameter oder Mechanismen der Hypothese in Simulationen überprüft werden könnten.\nBeschreibe mögliche Vorhersagen und wie diese Ergebnisse die Hypothese stützen oder widerlegen könnten.\nBeispiel-Input:\nFragestellung: \"Wie beeinflusst die synchrone Aktivierung spezifischer Neuronenpopulationen im Hippocampus die Langzeitpotenzierung (LTP)?\"\n\nBeispiel-Output:\nHypothese: \"Die synchrone Aktivierung von CA3-Pyramidenzellen und CA1-Interneuronen fördert die Langzeitpotenzierung durch verstärkte Spike-Timing-Dependent-Plasticity (STDP) in den dendritischen Verzweigungen von CA1-Neuronen.\"\nParameter/Mechanismen: \"Spike-Timing, synaptische Plastizität (LTP), dendritische Calciumspitzen in CA1-Neuronen.\"\n\nAchte darauf, dass die Hypothese ohne Vorwissen und ohne Probanden in Simulationssoftware überprüfbar ist. Vermeide jegliche Einleitung oder Abschluss sowie allgemeine Lifestyle-Empfehlungen.\n\nFragestellung:\n{{ $('When chat message received').item.json.chatInput }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -3540,
+        440
+      ],
+      "id": "739f5a3d-908a-4446-810b-3a7758ae0c67",
+      "name": "Hypothesis"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -3520,
+        700
+      ],
+      "id": "c69e857c-a052-4c0a-91b8-9752bf728122",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Rolle: Du bist ein erfahrener Neurowissenschaftler und Methodenspezialist mit Fokus auf wissenschaftliche Hypothesenentwicklung und experimentelle Validierung. Deine Aufgabe ist es, konstruktives Feedback zu einer neurowissenschaftlichen Hypothese zu geben, um deren Qualität und Überprüfbarkeit zu verbessern.\n\nZiel: Gib präzises und umsetzbares Feedback, das:\n\nSchwachstellen oder Unklarheiten in der Hypothese aufdeckt.\nVorschläge zur Präzisierung und Verbesserung der Hypothese liefert.\nHinweise gibt, wie die Hypothese simulationsfreundlicher und überprüfbarer gemacht werden kann.\nAuf wissenschaftliche Plausibilität und innovative Ansätze achtet.\nArbeitsweise:\n\nAnalysiere die Hypothese und identifiziere Unklarheiten, ungenaue Formulierungen oder nicht überprüfbare Aspekte.\nGib Feedback zu spezifischen Elementen der Hypothese, wie z. B.:\nKlarheit und Genauigkeit der Formulierungen.\nWissenschaftliche Fundierung und Plausibilität.\nÜberprüfbarkeit durch Simulationen oder Experimente.\nFormuliere präzise Verbesserungsvorschläge, um die Hypothese robuster und testbarer zu machen.\nBegründe dein Feedback kurz und nachvollziehbar, damit der Entwickler der Hypothese es leicht umsetzen kann.\nBeispiel-Input:\nHypothese: \"Die synchrone Aktivierung von CA1- und CA3-Neuronen im Hippocampus verstärkt die Plastizität hippocampaler Netzwerke und verbessert dadurch die Effizienz des räumlichen Lernens.\"\n\nBeispiel-Output:\n\nKlarheit und Genauigkeit: Der Begriff \"synchrone Aktivierung\" könnte präzisiert werden. Meinst du Synchronisation auf der Ebene der Spike-Timing-Dependent-Plasticity (STDP) oder auf einem anderen Zeitskalen-Niveau?\nWissenschaftliche Fundierung: Die Verbindung zwischen CA1- und CA3-Neuronen in Bezug auf räumliches Lernen ist plausibel, aber welche molekularen Mechanismen (z. B. NMDA-Rezeptoren) möchtest du genauer betrachten?\nÜberprüfbarkeit: Vorschlag: Definiere spezifische Messparameter, wie z. B. Änderungen in der Long-Term Potentiation (LTP) als Folge synchroner Aktivität, um die Hypothese überprüfbar zu machen.\nVerbesserungsvorschlag: Ergänze einen klaren Zusammenhang zwischen Synchronisation und den Lernaufgaben, z. B.: \"Die synchrone Aktivierung von CA1- und CA3-Neuronen bei Gamma-Frequenzen erhöht die LTP im Hippocampus und beschleunigt die Lernrate bei räumlichen Navigationsaufgaben.\"\n\n---------------------------------------------------------------------------\nHypothese:\n{{ $json.text }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -2920,
+        440
+      ],
+      "id": "da8377f6-1356-4a04-a84b-e22ed9376b1e",
+      "name": "Feedback"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -2900,
+        740
+      ],
+      "id": "cb4607af-1c10-42d6-8529-f3f897f9f09a",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -2380,
+        760
+      ],
+      "id": "3f4a8dee-b64b-4ee9-a8f7-5378f0f1a41c",
+      "name": "OpenAI Chat Model5",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Verbessere diese Hypothese:\n{{ $('Hypothesis').item.json.text }}\n... unter Berücksichtigung dieses kritischen Feedbacks:\n{{ $json.text }}\nAchte darauf, alle Schwächen und Unklarheiten der ursprünglichen Hypothese zu adressieren und die Formulierungen zu präzisieren. Verwende klar definierte wissenschaftliche Begriffe und führe konkrete Änderungen ein, um die Hypothese präziser und testbarer zu machen."
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -2400,
+        440
+      ],
+      "id": "ce7fa0bc-d61d-4650-8cc1-17d61833c026",
+      "name": "Hypothesis- Überarbeitet"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        -1820,
+        760
+      ],
+      "id": "56df15bf-2cb1-4e2f-95b4-56960263b5df",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Szenarien --> Feste Simulationsparameter",
+        "height": 80,
+        "width": 180,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1720,
+        600
+      ],
+      "id": "f4adf9b0-c6f3-49ff-b72f-5f44295b4a5a",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -540,
+        -1320
+      ],
+      "id": "adbc377e-9173-4caa-beaf-d2fd2e392a36",
+      "name": "Brian2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me2",
+      "typeVersion": 1,
+      "position": [
+        -380,
+        -560
+      ],
+      "id": "8d5ec9a6-e36e-40b9-88ef-3e2f5c11e074"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -540,
+        -1020
+      ],
+      "id": "ffe18915-4f2f-4f2e-bacd-0d1da355414a",
+      "name": "The Virtual Brain"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -560,
+        -660
+      ],
+      "id": "83b5f09f-fe0f-453a-a517-5d5119846c26",
+      "name": "Nest"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "LHJsZNJbtICBszV2",
+          "mode": "list",
+          "cachedResultName": "Brian2"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "mode": "each",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -380,
+        -1220
+      ],
+      "id": "3b27a707-3eb2-47c4-9229-0d262194c3b9",
+      "name": "Execute Workflow1"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        300,
+        -1000
+      ],
+      "id": "0836e8ce-371a-4632-9cc5-4d2e3ce5daa3",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        500
+      ],
+      "id": "9bb001bc-bc03-4311-bb4e-2e842b869c39",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1180,
+        520
+      ],
+      "id": "9e1f4c10-3d1b-4517-b6ae-0cf82165eaf9",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1180,
+        320
+      ],
+      "id": "bf98b94d-9d13-4678-b752-0b406477fe39",
+      "name": "Datenauswertung"
+    },
+    {
+      "parameters": {
+        "promptType": "define"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        820,
+        320
+      ],
+      "id": "cdb7ca93-8df7-4773-87d1-f96f87776f51",
+      "name": "Datenaufbereitung"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.1,
+      "position": [
+        1560,
+        520
+      ],
+      "id": "7f4bb707-6ae2-45df-a0db-5b2f8efde13f",
+      "name": "OpenAI Chat Model6",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1540,
+        320
+      ],
+      "id": "6825cf7b-8350-45b8-9824-26873eb88fd2",
+      "name": "Decision"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "dc13d86f-39d9-4451-8c62-e73415905e9e",
+              "leftValue": "={{ $json }}",
+              "rightValue": "Iteration",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1900,
+        320
+      ],
+      "id": "24c4e31a-f744-450b-9bf2-e1040e830230",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "oKf3SRq4ar4MDt8B",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 1"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -360,
+        -900
+      ],
+      "id": "7b71ff48-0d4b-4fb3-9bd3-7d7347340322",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein wissenschaftlicher Assistent mit umfassendem Wissen über neuronale Simulationssoftware wie „The Virtual Brain (TVB)“, „NEST“ und „Brian2“. Deine Aufgabe ist es, eine gegebene wissenschaftliche Hypothese in ein konkretes Simulationsszenario zu übersetzen. Dabei sollst du realistische Sub-Szenarien entwerfen, die spezifische Aspekte der Hypothese untersuchen.\n\nBerücksichtige dabei:\n\nThe Virtual Brain (TVB): Großflächige, makroskopische Gehirnregion-Simulationen.\nNEST: Hochpräzise neuronale Netzwerke und Spike-basierte Simulationen.\nBrian2: Flexible und präzise Modellierung kleiner neuronaler Netzwerke.\nErstelle ein simulationsbasiertes Sub-Szenario, das die Hypothese testet:\n\nJedes Sub-Szenario stellt eine spezifische experimentelle Simulation dar.\nDefiniere das Ziel jeder Simulation klar.\nLege die Simulationsparameter fest (z. B. Art der neuronalen Aktivität, Modelltypen).\nWähle die geeignete Simulationssoftware und begründe die Wahl.\nBeschreibe die erwarteten Outputs jeder Simulation.\nBeispielhypothese:\n„Neuronale Veränderungen in einer Gehirnregion beeinflussen die Netzwerkaktivität im gesamten Gehirn.“\n\nOutput-Format:\n\nSub-Szenario 1: Simulation der normalen großflächigen Gehirnaktivität\n\nZiel: Erstellung eines Referenzmodells der normalen Netzwerkdynamik.\nSimulation: Makroskopische Hirnregionenmodellierung mit realen Konnektivitätsdaten.\nSoftware: The Virtual Brain (TVB) – geeignet für großflächige Simulationen.\nOutputs: Zeitreihen der Netzwerkaktivität und funktionale Konnektivitätsmuster.\nSub-Szenario 2: Modellierung lokaler neuronaler Störungen\n\nZiel: Untersuchung der Auswirkungen lokal veränderter neuronaler Eigenschaften.\nSimulation: Modifikation der Spiking-Dynamik in einer spezifischen Region.\nSoftware: Brian2 – flexibel für detaillierte Modellierung einzelner neuronaler Gruppen.\nOutputs: Feuerraten und Spike-Zeitreihen der betroffenen Neuronenpopulation.\nSub-Szenario 3: Integration lokaler Veränderungen in ein großflächiges Netzwerk\n\nZiel: Analyse der Wechselwirkungen zwischen lokalen Veränderungen und globaler Aktivität.\nSimulation: Verbindung der lokalen neuronalen Veränderungen mit der gesamten Netzwerkdynamik.\nSoftware: The Virtual Brain (TVB) – ermöglicht großflächige Analyse neuronaler Interaktionen.\nOutputs: Veränderungen in funktionaler Konnektivität und Synchronisation.\nHypothese:\n{{ $json.text }}\n\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -1860,
+        440
+      ],
+      "id": "a64d66f5-74d8-4bb6-8b2a-17225cc7737c",
+      "name": "Szenarien"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "lpy0koEuFj7nkFMp",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 1"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2240,
+        720
+      ],
+      "id": "4e3afc68-1365-42f7-bf50-d863d21b8509",
+      "name": "Execute Workflow4"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-12T06:22:19.000Z",
+  "versionId": "4f5345dc-2744-4876-9bc9-b23d1261a3d7"
+}
