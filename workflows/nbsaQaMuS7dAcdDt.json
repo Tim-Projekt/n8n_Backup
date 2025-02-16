@@ -1,0 +1,197 @@
+{
+  "active": false,
+  "connections": {
+    "Simulation_API": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-14T16:45:28.161Z",
+  "id": "nbsaQaMuS7dAcdDt",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        0
+      ],
+      "id": "0b3f5baa-d3a6-4a79-ad38-dcdd0419ebcb",
+      "name": "Simulation_API"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der neuen Parameter und Werte, jetzt auch mit \\n-Trennzeichen\nconst regexParams = /area:\\s*([\\d.]+)\\s*\\n*|Cm:\\s*([\\d.]+)\\s*\\n*|gl:\\s*([\\d.]+)\\s*\\n*|El:\\s*([\\d.-]+)\\s*\\n*|EK:\\s*([\\d.-]+)\\s*\\n*|ENa:\\s*([\\d.-]+)\\s*\\n*|g_na:\\s*([\\d.-]+)\\s*\\n*|g_kd:\\s*([\\d.-]+)\\s*\\n*|VT:\\s*([\\d.-]+)\\s*\\n*|taue:\\s*([\\d.-]+)\\s*\\n*|taui:\\s*([\\d.-]+)\\s*\\n*|Ee:\\s*([\\d.-]+)\\s*\\n*|Ei:\\s*([\\d.-]+)\\s*\\n*|we:\\s*([\\d.-]+)\\s*\\n*|wi:\\s*([\\d.-]+)\\s*\\n*/g;\n\n// Regex zur Extraktion der Gehirnregionen\nconst regexRegions = /Gehirnareal:\\s*(.*)/;\n\n// Regex zur Extraktion des stimulus_weight Parameters (mit Werten wie 11, 49)\nconst regexStimulusWeight = /stimulus_weight:\\s*([\\d, ]+)/;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Gehirnregionen extrahieren\nconst brainRegionMatch = response.match(regexRegions);\n\n// stimulus_weight extrahieren\nconst stimulusWeightMatch = response.match(regexStimulusWeight);\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  if (match[1]) parameters.area = parseFloat(match[1]);\n  if (match[2]) parameters.Cm = parseFloat(match[2]);\n  if (match[3]) parameters.gl = parseFloat(match[3]);\n  if (match[4]) parameters.El = parseFloat(match[4]);\n  if (match[5]) parameters.EK = parseFloat(match[5]);\n  if (match[6]) parameters.ENa = parseFloat(match[6]);\n  if (match[7]) parameters.g_na = parseFloat(match[7]);\n  if (match[8]) parameters.g_kd = parseFloat(match[8]);\n  if (match[9]) parameters.VT = parseFloat(match[9]);\n  if (match[10]) parameters.taue = parseFloat(match[10]);\n  if (match[11]) parameters.taui = parseFloat(match[11]);\n  if (match[12]) parameters.Ee = parseFloat(match[12]);\n  if (match[13]) parameters.Ei = parseFloat(match[13]);\n  if (match[14]) parameters.we = parseFloat(match[14]);\n  if (match[15]) parameters.wi = parseFloat(match[15]);\n});\n\n// stimulus_weight verarbeiten, falls vorhanden\nif (stimulusWeightMatch && stimulusWeightMatch[1]) {\n  const stimulusWeight = stimulusWeightMatch[1]\n    .split(',')  // Trennt die Werte bei Kommas\n    .map(val => parseFloat(val.trim())); // Entfernt Leerzeichen und wandelt die Werte in Zahlen um\n  parameters.stimulus_weight = stimulusWeight;\n}\n\n// Gehirnregionen verarbeiten und als Array speichern, wenn sie gefunden werden\nif (brainRegionMatch && brainRegionMatch[1]) {\n  const regions = brainRegionMatch[1]\n    .split(';') // Trennt die Regionen bei Semikolon\n    .map(region => region.trim()); // Entfernt zusätzliche Leerzeichen\n  parameters.brainRegions = regions;\n}\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        0
+      ],
+      "id": "03df5fd5-4e98-47bc-879e-b32f7e884c2b",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\n\nParameter: area  \nBeschreibung: Zellmembranfläche  \nWertebereich: [Min: 10.000, Typisch: 20.000, Max: 30.000]  \nEinheit: µm²  \n\nParameter: Cm  \nBeschreibung: Membrankapazität  \nWertebereich: [Min: 0,5, Typisch: 1, Max: 1,5]  \nEinheit: µF/cm²  \n\nParameter: gl  \nBeschreibung: Leckleitfähigkeit  \nWertebereich: [Min: 2,5×10⁻⁵, Typisch: 5×10⁻⁵, Max: 7,5×10⁻⁵]  \nEinheit: S/cm²  \n\nParameter: El  \nBeschreibung: Ruhemembranpotenzial  \nWertebereich: [Min: -70, Typisch: -60, Max: -50]  \nEinheit: mV  \n\nParameter: EK  \nBeschreibung: Kalium-Gleichgewichtspotential  \nWertebereich: [Min: -100, Typisch: -90, Max: -80]  \nEinheit: mV  \n\nParameter: ENa  \nBeschreibung: Natrium-Gleichgewichtspotential  \nWertebereich: [Min: 40, Typisch: 50, Max: 60]  \nEinheit: mV  \n\nParameter: g_na  \nBeschreibung: Natrium-Leitfähigkeit  \nWertebereich: [Min: 80, Typisch: 100, Max: 120]  \nEinheit: mS/cm²  \n\nParameter: g_kd  \nBeschreibung: Kalium-Leitfähigkeit  \nWertebereich: [Min: 24, Typisch: 30, Max: 36]  \nEinheit: mS/cm²  \n\nParameter: VT  \nBeschreibung: Schwellenpotenzial  \nWertebereich: [Min: -65, Typisch: -63, Max: -55]  \nEinheit: mV  \n\nParameter: taue  \nBeschreibung: Zeitkonstante für exzitatorische Synapsen  \nWertebereich: [Min: 3, Typisch: 5, Max: 7]  \nEinheit: ms  \n\nParameter: taui  \nBeschreibung: Zeitkonstante für inhibitorische Synapsen  \nWertebereich: [Min: 7, Typisch: 10, Max: 13]  \nEinheit: ms  \n\nParameter: Ee  \nBeschreibung: Exzitatorisches Gleichgewichtspotential  \nWertebereich: [Min: -5, Typisch: 0, Max: 5]  \nEinheit: mV  \n\nParameter: Ei  \nBeschreibung: Inhibitorisches Gleichgewichtspotential  \nWertebereich: [Min: -85, Typisch: -80, Max: -75]  \nEinheit: mV  \n\nParameter: we  \nBeschreibung: Gewicht des exzitatorischen Inputs  \nWertebereich: [Min: 3, Typisch: 6, Max: 9]  \nEinheit: nS  \n\nParameter: wi  \nBeschreibung: Gewicht des inhibitorischen Inputs  \nWertebereich: [Min: 50, Typisch: 67, Max: 85]  \nEinheit: nS  \n\nBeispieloutput:\narea: 20000  \nCm: 1  \ngl: 5e-5  \nEl: -60  \nEK: -90  \nENa: 50  \ng_na: 100  \ng_kd: 30  \nVT: -63  \ntaue: 5  \ntaui: 10  \nEe: 0  \nEi: -80  \nwe: 6  \nwi: 67  \n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.query }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "757acef1-cd53-45c5-bce2-3e84c779e70a",
+      "name": "COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -340,
+        0
+      ],
+      "id": "fbeb0787-15be-41da-9397-7db2defd4b97",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf Brian2 – COBAHH (Conductance-Based Adaptive Hodgkin-Huxley). Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.json.query }}\nRelevante Parameter: \n{{ $('COBAHH (Conductance-Based Adaptive Hodgkin-Huxley)').item.json.text }}\n\nAnalyse & Insights (max. 300 Tokens)\nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
+        "inputType": "base64",
+        "options": {
+          "maxTokens": 300
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        800,
+        0
+      ],
+      "id": "401f368f-627d-4e41-be09-8a42fd833209",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        100,
+        220
+      ],
+      "id": "382f396b-f610-4fd2-a780-3375fe3ffa52",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Mid8lkFo2uMmRyYL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-16T10:12:44.000Z",
+  "versionId": "3bde8e7c-712f-42c0-ab4a-fc0f369086d1"
+}
