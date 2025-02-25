@@ -1,0 +1,340 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "STDP (Spike-Timing Dependent Plasticity)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "STDP (Spike-Timing Dependent Plasticity)": {
+      "main": [
+        [
+          {
+            "node": "Code8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code8": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API8": {
+      "main": [
+        [
+          {
+            "node": "OpenAI8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI8": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "STDP (Spike-Timing Dependent Plasticity)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-22T11:10:57.007Z",
+  "id": "EDFsjM3oYm3vcUAj",
+  "meta": null,
+  "name": "STDP-NeuroPilot",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Szenario"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1400,
+        180
+      ],
+      "id": "de08f838-5c13-42b8-82f6-3851e2fc59b1",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Dies ist das zu simulierende Szenario:\n{{ $json.Szenario }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nParameter: N (Anzahl Neuronen)\nBeschreibung: Anzahl der Neuronen im Modell. Bestimmt die Größe des Netzwerks.\nWertebereich: [Min: 10, Typisch: 1000, Max: 2.000]\nEinheit: —\n\nParameter: taum (Membran-Zeitkonstante)\nBeschreibung: Zeitkonstante der Membranspannung, beeinflusst die Trägheit der Neuronenreaktion.\nWertebereich: [Min: 5, Typisch: 10, Max: 50]\nEinheit: ms\n\nParameter: taupre (STDP-Zeitfenster)\nBeschreibung: Zeitkonstante für die präsynaptische STDP-Regel. Beeinflusst die Lernrate für synaptische Potenzierung.\nWertebereich: [Min: 10, Typisch: 20, Max: 50]\nEinheit: ms\n\nParameter: taupost (STDP-Zeitfenster)\nBeschreibung: Zeitkonstante für die postsynaptische STDP-Regel. Bestimmt die Dauer des Einflusses nach einem Spike.\nWertebereich: [Min: 10, Typisch: 20, Max: 50]\nEinheit: ms\n\nParameter: Ee (Exzitatorisches Umkehrpotential)\nBeschreibung: Membranpotential, bei dem exzitatorische Ströme umkehren.\nWertebereich: [Min: 0, Typisch: 0, Max: +10]\nEinheit: mV\n\nParameter: vt (Spike-Schwelle)\nBeschreibung: Membranpotential, ab dem ein Neuron einen Spike erzeugt.\nWertebereich: [Min: -55, Typisch: -54, Max: -50]\nEinheit: mV\n\nParameter: vr (Reset-Potential)\nBeschreibung: Membranpotential, auf das nach einem Spike zurückgesetzt wird.\nWertebereich: [Min: -70, Typisch: -60, Max: -60]\nEinheit: mV\n\nParameter: El (Ruhemembranpotential)\nBeschreibung: Membranpotential eines ruhenden Neurons ohne externe Eingaben.\nWertebereich: [Min: -80, Typisch: -74, Max: -70]\nEinheit: mV\n\nParameter: taue (Exzitatorische synaptische Zeitkonstante)\nBeschreibung: Zeitkonstante für die Integration exzitatorischer synaptischer Ströme.\nWertebereich: [Min: 1, Typisch: 5, Max: 10]\nEinheit: ms\n\nParameter: F (Input-Frequenz)\nBeschreibung: Eingangsfrequenz des neuronalen Stimulus, bestimmt die Anregung des Netzwerks.\nWertebereich: [Min: 1, Typisch: 15, Max: 100]\nEinheit: Hz\n\nParameter: gmax (Maximale synaptische Konduktanz)\nBeschreibung: Obergrenze der synaptischen Leitfähigkeit. Beeinflusst die Stärke der Verbindungen zwischen Neuronen.\nWertebereich: [Min: 0.001, Typisch: 0.01, Max: 0.1]\nEinheit: —\n\nParameter: dApre (STDP Lernrate Potenzierung)\nBeschreibung: Lernrate für die Potenzierung von Synapsen durch STDP.\nWertebereich: [Min: 0.001, Typisch: 0.01, Max: 0.05]\nEinheit: —\n\n\nBeispieloutput:\nN: [Zahl im Bereich 10–2000]  \ntaum: [Zahl im Bereich 5–50]  \ntaupre: [Zahl im Bereich 10–50]  \ntaupost: [Zahl im Bereich 10–50]  \nEe: [Zahl im Bereich 0–10]  \nvt: [Zahl im Bereich -55 bis -50]  \nvr: [Zahl im Bereich -70 bis -60]  \nEl: [Zahl im Bereich -80 bis -70]  \ntaue: [Zahl im Bereich 1–10]  \nF: [Zahl im Bereich 1–100]  \ngmax: [Zahl im Bereich 0.001–0.1]  \ndApre: [Zahl im Bereich 0.001–0.05]"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -1140,
+        180
+      ],
+      "id": "7b8eedc2-28b2-416c-ac1f-ecde61b9b836",
+      "name": "STDP (Spike-Timing Dependent Plasticity)"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Überprüfen, ob Matches gefunden wurden\nif (matchesParams.length === 0) {\n  throw new Error(\"Keine Parameter im erwarteten Format gefunden.\");\n}\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe als ein einzelnes Item mit allen Parametern\nreturn [{ json: parameters }];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        180
+      ],
+      "id": "66aa5101-721a-402f-bc1f-79f5b41e0d62",
+      "name": "Code8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_stdp",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code8').item.json }}",
+        "options": {
+          "response": {},
+          "timeout": 450000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -520,
+        180
+      ],
+      "id": "d8df6691-5a57-47be-8a42-8f0dac3a6635",
+      "name": "Simulation_API8"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Analysiere kritisch die synaptische Gewichtsentwicklung in einem STDP-Simulationsmodell. Nutze das Verständnis typischer STDP-Mechanismen als kontextuelle Orientierungshilfe, um die Simulationsergebnisse einzuordnen und beobachtete Plastizitätsmuster zu interpretieren.\nAnalytische Leitfragen:\nGewichtsverteilung und -entwicklung (Primärfokus):\n\nBeschreibe quantitativ und qualitativ:\n\nFinale Gewichtsverteilung: Analyse der bimodalen/multimodalen Verteilungsmuster\nZeitliche Entwicklung: Konvergenzverhalten der Synapsengewichte\nStabilität: Schwankungsbreite der etablierten Gewichte\nPopulationseffekte: Unterschiede zwischen verschiedenen synaptischen Subpopulationen\n\n\nMechanistische Hypothesen:\n\nWelche STDP-spezifischen Mechanismen könnten die beobachteten Gewichtsänderungen erklären?\nBeispiel: \"Die Bimodalität der Gewichtsverteilung deutet auf konkurrierende Potenzierung/Depression hin.\"\nBeziehe die Simulationsparameter ein (z.B. \"Die beobachtete Stabilisierung könnte durch die gewählten STDP-Zeitkonstanten bedingt sein.\")\n\nModellbewertung:\n\nStärken: Welche Aspekte der Simulation entsprechen bekannten STDP-Charakteristika?\nBesonderheiten: Gibt es unerwartete Verteilungsmuster oder zeitliche Entwicklungen?\nLimitationen: Technische oder konzeptuelle Einschränkungen des Modells?\n\nAnforderungen:\n\nWissenschaftliche Präzision: Nutze Begriffe wie \"synaptische Plastizität\", \"Potenzierung\", \"Depression\", \"Gewichtsstabilisierung\"\nQuantitative Angaben: Relative Gewichtsänderungen, Zeitkonstanten der Entwicklung\nTestbare Hypothesen: z.B. \"Eine Modifikation der STDP-Zeitfenster könnte die beobachtete Gewichtsverteilung verändern.\"\n\nStrukturvorgabe:\n\nBeschreibung der Gewichtsverteilung und -entwicklung\nKontextualisierung innerhalb bekannter STDP-Mechanismen\nMechanistische Hypothesenbildung\nBewertung der Modellperformance\n\nZiel:\nEine Analyse, die die STDP-Simulation selbst in den Mittelpunkt stellt und typische Plastizitätsmechanismen als Orientierung nutzt, um Erkenntnisse über synaptische Gewichtsdynamiken zu vertiefen.\n\nSimuliertes Szenario:\n{{ $('Workflow Input Trigger').item.json.Szenario }}\nSimulationsparameter:\n{{ $('STDP (Spike-Timing Dependent Plasticity)').item.json.text }}\n\nZusätzliche Information:\nDie Simulation unterliegt stochastischen Elementen, weshalb die Simulationsdaten bei selben Parametern leicht varrieren. Dies schlägt sich zu teilen auch beim Vergleich mit den Referenzdaten nieder. Diese Referenzdaten sind in grau eingezeichnet und simulieren ein Standard-STDP-Szenario bei dem eine Poisson-Gruppe von 1000 Neuronen mit 15 Hz ein einzelnes postsynaptisches Neuron stimuliert. Der Input ist kontinuierlich, aber moderat. Die maximale Synapsenstärke ist mit gmax von 0.01 eher niedrig, wodurch einzelne Beiträge gedämpft bleiben. Der Unterschied zwischen dem Schwellenwert bei -54 mV und dem Rücksetzwert bei -60 mV sorgt für eine gewisse Nachkommastimulation ohne Übererregung. Während der 100-sekündigen Simulation wird mithilfe der STDP-Regel die synaptische Plastizität untersucht, wobei die Synapsengewichte abhängig vom zeitlichen Abstand zwischen prä- und postsynaptischen Aktivierungen angepasst werden.",
+        "inputType": "base64",
+        "options": {
+          "maxTokens": 1000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -240,
+        180
+      ],
+      "id": "1adf3958-52e8-41cd-a780-254c1087c9b9",
+      "name": "OpenAI8",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/o3-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        400
+      ],
+      "id": "fb06be88-ee78-4099-8e0b-416a640aa934",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appw2bTn3Zt80Vgia",
+          "mode": "list",
+          "cachedResultName": "Pylorisches",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl8tlIfo2kUlK8Ck",
+          "mode": "list",
+          "cachedResultName": "Analyseergebnisse",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia/tbl8tlIfo2kUlK8Ck"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsmodell": "STDP (Spike-Timing Dependent Plasticity)",
+            "Szenario": "={{ $('Workflow Input Trigger').item.json.Szenario }}",
+            "Simulationsparameter": "={{ $('STDP (Spike-Timing Dependent Plasticity)').item.json.text }}",
+            "Simulationsergebnisse": "={{ $json.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Simulationsmodell",
+              "displayName": "Simulationsmodell",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsparameter",
+              "displayName": "Simulationsparameter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsergebnisse",
+              "displayName": "Simulationsergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "93cfa460-9ba9-447c-9ba4-f92e36c680d9",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "zt1LZGV2136revL0",
+          "name": "RAD Pylorisches"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd4a689f-cd05-40b2-8167-76a2c0e9b2bc",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        320,
+        180
+      ],
+      "id": "9c2ba83b-53ee-4ee7-90c8-d8dc7b3496f5",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-24T22:05:10.000Z",
+  "versionId": "01238577-47c2-4c3a-8019-80fc356bf008"
+}
