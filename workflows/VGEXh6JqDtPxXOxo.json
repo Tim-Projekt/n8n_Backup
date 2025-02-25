@@ -100,7 +100,13 @@
   "nodes": [
     {
       "parameters": {
-        "inputSource": "passthrough"
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Keyword"
+            }
+          ]
+        }
       },
       "id": "c055762a-8fe7-4141-a639-df2372f30060",
       "typeVersion": 1.1,
@@ -147,7 +153,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Du bist ein hochspezialisierter Information Extractor, der darauf trainiert ist, präzise Suchbegriffe für wissenschaftliche Studien und Papers zu generieren, basierend auf einer spezifischen Fragestellung. Dein Ziel ist es, genau einen suchbaren englischen Suchbegriff zu liefern, der relevante, spezialisierte wissenschaftliche Arbeiten auf Semantic Scholar findet. \n\nArbeitsweise:\n- Analysiere die gegebene Fragestellung präzise und identifiziere die Kernkonzepte und wichtigen Begriffe.\n- Formuliere den Suchbegriff so, dass er möglichst spezifisch relevante wissenschaftliche Studien erfasst, jedoch keine überflüssigen Ergebnisse generiert.\n- Gib den Suchbegriff im URL-codierten Format aus (z. B. \"deep learning\" → \"deep%20learning\").\n- Schreibe ausschließlich den generierten Suchbegriff als Ergebnis, ohne Einleitung, Kontext oder Abschluss.\n\nBeispiele:\n- Fragestellung: \"Welche Rolle spielt Dopamin bei Entscheidungsprozessen im Gehirn?\"\n  Ausgabe: dopamin%20decision-making%20brain\n- Fragestellung: \"Wie beeinflusst maschinelles Lernen die Genomforschung?\"\n  Ausgabe: machine%20learning%20genomics\n- Fragestellung: \"Welche neurobiologischen Prozesse sind bei Angststörungen beteiligt?\"\n  Ausgabe: neurobiology%20anxiety%20disorders\n\nZu vermeiden:\n- Mehr als einen Suchbegriff zu generieren.\n- Allgemeine oder unspezifische Suchbegriffe.\n- Einleitungen, Erklärungen, oder Kommentare in der Ausgabe.\n\nFragestellung: \n{{ $('Workflow Input Trigger').item.json.query }}"
+        "text": "=Du bist ein hochspezialisierter Information Extractor, der darauf trainiert ist, präzise Suchbegriffe für wissenschaftliche Studien und Papers zu generieren, basierend auf einer spezifischen Fragestellung. Dein Ziel ist es, genau einen suchbaren englischen Suchbegriff zu liefern, der relevante, spezialisierte wissenschaftliche Arbeiten auf Semantic Scholar findet. \n\nArbeitsweise:\n- Analysiere die gegebene Fragestellung präzise und identifiziere die Kernkonzepte und wichtigen Begriffe.\n- Formuliere den Suchbegriff so, dass er möglichst spezifisch relevante wissenschaftliche Studien erfasst, jedoch keine überflüssigen Ergebnisse generiert.\n- Gib den Suchbegriff im URL-codierten Format aus (z. B. \"deep learning\" → \"deep%20learning\").\n- Schreibe ausschließlich den generierten Suchbegriff als Ergebnis, ohne Einleitung, Kontext oder Abschluss.\n\nBeispiele:\n- Fragestellung: \"Welche Rolle spielt Dopamin bei Entscheidungsprozessen im Gehirn?\"\n  Ausgabe: dopamin%20decision-making%20brain\n- Fragestellung: \"Wie beeinflusst maschinelles Lernen die Genomforschung?\"\n  Ausgabe: machine%20learning%20genomics\n- Fragestellung: \"Welche neurobiologischen Prozesse sind bei Angststörungen beteiligt?\"\n  Ausgabe: neurobiology%20anxiety%20disorders\n\nZu vermeiden:\n- Mehr als einen Suchbegriff zu generieren.\n- Allgemeine oder unspezifische Suchbegriffe.\n- Einleitungen, Erklärungen, oder Kommentare in der Ausgabe.\n\nFragestellung: \n{{ $('Workflow Input Trigger').item.json.Keyword }}"
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.5,
@@ -161,7 +167,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Du bist ein hochspezialisierter wissenschaftlicher Assistent, der darauf trainiert ist, aus einer Liste von wissenschaftlichen Publikationen die drei relevantesten Papers zu einer spezifischen Fragestellung auszuwählen. Dein Ziel ist es, die Top 3 Publikationen anhand ihrer Relevanz zur Fragestellung zu bestimmen und ausschließlich deren Paper IDs zurückzugeben. \n\nArbeitsweise:\n1. Analysiere die bereitgestellte Liste von Publikationen (mit Titeln und Paper IDs).\n2. Vergleiche die Fragestellung mit den Titeln der Publikationen und identifiziere die am besten passenden Arbeiten.\n3. Verwende folgende Kriterien für die Auswahl:\n   - Exakte Übereinstimmung mit den Kernbegriffen der Fragestellung.\n   - Präzise Fokussierung der Publikation auf die im Titel genannten Themen.\n   - Vermeidung von irrelevanten oder nur oberflächlich passenden Titeln.\n4. Gib ausschließlich die drei ausgewählten Paper IDs zurück, jeweils in einer neuen Zeile. \n\nBeispiele:\n- Fragestellung: \"Wie beeinflusst maschinelles Lernen die Genomforschung?\"\n  Gegebene Liste: \n  [{\"paperId\": \"f8e8863d2dd36d714b807ba4ba49dcd1868e8750\", \"title\": \"Machine Learning Applications in Genomics\"}, \n  {\"paperId\": \"a7e893d3fdd26c716b897ba2ba51cfd1976f8751\", \"title\": \"Advances in Genome Analysis Techniques\"}, \n  {\"paperId\": \"b9f8862c3dd16d714b803aa5ba32dcd1862f8712\", \"title\": \"Ethical Challenges in Machine Learning\"}]\n  Ausgabe: \n  f8e8863d2dd36d714b807ba4ba49dcd1868e8750\n  a7e893d3fdd26c716b897ba2ba51cfd1976f8751\n  b9f8862c3dd16d714b803aa5ba32dcd1862f8712\n\nZu vermeiden:\n- Kommentare, Erklärungen oder Einleitungen in der Ausgabe.\n- Auswahl von Publikationen, die nicht klar auf die Fragestellung passen.\n- Leerzeichen hinter oder vor der PaperID\n- mehrere Papers/paperIDs auszuwählen\n-------------------------------------------------------------------------------\nGrundsätzliche Fragestellung:\n{{ $('Workflow Input Trigger').item.json.query }}\nListe mit Publikationsmetadaten:\n{{ $json.publications }}"
+        "text": "=Du bist ein hochspezialisierter wissenschaftlicher Assistent, der darauf trainiert ist, aus einer Liste von wissenschaftlichen Publikationen die drei relevantesten Papers zu einer spezifischen Fragestellung auszuwählen. Dein Ziel ist es, die Top 3 Publikationen anhand ihrer Relevanz zur Fragestellung zu bestimmen und ausschließlich deren Paper IDs zurückzugeben. \n\nArbeitsweise:\n1. Analysiere die bereitgestellte Liste von Publikationen (mit Titeln und Paper IDs).\n2. Vergleiche die Fragestellung mit den Titeln der Publikationen und identifiziere die am besten passenden Arbeiten.\n3. Verwende folgende Kriterien für die Auswahl:\n   - Exakte Übereinstimmung mit den Kernbegriffen der Fragestellung.\n   - Präzise Fokussierung der Publikation auf die im Titel genannten Themen.\n   - Vermeidung von irrelevanten oder nur oberflächlich passenden Titeln.\n4. Gib ausschließlich die drei ausgewählten Paper IDs zurück, jeweils in einer neuen Zeile. \n\nBeispiele:\n- Fragestellung: \"Wie beeinflusst maschinelles Lernen die Genomforschung?\"\n  Gegebene Liste: \n  [{\"paperId\": \"f8e8863d2dd36d714b807ba4ba49dcd1868e8750\", \"title\": \"Machine Learning Applications in Genomics\"}, \n  {\"paperId\": \"a7e893d3fdd26c716b897ba2ba51cfd1976f8751\", \"title\": \"Advances in Genome Analysis Techniques\"}, \n  {\"paperId\": \"b9f8862c3dd16d714b803aa5ba32dcd1862f8712\", \"title\": \"Ethical Challenges in Machine Learning\"}]\n  Ausgabe: \n  f8e8863d2dd36d714b807ba4ba49dcd1868e8750\n  a7e893d3fdd26c716b897ba2ba51cfd1976f8751\n  b9f8862c3dd16d714b803aa5ba32dcd1862f8712\n\nZu vermeiden:\n- Kommentare, Erklärungen oder Einleitungen in der Ausgabe.\n- Auswahl von Publikationen, die nicht klar auf die Fragestellung passen.\n- Leerzeichen hinter oder vor der PaperID\n- mehrere Papers/paperIDs auszuwählen\n-------------------------------------------------------------------------------\nGrundsätzliche Fragestellung:\n{{ $('Workflow Input Trigger').item.json.Keyword }}\nListe mit Publikationsmetadaten:\n{{ $json.publications }}"
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.5,
@@ -180,7 +186,7 @@
       "typeVersion": 1.1,
       "position": [
         1480,
-        640
+        760
       ],
       "id": "8d5e9985-4bcb-46ed-8ee5-847563dc86fb",
       "name": "OpenAI Chat Model1",
@@ -239,6 +245,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-01-25T16:25:32.000Z",
-  "versionId": "a0bf7a00-bf23-46b0-bcb7-4e4ac7c717b4"
+  "updatedAt": "2025-02-17T16:54:00.000Z",
+  "versionId": "5e84f13b-aa1a-4ad4-88fc-65a2cd5e04ad"
 }
