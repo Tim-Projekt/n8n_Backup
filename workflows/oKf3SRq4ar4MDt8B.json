@@ -27,127 +27,7 @@
       "main": [
         [
           {
-            "node": "Information Extractor",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Information Extractor",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Information Extractor": {
-      "main": [
-        [
-          {
-            "node": "Stimulus",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Simulationsparameter",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model3": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Stimulus",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model4": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Simulationsparameter",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Simulationsparameter": {
-      "main": [
-        [
-          {
-            "node": "Code2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Stimulus": {
-      "main": [
-        [
-          {
-            "node": "Code3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code2": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 2
-          }
-        ]
-      ]
-    },
-    "Code3": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Filename",
+            "node": "Basic LLM Chain",
             "type": "main",
             "index": 0
           }
@@ -158,28 +38,6 @@
       "main": [
         [
           {
-            "node": "Read/Write Files from Disk",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filename": {
-      "main": [
-        [
-          {
-            "node": "Ganzer_Speicherort",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Read/Write Files from Disk": {
-      "main": [
-        [
-          {
             "node": "OpenAI",
             "type": "main",
             "index": 0
@@ -187,12 +45,45 @@
         ]
       ]
     },
-    "Ganzer_Speicherort": {
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
       "main": [
         [
           {
             "node": "Simulation_API1",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -209,7 +100,13 @@
   "nodes": [
     {
       "parameters": {
-        "inputSource": "passthrough"
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Simulationsszenario"
+            }
+          ]
+        }
       },
       "id": "c055762a-8fe7-4141-a639-df2372f30060",
       "typeVersion": 1.1,
@@ -227,8 +124,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.1,
       "position": [
-        620,
-        480
+        1000,
+        520
       ],
       "id": "4d14d357-efd4-4cd5-9403-0f48778ed0cb",
       "name": "OpenAI Chat Model1",
@@ -242,255 +139,16 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Du bist ein Experte für computergestützte Neurowissenschaften und Simulationen mit The Virtual Brain (TVB). Basierend auf dem folgenden Szenario, erstelle eine Metaebene für die Simulation mit TVB, indem du die grundlegenden Eckpunkte definierst. Konzentriere dich auf übergeordnete Parameter und vermeide zu tiefgehende Details. Behandle folgende Aspekte:\n\nStimulus: Gibt es einen externen Stimulus? Falls ja, spezifiziere:\nArt des Stimulus (z. B. periodisch, impulsartig)\nZeitliche Eigenschaften (Dauer, Periode)\nZielregion im Gehirn\n\nAllgemeine Simulationsparameter:\nSimulationsdauer\nZeitliche Auflösung\ngeeignete Integrationsmethode (deterministisch, stochastisch)\nKopplungsstärke\nVerstärkungsfaktor\nZeitkonstante der Dynamik\nRauschpegel\n\nDas Ziel ist es, eine klare, strukturierte Planung der Simulation auf der Metaebene bereitzustellen, um spätere Implementierungen zu erleichtern. Beschränke dich auf die wichtigsten Parameter und liefere eine kurze logische Begründung für die getroffenen Entscheidungen\n\nVermeide Simulationslängen von über 5 Minuten.\n-----------------------------------------------------------------\nZu simulierendes Szenario:\n{{ $('Workflow Input Trigger').item.description }}"
+        "text": "=Du bist ein Experte für computergestützte Neurowissenschaften und Simulationen mit The Virtual Brain (TVB). Basierend auf dem folgenden Szenario, erstelle eine Metaebene für die Simulation mit TVB, indem du die grundlegenden Eckpunkte definierst. Konzentriere dich auf übergeordnete Parameter und vermeide zu tiefgehende Details. Behandle folgende Aspekte:\n\nStimulus: Gibt es einen externen Stimulus? Falls ja, spezifiziere:\nArt des Stimulus (z. B. periodisch, impulsartig)\nZeitliche Eigenschaften (Dauer, Periode)\nZielregion im Gehirn\n\nAllgemeine Simulationsparameter:\nSimulationsdauer\nZeitliche Auflösung\ngeeignete Integrationsmethode (deterministisch, stochastisch)\nKopplungsstärke\nVerstärkungsfaktor\nZeitkonstante der Dynamik\nRauschpegel\n\nDas Ziel ist es, eine klare, strukturierte Planung der Simulation auf der Metaebene bereitzustellen, um spätere Implementierungen zu erleichtern. Beschränke dich auf die wichtigsten Parameter und liefere eine kurze logische Begründung für die getroffenen Entscheidungen\n\nWichtig: Vermeide Simulationslängen von über 1 Minuten und eine zeitliche Auflösung von unter 0.5ms (dt)!\n-----------------------------------------------------------------\nZu simulierendes Szenario:\n{{ $('Workflow Input Trigger').item.json.Simulationsszenario }}"
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.5,
       "position": [
-        600,
+        980,
         320
       ],
       "id": "25641fb5-0834-4503-a2be-03cdcab09241",
       "name": "Experimentelle Planung"
-    },
-    {
-      "parameters": {
-        "text": "={{ $json.text }}",
-        "attributes": {
-          "attributes": [
-            {
-              "name": "Stimulus",
-              "description": "Extrahiere alle Informationen zum Stimulus"
-            },
-            {
-              "name": "Allgemeine Simulationsparameter",
-              "description": "=Extrahiere alle Informationen zu allgemeinen Simulationsparametern:\nSimulationsdauer\nZeitliche Auflösung\ngeeignete Integrationsmethode (deterministisch, stochastisch)\nKopplungsstärke\nVerstärkungsfaktor\nZeitkonstante der Dynamik\nRauschpegel"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
-      "typeVersion": 1,
-      "position": [
-        1100,
-        320
-      ],
-      "id": "fab4954c-426d-4164-b100-88e6c1db5772",
-      "name": "Information Extractor"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
-      "position": [
-        1120,
-        460
-      ],
-      "id": "aa26f99a-1712-43fb-b565-e629cb69ba8d",
-      "name": "OpenAI Chat Model2",
-      "credentials": {
-        "openAiApi": {
-          "id": "93L9c3FnEnOvHs4I",
-          "name": "OpenAi account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Stimulationsprotokollen. Deine Aufgabe besteht darin, präzise Stimulusparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Stimulusparameter so, dass sie das Szenario möglichst genau widerspiegeln, robuste wissenschaftliche Erkenntnisse liefern und optimal auf relevante Fragestellungen eingehen.\n\nDein Arbeitsansatz:\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Stimulation beeinflusst werden sollen.\nBestimme präzise, wie die Stimulusparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass die Ergebnisse eine maximale Übertragbarkeit auf reale oder experimentelle Situationen garantieren.\nDokumentiere ausschließlich die optimierten Stimulusparameter, um eine direkte Implementierung zu ermöglichen.\nWichtige Anforderungen:\nDie Analyse und Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Stimulusparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\nFalls kein Stimulus vorgesehen ist, gib einfach 0 als Werte zurück.\n\nStimulusparameter:\nonset\nBeschreibung: Stimulusstartzeit\nBereich: 0–5000 ms\n\nT\nBeschreibung: Stimulus-Periode\nBereich: 100–10,000 ms\n\ntau\nBeschreibung: Stimulus-Impuls\nBereich: 10–200 ms\n\nZu stimulierende(s) Gehirnareal(e):\nrA1 0, rA2 1, rAMYG 2, rCCA 3, rCCP 4, rCCR 5, rCCS 6, rFEF 7, rG 8, rHC 9,\nrIA 10, rIP 11, rM1 12, rPCI 13, rPCIP 14, rPCM 15, rPCS 16, rPFCCL 17, rPFCDL 18, rPFCDM 19,\nrPFCM 20, rPFCORB 21, rPFCPOL 22, rPFCVL 23, rPHC 24, rPMCDL 25, rPMCM 26, rPMCVL 27, rS1 28, rS2 29,\nrTCC 30, rTCI 31, rTCPOL 32, rTCS 33, rTCV 34, rV1 35, rV2 36, rCC 37, lA1 38, lA2 39,\nlAMYG 40, lCCA 41, lCCP 42, lCCR 43, lCCS 44, lFEF 45, lG 46, lHC 47, lIA 48, lIP 49,\nlM1 50, lPCI 51, lPCIP 52, lPCM 53, lPCS 54, lPFCCL 55, lPFCDL 56, lPFCDM 57, lPFCM 58, lPFCORB 59,\nlPFCPOL 60, lPFCVL 61, lPHC 62, lPMCDL 63, lPMCM 64, lPMCVL 65, lS1 66, lS2 67, lTCC 68, lTCI 69,\nlTCPOL 70, lTCS 71, lTCV 72, lV1 73, lV2 74, lCC 75\n\nweigth:\nBeschreibung: Gewichtung des Stimulus\nBereich: 0.01-5.00\n\nBeispieloutput:\nonset: 500.0\nT: 100.0 \ntau: 50.0\nGehirnareal: 14, 24, 52, 70\nWeigth: 0.1\n--------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.output.Stimulus }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
-      "position": [
-        1560,
-        -80
-      ],
-      "id": "64085434-e6b1-4114-adc2-798851256548",
-      "name": "Stimulus"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
-      "position": [
-        1580,
-        60
-      ],
-      "id": "527a4550-11fb-4b7b-9ad1-6fa24816c148",
-      "name": "OpenAI Chat Model3",
-      "credentials": {
-        "openAiApi": {
-          "id": "93L9c3FnEnOvHs4I",
-          "name": "OpenAi account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Stimulationsprotokollen. Deine Aufgabe besteht darin, präzise Stimulusparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Stimulusparameter so, dass sie das Szenario möglichst genau widerspiegeln, robuste wissenschaftliche Erkenntnisse liefern und optimal auf relevante Fragestellungen eingehen.\n\nDein Arbeitsansatz:\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Stimulation beeinflusst werden sollen.\nBestimme präzise, wie die Stimulusparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass die Ergebnisse eine maximale Übertragbarkeit auf reale oder experimentelle Situationen garantieren.\nDokumentiere ausschließlich die optimierten Stimulusparameter, um eine direkte Implementierung zu ermöglichen.\nWichtige Anforderungen:\nDie Analyse und Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Stimulusparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nStimulusparameter:\na\nBeschreibung: Verstärkungsfaktor\nBereich: 0.1–1.0\n\ntau_model\nBeschreibung: Zeitkonstante der Dynamik\nBereich: 1–10 ms\n\ncoupling_a\nBeschreibung: Kopplungsstärke\nBereich: 0.0001–0.01\n\ndt\nBeschreibung: Zeitauflösung\nBereich: 0.1–1.0 ms\n\nnsig\nBeschreibung: Rauschpegel\nBereich: 0.00001–0.001\n\nsimulation_length\nBeschreibung: Länge der Simulation\nBereich: 1000-60000 ms\n\nBeispieloutput:\na: 0.85,\ntau_model: 5.2,\ncoupling_a: 0.0045,\ndt: 0.2,\nnsig: 0.00015,\nsimulation_length: 30000\n--------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.output['Allgemeine Simulationsparameter'] }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
-      "position": [
-        1560,
-        700
-      ],
-      "id": "4d649656-d8cd-4ada-8594-3ef6b65576a8",
-      "name": "Simulationsparameter"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
-      "position": [
-        1580,
-        840
-      ],
-      "id": "8b58985b-0026-499a-bbbc-54324f60e4ee",
-      "name": "OpenAI Chat Model4",
-      "credentials": {
-        "openAiApi": {
-          "id": "93L9c3FnEnOvHs4I",
-          "name": "OpenAi account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "const output = $input.first().json.text;\n\n// Splitte den Text in Zeilen und dann jede Zeile in Key-Value-Paare\nconst parsedData = output.split(',').reduce((acc, line) => {\n  const [key, value] = line.split(':').map(str => str.trim()); // Entferne unnötige Leerzeichen\n  if (key && value) {\n    acc[key] = value; // Füge das Key-Value-Paar zum Objekt hinzu\n  }\n  return acc;\n}, {});\n\nreturn [{ json: parsedData }];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1920,
-        700
-      ],
-      "id": "8f9f2517-8733-4615-922e-0f0b1ed5b11a",
-      "name": "Code2"
-    },
-    {
-      "parameters": {
-        "jsCode": "const output = $input.first().json.text;\n\n// Entferne unnötige Leerzeichen und spalte den Text bei Zeilenumbrüchen\nconst parsedData = output.split('\\n').reduce((acc, line) => {\n  // Splitte jede Zeile bei ':' und trimme die Leerzeichen\n  const [key, value] = line.split(':').map(str => str.trim());\n  if (key && value) {\n    // Versuche, den Wert in eine Zahl zu parsen, falls möglich\n    const parsedValue = isNaN(value) ? value : parseFloat(value);\n    acc[key] = parsedValue; // Füge das Key-Value-Paar zum Objekt hinzu\n  }\n  return acc;\n}, {});\n\nreturn [{ json: parsedData }];\n"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1980,
-        -80
-      ],
-      "id": "bc68e29f-3f0e-4436-b34c-cb08348deafd",
-      "name": "Code3"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://1b3b-91-65-113-114.ngrok-free.app/simulate",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "onset",
-              "value": "={{ $json.data[0].onset }}"
-            },
-            {
-              "name": "T",
-              "value": "={{ $json.data[0].T }}"
-            },
-            {
-              "name": "tau_model",
-              "value": "={{ $json.data[0].tau }}"
-            },
-            {
-              "name": "brain_areas",
-              "value": "={{ $json.data[0].Gehirnareal }}"
-            },
-            {
-              "name": "stimulus_weigth",
-              "value": "={{ $json.data[0].Weigth }}"
-            },
-            {
-              "name": "a",
-              "value": "={{ $json.data[2].a }}"
-            },
-            {
-              "name": "coupling_a",
-              "value": "={{ $json.data[2].coupling_a }}"
-            },
-            {
-              "name": "dt",
-              "value": "={{ $json.data[2].dt }}"
-            },
-            {
-              "name": "nsig",
-              "value": "={{ $json.data[2].nsig }}"
-            },
-            {
-              "name": "simulation_length",
-              "value": "={{ $json.data[2].simulation_length }}"
-            },
-            {
-              "name": "tau",
-              "value": "={{ $json.data[0].tau }}"
-            }
-          ]
-        },
-        "options": {
-          "response": {}
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        3060,
-        320
-      ],
-      "id": "10e0eb42-cc81-4bea-913c-e7c900dd6572",
-      "name": "Simulation_API1"
-    },
-    {
-      "parameters": {
-        "numberInputs": 3
-      },
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3,
-      "position": [
-        2240,
-        320
-      ],
-      "id": "4597abc4-4624-4a63-8eb7-533e45b56d0d",
-      "name": "Merge"
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        2420,
-        320
-      ],
-      "id": "2735513d-f7fe-4260-94f3-ae715d697fc7",
-      "name": "Aggregate"
     },
     {
       "parameters": {
@@ -502,17 +160,17 @@
           "mode": "list",
           "cachedResultName": "GPT-4O-MINI"
         },
-        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf The Virtual Brain - Generic2dOszillator. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Workflow Input Trigger').item.description }}\nRelevante Parameter: \n{{ $('Aggregate').item.json }}\n\nAnalyse & Insights \nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
-        "imageUrls": "=https://pdas-ooo-wishes-lance.trycloudflare.com//{{ $('Ganzer_Speicherort').item.json }}",
+        "text": "=Rolle und Kontext: Du bist ein erfahrener Neurowissenschaftler und analysierst eine Simulation basierend auf The Virtual Brain - Generic2dOszillator. Dein Ziel ist es, praxisrelevante Erkenntnisse aus den Daten zu extrahieren, anstatt das Diagramm zu beschreiben.\n\nSimuliertes Szenario: \n{{ $('Experimentelle Planung').item.json }}\nRelevante Parameter: \n{{ $('Code').item.json }}\n\nAnalyse & Insights \nKernaussagen\n\nWelche biologischen oder physikalischen Prozesse spiegeln sich in den Daten wider?\nWelche zentralen Trends oder signifikanten Änderungen sind sichtbar?\nInterpretation & Relevanz\n\nWas bedeuten die Trends für neuronale Dynamiken oder Modellannahmen?\nGibt es unerwartete Abweichungen? Welche Hypothesen könnten sie erklären?\nHandlungsimplikationen\n\nWelche praktischen oder theoretischen Konsequenzen ergeben sich aus der Analyse?\nWie könnten die Erkenntnisse zur Modellverbesserung oder Experimentplanung beitragen?\nZusätzliche Hinweise:\n\nNutze wissenschaftliche Terminologie mit präzisen quantitativen Aussagen.\nVermeide lange Diagrammbeschreibungen – der Fokus liegt auf der Bedeutung der Daten.\nDie Ausgabe darf maximal 300 Tokens umfassen.",
+        "inputType": "base64",
         "options": {
           "detail": "auto",
-          "maxTokens": "=1000"
+          "maxTokens": 1000
         }
       },
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
       "position": [
-        3720,
+        3140,
         320
       ],
       "id": "d6153e01-e7ff-48d3-b689-b37bbf734d7f",
@@ -526,56 +184,172 @@
     },
     {
       "parameters": {
-        "mode": "raw",
-        "jsonOutput": "={\n  \"filename\": \"{{ \"bild_\" + Date.now() + \".png\" }}\"\n}\n",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2640,
-        320
-      ],
-      "id": "d00fb383-02d9-4169-95f7-d5fb1c8d0955",
-      "name": "Filename"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
+        "method": "POST",
+        "url": "={{$env.API_URL_TVB}}/simulate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
             {
-              "id": "bc732c1e-7e6c-4765-84a2-5f3a577deecc",
-              "name": "=Speicherort",
-              "value": "={{ 'C:/Reward_Sys_Manipulation/AI-Forschungs-Agent/Bild_Upload/' + $json.filename }}",
-              "type": "string"
+              "name": "Content-Type",
+              "value": "application/json"
             }
           ]
         },
-        "options": {}
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code').item.json }}",
+        "options": {
+          "response": {},
+          "timeout": "=400000"
+        }
       },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
-        2860,
+        2820,
         320
       ],
-      "id": "4a66ccc4-0a5c-4994-9859-cc3613d093a1",
-      "name": "Ganzer_Speicherort"
+      "id": "ea18f6ff-6747-4024-b8a7-08d1476b3284",
+      "name": "Simulation_API1"
     },
     {
       "parameters": {
-        "operation": "write",
-        "fileName": "={{ $('Ganzer_Speicherort').item.json.Speicherort }}",
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblINZACOtuJnfslO",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse-The-Virtual-Brain",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblINZACOtuJnfslO"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsmodell": "Generic2dOscillator",
+            "Szenario": "={{ $('Experimentelle Planung').item.json }}",
+            "Simulationsparameter": "={{ $('Code').item.json }}",
+            "Simulationsergbnisse": "={{ $('OpenAI').item.json }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Simulationsmodell",
+              "displayName": "Simulationsmodell",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsparameter",
+              "displayName": "Simulationsparameter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsergbnisse",
+              "displayName": "Simulationsergbnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
         "options": {}
       },
-      "type": "n8n-nodes-base.readWriteFile",
-      "typeVersion": 1,
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
       "position": [
-        3400,
+        3540,
         320
       ],
-      "id": "c6b6c394-1ec2-4641-897e-66dd6c1675b9",
-      "name": "Read/Write Files from Disk"
+      "id": "59691f8d-56bd-4e62-8077-4453658cf7e8",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:  \nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:  \n\n1. Analysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.  \n2. Bestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.  \n3. Führe die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.  \n4. Vermeide Parameterkombinationen, die zu numerischer Instabilität führen oder das Modell in unkontrolliertes Wachstum treiben (keine Overflows oder NaN-Werte). Achte insbesondere auf geeignete Werte für dt, coupling_a und stimulus_weigth, damit die Simulation stabil bleibt.  \n5. Dokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.  \n\nWichtige Anforderungen:\n\n- Die Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.  \n- Der Output ist strikt auf die relevanten Simulationsparameter zu beschränken.  \n- Verzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.  \n\n**Simulationsparameter:**  \n\n**Parameter:** onset  \n**Beschreibung:** Startzeitpunkt des Stimulus  \n**Wertebereich:** [Min: 0, Typisch: 100, Max: 500]  \n**Einheit:** ms  \n\n**Parameter:** T  \n**Beschreibung:** Dauer des Stimulus  \n**Wertebereich:** [Min: 50, Typisch: 500, Max: 2000]  \n**Einheit:** ms  \n\n**Parameter:** tau  \n**Beschreibung:** Zeitkonstante des Stimulus  \n**Wertebereich:** [Min: 10, Typisch: 50, Max: 500]  \n**Einheit:** ms  \n\n**Parameter:** a  \n**Beschreibung:** Parameter des neuronalen Modells  \n**Wertebereich:** [Min: -1.0, Typisch: -0.5, Max: 0.0]  \n**Einheit:** –  \n\n**Parameter:** tau_model  \n**Beschreibung:** Zeitkonstante des neuronalen Modells  \n**Wertebereich:** [Min: 1, Typisch: 10, Max: 100]  \n**Einheit:** ms  \n\n**Parameter:** coupling_a  \n**Beschreibung:** Kopplungsstärke zwischen Gehirnarealen  \n**Wertebereich:** [Min: 0.0, Typisch: 0.1, Max: 1.0]  \n**Einheit:** –  \n\n**Parameter:** dt  \n**Beschreibung:** Zeitschritt der numerischen Integration  \n**Wertebereich:** [Min: 0.1, Typisch: 0.5, Max: 1.0]  \n**Einheit:** ms  \n\n**Parameter:** nsig  \n**Beschreibung:** Rauschstärke  \n**Wertebereich:** [Min: 0.0, Typisch: 0.01, Max: 0.1]  \n**Einheit:** –  \n\n**Parameter:** brain_areas  \n**Beschreibung:** Anzahl und Auswahl der stimulierten Gehirnareale  \n**Wertebereich:** [Min: 1, Typisch: 1–10, Max: 76]  \n**Einheit:** –  \nMögliche Gehirnareale: rA1 (0), rA2 (1), rAMYG (2), rCCA (3), rCCP (4), rCCR (5), rCCS (6), rFEF (7), rG (8), rHC (9), rIA (10), rIP (11), rM1 (12), rPCI (13), rPCIP (14), rPCM (15), rPCS (16), rPFCCL (17), rPFCDL (18), rPFCDM (19), rPFCM (20), rPFCORB (21), rPFCPOL (22), rPFCVL (23), rPHC (24), rPMCDL (25), rPMCM (26), rPMCVL (27), rS1 (28), rS2 (29), rTCC (30), rTCI (31), rTCPOL (32), rTCS (33), rTCV (34), rV1 (35), rV2 (36), rCC (37), lA1 (38), lA2 (39), lAMYG (40), lCCA (41), lCCP (42), lCCR (43), lCCS (44), lFEF (45), lG (46), lHC (47), lIA (48), lIP (49), lM1 (50), lPCI (51), lPCIP (52), lPCM (53), lPCS (54), lPFCCL (55), lPFCDL (56), lPFCDM (57), lPFCM (58), lPFCORB (59), lPFCPOL (60), lPFCVL (61), lPHC (62), lPMCDL (63), lPMCM (64), lPMCVL (65), lS1 (66), lS2 (67), lTCC (68), lTCI (69), lTCPOL (70), lTCS (71), lTCV (72), lV1 (73), lV2 (74), lCC (75)  \n\n**Parameter:** simulation_length  \n**Beschreibung:** Gesamtdauer der Simulation  \n**Wertebereich:** [Min: 1000, Typisch: 10000, Max: 300000]  \n**Einheit:** ms  \n\n**Parameter:** stimulus_weigth  \n**Beschreibung:** Gewichtung des Stimulus  \n**Wertebereich:** [Min: 0.0, Typisch: 1.0, Max: 10.0]  \n**Einheit:** –  \n\n**Beispieloutput:**  \nonset: 100  \nT: 500  \ntau: 50  \na: -0.5  \ntau_model: 10  \ncoupling_a: 0.1  \ndt: 0.2  \nnsig: 0.01  \nbrain_areas: 5  \nsimulation_length: 10000  \nstimulus_weigth: 1.0  \n--------------------------------------------------------------------------------\nDies ist das zu simulierende Szenario:\n{{ $json.text }}\n\nWichtig: keine Kommentare im Output!"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1660,
+        320
+      ],
+      "id": "058713bd-dd1e-445f-8f2d-069b4f7a878c",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der neuen Parameter und Werte, mit Zeilenumbruch (\\n) als Trennzeichen\nconst regexParams = /onset:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|T:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|tau:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|a:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|tau_model:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|coupling_a:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|dt:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|nsig:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|brain_areas:\\s*([\\d,\\s-]+)\\s*\\n|simulation_length:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*\\n|stimulus_weigth:\\s*([-]?\\d+(?:\\.\\d+)?)\\s*/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus den Matches extrahieren\nmatchesParams.forEach(match => {\n  if (match[1]) parameters.onset = parseFloat(match[1]);\n  if (match[2]) parameters.T = parseFloat(match[2]);\n  if (match[3]) parameters.tau = parseFloat(match[3]);\n  if (match[4]) parameters.a = parseFloat(match[4]);\n  if (match[5]) parameters.tau_model = parseFloat(match[5]);\n  if (match[6]) parameters.coupling_a = parseFloat(match[6]);\n  if (match[7]) parameters.dt = parseFloat(match[7]);\n  if (match[8]) parameters.nsig = parseFloat(match[8]);\n  if (match[9]) {\n    // brain_areas: Falls mehrere Gehirnareale (durch Komma oder Leerzeichen getrennt) angegeben sind\n    parameters.brain_areas = match[9]\n      .split(/[\\s,]+/)\n      .filter(Boolean)\n      .map(val => isNaN(val) ? val : parseInt(val, 10));\n  }\n  if (match[10]) parameters.simulation_length = parseFloat(match[10]);\n  if (match[11]) parameters.stimulus_weigth = parseFloat(match[11]);\n});\n\n// Rückgabe des Parameter-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2280,
+        320
+      ],
+      "id": "30360ffe-fc95-4a6e-8108-d8c896343e0a",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "model": "={{$env.Simulation_LLM}}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        1680,
+        540
+      ],
+      "id": "44d74601-fbdf-43b6-af53-557b62d40c3b",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -585,6 +359,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-13T22:34:36.000Z",
-  "versionId": "ce7c0620-1218-4ff9-8463-f57d77dcc3ef"
+  "updatedAt": "2025-02-17T19:33:37.000Z",
+  "versionId": "9c3cc741-c78e-41f5-93d6-6d5e1c22730e"
 }
