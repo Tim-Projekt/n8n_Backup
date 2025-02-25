@@ -45,12 +45,28 @@
         ]
       ]
     },
-    "Google Gemini Chat Model": {
+    "OpenRouter Chat Model": {
       "ai_languageModel": [
         [
           {
             "node": "Distributed Synchrony Exampl",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI9": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
             "index": 0
           }
         ]
@@ -164,23 +180,138 @@
     },
     {
       "parameters": {
-        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "model": "={{$env.Simulation_LLM}}",
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        440,
-        220
+        360,
+        240
       ],
-      "id": "dd606672-50e8-40ba-a1fd-00c473d64588",
-      "name": "Google Gemini Chat Model",
+      "id": "209fc1a3-6938-450f-a5eb-62d1f7a1e444",
+      "name": "OpenRouter Chat Model",
       "credentials": {
-        "googlePalmApi": {
-          "id": "Mid8lkFo2uMmRyYL",
-          "name": "Google Gemini(PaLM) Api account"
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblD1v9qA3B96bBgp",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblD1v9qA3B96bBgp"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsmodell": "Distributed Synchrony Example",
+            "Szenario": "={{ $('Workflow Input Trigger').item.json.query }}",
+            "Simulationsparameter": "={{ $('Distributed Synchrony Exampl').item.json.text }}",
+            "Simulationsergebnisse": "={{ $json.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Simulationsmodell",
+              "displayName": "Simulationsmodell",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsparameter",
+              "displayName": "Simulationsparameter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsergebnisse",
+              "displayName": "Simulationsergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1580,
+        -180
+      ],
+      "id": "a88bb788-a21e-45e9-8144-26464cec9f75",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd4a689f-cd05-40b2-8167-76a2c0e9b2bc",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1820,
+        0
+      ],
+      "id": "978dc74c-941d-41bb-8906-2c0a8189f850",
+      "name": "Edit Fields"
     }
   ],
   "pinData": {},
@@ -190,6 +321,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-16T10:12:05.000Z",
-  "versionId": "95cabf27-3588-4e43-b863-389cf98c64e9"
+  "updatedAt": "2025-02-16T20:15:09.000Z",
+  "versionId": "812a287f-9ff0-4c8a-9c9c-fbdbc3980050"
 }
