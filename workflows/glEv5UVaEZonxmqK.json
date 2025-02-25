@@ -261,7 +261,7 @@
   "meta": {
     "templateCredsSetupCompleted": true
   },
-  "name": "My workflow 2",
+  "name": "Git Hub BackUp Workflow",
   "nodes": [
     {
       "parameters": {},
@@ -292,7 +292,12 @@
     },
     {
       "parameters": {
-        "filters": {},
+        "operation": "get",
+        "workflowId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
         "requestOptions": {}
       },
       "id": "3301262f-9969-4ea2-96d5-ac6409821134",
@@ -305,8 +310,8 @@
       "typeVersion": 1,
       "credentials": {
         "n8nApi": {
-          "id": "oD8kDK1snFfSdyqh",
-          "name": "n8n account 2"
+          "id": "R3g6NRoe2WllfN7k",
+          "name": "n8n account 3"
         }
       }
     },
@@ -832,6 +837,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-16T11:17:33.000Z",
-  "versionId": "ae487599-8622-4ae4-97b7-b9455d1a8053"
+  "updatedAt": "2025-02-25T20:54:05.000Z",
+  "versionId": "b9d89e25-982a-4493-b3f3-80294ba84595"
 }
