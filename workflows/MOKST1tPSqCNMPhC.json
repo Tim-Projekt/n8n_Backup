@@ -1,17 +1,6 @@
 {
   "active": false,
   "connections": {
-    "OpenAI Chat Model4": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Hypothesis",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Workflow Input Trigger": {
       "main": [
         [
@@ -23,45 +12,28 @@
         ]
       ]
     },
-    "Feedback": {
-      "main": [
-        [
-          {
-            "node": "Hypothesis- Überarbeitet",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Feedback",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model5": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Hypothesis- Überarbeitet",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Hypothesis": {
       "main": [
         [
           {
-            "node": "Feedback",
+            "node": "Airtable",
             "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hypothesis",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -91,26 +63,16 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
-      "position": [
-        20,
-        200
-      ],
-      "id": "1a12a55a-76d7-49d8-9332-5c8a00142540",
-      "name": "OpenAI Chat Model4",
-      "credentials": {
-        "openAiApi": {
-          "id": "93L9c3FnEnOvHs4I",
-          "name": "OpenAi account 2"
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Fragestellung"
+            },
+            {
+              "name": "Zusätzliche Informationen"
+            }
+          ]
         }
-      }
-    },
-    {
-      "parameters": {
-        "inputSource": "passthrough"
       },
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
@@ -123,69 +85,114 @@
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=Rolle: Du bist ein erfahrener Neurowissenschaftler und Methodenspezialist mit Fokus auf wissenschaftliche Hypothesenentwicklung und experimentelle Validierung. Deine Aufgabe ist es, konstruktives Feedback zu einer neurowissenschaftlichen Hypothese zu geben, um deren Qualität und Überprüfbarkeit zu verbessern.\n\nZiel: Gib präzises und umsetzbares Feedback, das:\n\nSchwachstellen oder Unklarheiten in der Hypothese aufdeckt.\nVorschläge zur Präzisierung und Verbesserung der Hypothese liefert.\nHinweise gibt, wie die Hypothese simulationsfreundlicher und überprüfbarer gemacht werden kann.\nAuf wissenschaftliche Plausibilität und innovative Ansätze achtet.\nArbeitsweise:\n\nAnalysiere die Hypothese und identifiziere Unklarheiten, ungenaue Formulierungen oder nicht überprüfbare Aspekte.\nGib Feedback zu spezifischen Elementen der Hypothese, wie z. B.:\nKlarheit und Genauigkeit der Formulierungen.\nWissenschaftliche Fundierung und Plausibilität.\nÜberprüfbarkeit durch Simulationen oder Experimente.\nFormuliere präzise Verbesserungsvorschläge, um die Hypothese robuster und testbarer zu machen.\nBegründe dein Feedback kurz und nachvollziehbar, damit der Entwickler der Hypothese es leicht umsetzen kann.\nBeispiel-Input:\nHypothese: \"Die synchrone Aktivierung von CA1- und CA3-Neuronen im Hippocampus verstärkt die Plastizität hippocampaler Netzwerke und verbessert dadurch die Effizienz des räumlichen Lernens.\"\n\nBeispiel-Output:\n\nKlarheit und Genauigkeit: Der Begriff \"synchrone Aktivierung\" könnte präzisiert werden. Meinst du Synchronisation auf der Ebene der Spike-Timing-Dependent-Plasticity (STDP) oder auf einem anderen Zeitskalen-Niveau?\nWissenschaftliche Fundierung: Die Verbindung zwischen CA1- und CA3-Neuronen in Bezug auf räumliches Lernen ist plausibel, aber welche molekularen Mechanismen (z. B. NMDA-Rezeptoren) möchtest du genauer betrachten?\nÜberprüfbarkeit: Vorschlag: Definiere spezifische Messparameter, wie z. B. Änderungen in der Long-Term Potentiation (LTP) als Folge synchroner Aktivität, um die Hypothese überprüfbar zu machen.\nVerbesserungsvorschlag: Ergänze einen klaren Zusammenhang zwischen Synchronisation und den Lernaufgaben, z. B.: \"Die synchrone Aktivierung von CA1- und CA3-Neuronen bei Gamma-Frequenzen erhöht die LTP im Hippocampus und beschleunigt die Lernrate bei räumlichen Navigationsaufgaben.\"\n\n---------------------------------------------------------------------------\nHypothese:\n{{ $json.text }}"
-      },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
-      "position": [
-        540,
-        0
-      ],
-      "id": "90536497-8c45-48f3-965e-612f19dcbdc0",
-      "name": "Feedback"
-    },
-    {
-      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbleUou52Uiawnetw",
+          "mode": "list",
+          "cachedResultName": "Forschungsüberlegungen",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tbleUou52Uiawnetw"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Forschungsaufgabe": "Hypothesen Entwicklung",
+            "Überlegungen/Ergebnisse": "={{ $json.text }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Forschungsaufgabe",
+              "displayName": "Forschungsaufgabe",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Überlegungen/Ergebnisse",
+              "displayName": "Überlegungen/Ergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
       "position": [
-        560,
-        300
+        860,
+        -180
       ],
-      "id": "d2254f7f-fb99-4b9a-8ca4-a0a90bf193a0",
-      "name": "OpenAI Chat Model1",
+      "id": "93289db1-4357-4b18-a03e-f23ad72e7389",
+      "name": "Airtable",
       "credentials": {
-        "openAiApi": {
-          "id": "93L9c3FnEnOvHs4I",
-          "name": "OpenAi account 2"
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
         }
       }
     },
     {
       "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "54b869e6-0cdb-4c0c-aa28-5b889f33abaa",
+              "name": "text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        1080,
-        320
+        880,
+        0
       ],
-      "id": "855cec2a-d90f-40d5-8ca0-358dec8564f3",
-      "name": "OpenAI Chat Model5",
-      "credentials": {
-        "openAiApi": {
-          "id": "93L9c3FnEnOvHs4I",
-          "name": "OpenAi account 2"
-        }
-      }
+      "id": "f2142bf8-22b1-4764-bef8-517235e390d0",
+      "name": "Edit Fields"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=Verbessere diese Hypothese:\n{{ $('Hypothesis').item.json.text }}\n... unter Berücksichtigung dieses kritischen Feedbacks:\n{{ $json.text }}\nAchte darauf, alle Schwächen und Unklarheiten der ursprünglichen Hypothese zu adressieren und die Formulierungen zu präzisieren. Verwende klar definierte wissenschaftliche Begriffe und führe konkrete Änderungen ein, um die Hypothese präziser und testbarer zu machen."
+        "model": "={{ $env.Simulation_LLM }}",
+        "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
       "position": [
-        1060,
-        0
+        20,
+        240
       ],
-      "id": "bfd3ce31-28ca-42d9-a1a1-d492f9888619",
-      "name": "Hypothesis- Überarbeitet"
+      "id": "773cad6d-a8d2-422e-8185-d77ca0f3f0b4",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -195,6 +202,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-13T22:29:30.000Z",
-  "versionId": "bcebe7a3-66f1-4bff-bcf5-a999be93b617"
+  "updatedAt": "2025-02-17T17:01:46.000Z",
+  "versionId": "e0b2a00f-651c-4026-9583-806a1d79427d"
 }
