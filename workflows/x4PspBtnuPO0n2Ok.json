@@ -1,23 +1,39 @@
 {
   "active": false,
   "connections": {
-    "OpenAI Chat Model2": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Szenarien",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Workflow Input Trigger": {
       "main": [
         [
           {
             "node": "Szenarien",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Szenarien": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Szenarien",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -33,27 +49,8 @@
   "nodes": [
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
-      "position": [
-        40,
-        320
-      ],
-      "id": "8106af5e-9d4f-4453-b5a0-97b946d1117c",
-      "name": "OpenAI Chat Model2",
-      "credentials": {
-        "openAiApi": {
-          "id": "93L9c3FnEnOvHs4I",
-          "name": "OpenAi account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
         "promptType": "define",
-        "text": "=Du bist ein wissenschaftlicher Assistent mit umfassendem Wissen über neuronale Simulationssoftware wie „The Virtual Brain (TVB)“, „NEST“ und „Brian2“. Deine Aufgabe ist es, eine gegebene wissenschaftliche Hypothese in ein konkretes Simulationsszenario zu übersetzen. Dabei sollst du realistische Sub-Szenarien entwerfen, die spezifische Aspekte der Hypothese untersuchen.\n\nBerücksichtige dabei:\n\nThe Virtual Brain (TVB): Großflächige, makroskopische Gehirnregion-Simulationen.\nNEST: Hochpräzise neuronale Netzwerke und Spike-basierte Simulationen.\nBrian2: Flexible und präzise Modellierung kleiner neuronaler Netzwerke.\nErstelle ein simulationsbasiertes Sub-Szenario, das die Hypothese testet:\n\nJedes Sub-Szenario stellt eine spezifische experimentelle Simulation dar.\nDefiniere das Ziel jeder Simulation klar.\nLege die Simulationsparameter fest (z. B. Art der neuronalen Aktivität, Modelltypen).\nWähle die geeignete Simulationssoftware und begründe die Wahl.\nBeschreibe die erwarteten Outputs jeder Simulation.\nBeispielhypothese:\n„Neuronale Veränderungen in einer Gehirnregion beeinflussen die Netzwerkaktivität im gesamten Gehirn.“\n\nOutput-Format:\n\nSub-Szenario 1: Simulation der normalen großflächigen Gehirnaktivität\n\nZiel: Erstellung eines Referenzmodells der normalen Netzwerkdynamik.\nSimulation: Makroskopische Hirnregionenmodellierung mit realen Konnektivitätsdaten.\nSoftware: The Virtual Brain (TVB) – geeignet für großflächige Simulationen.\nOutputs: Zeitreihen der Netzwerkaktivität und funktionale Konnektivitätsmuster.\nSub-Szenario 2: Modellierung lokaler neuronaler Störungen\n\nZiel: Untersuchung der Auswirkungen lokal veränderter neuronaler Eigenschaften.\nSimulation: Modifikation der Spiking-Dynamik in einer spezifischen Region.\nSoftware: Brian2 – flexibel für detaillierte Modellierung einzelner neuronaler Gruppen.\nOutputs: Feuerraten und Spike-Zeitreihen der betroffenen Neuronenpopulation.\nSub-Szenario 3: Integration lokaler Veränderungen in ein großflächiges Netzwerk\n\nZiel: Analyse der Wechselwirkungen zwischen lokalen Veränderungen und globaler Aktivität.\nSimulation: Verbindung der lokalen neuronalen Veränderungen mit der gesamten Netzwerkdynamik.\nSoftware: The Virtual Brain (TVB) – ermöglicht großflächige Analyse neuronaler Interaktionen.\nOutputs: Veränderungen in funktionaler Konnektivität und Synchronisation.\nHypothese:\n{{ $('Workflow Input Trigger').item.json }}\n\n"
+        "text": "=Du bist ein wissenschaftlicher Assistent mit umfassendem Wissen über neuronale Simulationssoftware wie „The Virtual Brain (TVB)“, „NEST“ und „Brian2“. Deine Aufgabe ist es, eine gegebene wissenschaftliche Hypothese in ein konkretes Simulationsszenario zu übersetzen. Dabei sollst du realistische Sub-Szenarien entwerfen, die spezifische Aspekte der Hypothese untersuchen.\n\nBerücksichtige dabei:\n\nThe Virtual Brain (TVB): Großflächige, makroskopische Gehirnregion-Simulationen.\nNEST: Hochpräzise neuronale Netzwerke und Spike-basierte Simulationen.\nBrian2: Flexible und präzise Modellierung kleiner neuronaler Netzwerke.\nErstelle ein simulationsbasiertes Sub-Szenario, das die Hypothese testet:\n\nJedes Sub-Szenario stellt eine spezifische experimentelle Simulation dar.\nDefiniere das Ziel jeder Simulation klar.\nLege die Simulationsparameter fest (z. B. Art der neuronalen Aktivität, Modelltypen).\nWähle die geeignete Simulationssoftware und begründe die Wahl.\nBeschreibe die erwarteten Outputs jeder Simulation.\nBeispielhypothese:\n„Neuronale Veränderungen in einer Gehirnregion beeinflussen die Netzwerkaktivität im gesamten Gehirn.“\n\nOutput-Format:\n\nSub-Szenario 1: Simulation der normalen großflächigen Gehirnaktivität\n\nZiel: Erstellung eines Referenzmodells der normalen Netzwerkdynamik.\nSimulation: Makroskopische Hirnregionenmodellierung mit realen Konnektivitätsdaten.\nSoftware: The Virtual Brain (TVB) – geeignet für großflächige Simulationen.\nOutputs: Zeitreihen der Netzwerkaktivität und funktionale Konnektivitätsmuster.\nSub-Szenario 2: Modellierung lokaler neuronaler Störungen\n\nZiel: Untersuchung der Auswirkungen lokal veränderter neuronaler Eigenschaften.\nSimulation: Modifikation der Spiking-Dynamik in einer spezifischen Region.\nSoftware: Brian2 – flexibel für detaillierte Modellierung einzelner neuronaler Gruppen.\nOutputs: Feuerraten und Spike-Zeitreihen der betroffenen Neuronenpopulation.\nSub-Szenario 3: Integration lokaler Veränderungen in ein großflächiges Netzwerk\n\nZiel: Analyse der Wechselwirkungen zwischen lokalen Veränderungen und globaler Aktivität.\nSimulation: Verbindung der lokalen neuronalen Veränderungen mit der gesamten Netzwerkdynamik.\nSoftware: The Virtual Brain (TVB) – ermöglicht großflächige Analyse neuronaler Interaktionen.\nOutputs: Veränderungen in funktionaler Konnektivität und Synchronisation.\nHypothese:\n{{ $('Workflow Input Trigger').item.json.Hypothese }}\n\n"
       },
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.5,
@@ -66,7 +63,13 @@
     },
     {
       "parameters": {
-        "inputSource": "passthrough"
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Hypothese"
+            }
+          ]
+        }
       },
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
@@ -76,6 +79,117 @@
       ],
       "id": "b18026d3-1b95-4b70-936c-29b92087a1ef",
       "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbleUou52Uiawnetw",
+          "mode": "list",
+          "cachedResultName": "Forschungsüberlegungen",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tbleUou52Uiawnetw"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Forschungsaufgabe": "Szenarien Entwicklung",
+            "Überlegungen/Ergebnisse": "={{ $json.text }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Forschungsaufgabe",
+              "displayName": "Forschungsaufgabe",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Überlegungen/Ergebnisse",
+              "displayName": "Überlegungen/Ergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        360,
+        -180
+      ],
+      "id": "bdb73aa0-a6f6-4f01-aa6c-4267765c77e0",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "11f5d6a0-d88d-449a-83db-06b7d7741731",
+              "name": "text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        620,
+        0
+      ],
+      "id": "a51374f1-db92-4bbe-a9a2-eb14a8190dc1",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "model": "={{ $env.Simulation_LLM }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        0,
+        240
+      ],
+      "id": "0cfaeb7c-d9a9-4dba-b94b-3f3916ecae1b",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -85,6 +199,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-13T22:31:32.000Z",
-  "versionId": "5454653f-0590-4558-af83-6ba976287d9b"
+  "updatedAt": "2025-02-17T16:59:54.000Z",
+  "versionId": "06e82a7c-c9f1-49e3-9052-ba0050f06ddb"
 }
