@@ -1,0 +1,337 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Hodgkin-Huxley Modell",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code8": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API8": {
+      "main": [
+        [
+          {
+            "node": "OpenAI8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI8": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Hodgkin-Huxley Modell",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hodgkin-Huxley Modell": {
+      "main": [
+        [
+          {
+            "node": "Code8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-23T21:35:34.328Z",
+  "id": "f7sb1hOnYjpNReua",
+  "meta": null,
+  "name": "HH-NeuroPilot",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Szenario"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1400,
+        180
+      ],
+      "id": "ce49e8ee-cc52-4b9f-a7e7-926a65e3f0c8",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Überprüfen, ob Matches gefunden wurden\nif (matchesParams.length === 0) {\n  throw new Error(\"Keine Parameter im erwarteten Format gefunden.\");\n}\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe als ein einzelnes Item mit allen Parametern\nreturn [{ json: parameters }];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        180
+      ],
+      "id": "45523cc3-c9b3-4240-a977-ad8e5efefb5f",
+      "name": "Code8"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_hh",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code8').item.json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -520,
+        180
+      ],
+      "id": "cc0a253f-c7a4-4cc3-9513-0617249fb316",
+      "name": "Simulation_API8"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "=Analysiere kritisch die Übereinstimmung der aktuellen Simulation mit den Referenzdaten des Hodgkin-Huxley-Modells. Nutze das Verständnis der grundlegenden Prinzipien des Hodgkin-Huxley-Modells als kontextuelle Orientierungshilfe, um die Simulationsergebnisse einzuordnen und beobachtete Abweichungen zu interpretieren.\n\nAnalytische Leitfragen:\n\nÜbereinstimmung und Abweichung (Primärfokus):\n\nBeschreibe quantitativ und qualitativ:\nÜbereinstimmung: In welchen Bereichen und zu welchen Zeitpunkten decken sich Simulation und Referenzdaten?\nAbweichung: Wo und in welchem Ausmaß weichen die Simulationsergebnisse von den Referenzdaten ab?\nMuster: Gibt es systematische Abweichungsmuster (z.B. zeitliche Verschiebungen, Amplitudenunterschiede)?\nStabilität: Wie stabil ist die Übereinstimmung/Abweichung über die Zeit?\nPositionsabhängigkeit: Gibt es Unterschiede in der Übereinstimmung/Abweichung an verschiedenen Positionen (cm)?\nMechanistische Hypothesen:\n\nWelche Aspekte des Hodgkin-Huxley-Modells könnten die beobachteten Abweichungen erklären?\nBeispiel: \"Die beobachteten Amplitudenunterschiede könnten auf Ungenauigkeiten in der Modellierung der Ionenkanaldynamik hinweisen.\"\nBeziehe die Simulationsparameter ein (z.B. \"Die beobachteten zeitlichen Verschiebungen könnten durch die gewählte numerische Integrationsmethode bedingt sein.\")\nModellbewertung:\n\nStärken: Welche Aspekte der Simulation stimmen gut mit den Referenzdaten und somit mit dem Hodgkin-Huxley-Modell überein?\nBesonderheiten: Gibt es unerwartete Abweichungsmuster?\nLimitationen: Technische oder konzeptuelle Einschränkungen der Simulation, die zu den Abweichungen führen könnten?\nAnforderungen:\n\nWissenschaftliche Präzision: Nutze Begriffe wie \"Aktionspotential\", \"Ionenkanaldynamik\", \"Membranpotential\", \"numerische Integration\".\nQuantitative Angaben: Amplitudenunterschiede, zeitliche Verschiebungen, relative Abweichungen.\nTestbare Hypothesen: z.B. \"Eine feinere Diskretisierung der Zeit in der Simulation könnte die zeitlichen Verschiebungen reduzieren.\"\nStrukturvorgabe:\n\nBeschreibung der Übereinstimmung und Abweichung zwischen Simulation und Referenzdaten\nKontextualisierung innerhalb des Hodgkin-Huxley-Modells\nMechanistische Hypothesenbildung\nBewertung der Simulationsperformance\nZiel:\n\nEine Analyse, die die Simulation des Hodgkin-Huxley-Modells in den Mittelpunkt stellt und die Prinzipien des Modells als Orientierung nutzt, um Erkenntnisse über die Genauigkeit und Limitationen der Simulation zu gewinnen.\n\nSimuliertes Szenario:\n{{ $('Workflow Input Trigger').item.json.Szenario }}\n\nSimulationsparameter:\n{{ $('Hodgkin-Huxley Modell').item.json.text }}\n\nZusätzliche Information:\n\nDie Simulation unterliegt numerischen Ungenauigkeiten, weshalb die Simulationsdaten leicht von den Referenzdaten abweichen können.\nDie Referenzdaten basieren auf einer etablierten Implementierung des Hodgkin-Huxley-Modells.\nDie x-Achse des Diagramms repräsentiert die Position (cm), die y-Achse das Membranpotential (Offset + v (mV)).\nDie gestrichelten Linien stellen die Referenzdaten dar, die durchgezogenen Linien die Simulationsergebnisse.",
+        "inputType": "base64",
+        "options": {
+          "maxTokens": 1000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -240,
+        180
+      ],
+      "id": "eb8c1c05-0f26-437e-9d38-6ab0b2d8d760",
+      "name": "OpenAI8",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/o3-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -1120,
+        400
+      ],
+      "id": "1d3f28b0-8603-4da3-b59d-39f1a893d5d9",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appw2bTn3Zt80Vgia",
+          "mode": "list",
+          "cachedResultName": "Pylorisches",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl8tlIfo2kUlK8Ck",
+          "mode": "list",
+          "cachedResultName": "Analyseergebnisse",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia/tbl8tlIfo2kUlK8Ck"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsmodell": "Hodgkin-Huxley Modell",
+            "Szenario": "={{ $('Workflow Input Trigger').item.json.Szenario }}",
+            "Simulationsparameter": "={{ $('Hodgkin-Huxley Modell').item.json.text }}",
+            "Simulationsergebnisse": "={{ $json.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Simulationsmodell",
+              "displayName": "Simulationsmodell",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsparameter",
+              "displayName": "Simulationsparameter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsergebnisse",
+              "displayName": "Simulationsergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f50ebffe-9514-4402-b0f4-3fbae3b81751",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "zt1LZGV2136revL0",
+          "name": "RAD Pylorisches"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd4a689f-cd05-40b2-8167-76a2c0e9b2bc",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        320,
+        180
+      ],
+      "id": "a7ecba81-ad00-4975-89aa-aeae247c6597",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Dies ist das zu simulierende Szenario:\n{{ $json.Szenario }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\nParameter: pre_time (Vorbereitungszeit)\nBeschreibung: Zeitspanne vor Beginn der Strominjektion, in der das Neuron sein Ruhepotential erreicht.\nWertebereich: [Min: 10 ms, Typisch: 50 ms, Max: 100 ms]\nEinheit: ms\n\nParameter: injection_time (Dauer der Strominjektion)\nBeschreibung: Zeitspanne, während der ein konstanter Strom injiziert wird.\nWertebereich: [Min: 0.1 ms, Typisch: 100 ms, Max: 500 ms]\nEinheit: ms\n\nParameter: post_time (Nachbereitungszeit)\nBeschreibung: Zeitspanne nach Ende der Strominjektion zur Beobachtung der neuronalen Reaktion.\nWertebereich: [Min: 10 ms, Typisch: 50 ms, Max: 100 ms]\nEinheit: ms\n\nParameter: injection_current (Injektionsstrom)\nBeschreibung: Amplitude des injizierten Stroms zur Erzeugung von Aktionspotentialen.\nWertebereich: [Min: 0.1 µA/cm², Typisch: 1 µA/cm², Max: 10 µA/cm²]\nEinheit: µA/cm²\n\n\nBeispieloutput:\npre_time: [Zahl im Bereich 10–100]\ninjection_time: [Zahl im Bereich 0.1–500]\npost_time: [Zahl im Bereich 10–100]\ninjection_current: [Zahl im Bereich 0.1–10]"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -1140,
+        180
+      ],
+      "id": "5b110aec-8c26-4470-a9b6-cf2936fde436",
+      "name": "Hodgkin-Huxley Modell"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-24T22:06:00.000Z",
+  "versionId": "cc71fa65-de0f-4538-bb76-ca30ea294eec"
+}
