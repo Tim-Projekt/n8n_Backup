@@ -5,19 +5,13 @@
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Cleaning Database",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model4": {
-      "ai_languageModel": [
-        [
+          },
           {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
+            "node": "Airtable",
+            "type": "main",
             "index": 0
           }
         ]
@@ -35,28 +29,6 @@
       ]
     },
     "Sub-Szenarien-Agent": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Brian2_Simulationssoftware": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "TVB-Simulationssoftware": {
       "ai_tool": [
         [
           {
@@ -89,12 +61,67 @@
         ]
       ]
     },
-    "Window Buffer Memory": {
-      "ai_memory": [
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Datenauswertung - Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulations-Agent": {
+      "ai_tool": [
         [
           {
             "node": "AI Agent",
-            "type": "ai_memory",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Cleaning Database": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -115,8 +142,8 @@
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -1180,
-        -2000
+        -1900,
+        -2020
       ],
       "id": "3bee7f65-e0c7-4f4c-ad06-a8a282a48b60",
       "name": "When chat message received",
@@ -125,7 +152,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=**Prompt für den Supervisor-Agent:**  \n\n### **Aufgabe:**  \nDer Supervisor-Agent steuert und koordiniert die verschiedenen Sub-Workflows dynamisch. Er analysiert die Nutzerfrage, leitet eine sinnvolle Vorgehensweise ab und entscheidet flexibel, welche Agenten oder Simulationsmodelle benötigt werden. Falls neue Erkenntnisse oder unerwartete Ergebnisse auftauchen, passt er den Prozess iterativ an.  \n\n### **Arbeitsweise:**  \n1. **Analyse der Nutzerfrage:** Verstehe die gestellte Frage und identifiziere relevante wissenschaftliche Konzepte.  \n2. **Hypothesenbildung:** Falls nötig, beauftrage den Hypothesen-Agent, um eine präzise, wissenschaftlich überprüfbare Hypothese zu formulieren.  \n3. **Informationssammlung:** Falls erforderlich, frage den Research-Agent nach relevanter wissenschaftlicher Literatur oder bestehenden Erkenntnissen.  \n4. **Szenario-Planung & Simulation:**  \n   - Falls Simulationen erforderlich sind, arbeite mit dem Szenario-Agent zusammen, um geeignete experimentelle Pläne zu entwickeln.  \n   - Wähle die passende Simulationssoftware (*The Virtual Brain (TVB)* oder *Brian2*) und übermittle die relevanten Parameter.  \n5. **Iterative Anpassung:**  \n   - Falls Simulationen oder Recherchen neue Fragen oder Unklarheiten aufwerfen, starte weitere Research-Anfragen oder passe die Hypothesen an.  \n   - Falls unzureichende Daten vorliegen, ergänze weitere Simulationsläufe oder analysiere zusätzliche Literatur.  \n6. **Ergebnisanalyse & Synthese:** Beauftrage den Datenauswertungs-Agent, um Forschungsergebnisse, Simulationen und Datenanalysen zusammenzuführen.  \n7. **Antwortgenerierung:** Formuliere eine fundierte, nachvollziehbare und datengetriebene Antwort für den Nutzer. Falls Unsicherheiten bestehen, markiere diese und schlage weitere Forschungs- oder Simulationsschritte vor.  \n\n### **Ziel:**  \nDer Supervisor-Agent sorgt für eine wissenschaftlich fundierte und datengetriebene Antwort. Der Prozess ist adaptiv – falls neue Erkenntnisse auftauchen, wird der Workflow angepasst, um eine möglichst präzise, vollständige und nachvollziehbare Antwort zu liefern.  \n\n### **Nutzerfrage:**  \n{{ $('When chat message received').item.json.chatInput }}",
+        "text": "=Aufgabe:\nKoordiniere alle Sub-Workflows, analysiere die Nutzerfrage und leite eine geeignete Vorgehensweise ab. Entscheide dynamisch, welche Agenten benötigt werden und passe den Prozess iterativ an, um die beste Antwort zu liefern.\n\nArbeitsweise:\n\nNutzerfrage analysieren: Verstehe die gestellte Frage und identifiziere die relevanten wissenschaftlichen Konzepte und Ziele.\n\nHypothesenbildung: Wenn erforderlich, beauftrage den Hypothesen-Agent zur Formulierung präziser und überprüfbarer Hypothesen.\n\nInformationssammlung: Hole relevante wissenschaftliche Literatur und bestehende Erkenntnisse über den Research-Agent ein, falls nötig.\n\nSzenario-Planung & Simulation:\nSimuliere immer Szenarien und Hypothesen, um tiefgehende Insights zu erlangen, es sei denn, die aktuelle Studienlage beantwortet die Frage bereits abschließend.\nArbeite mit dem Simulations-Agenten zusammen, um die geeigneten Simulationsparameter festzulegen und die Simulationen zu starten.\n\nIterative Anpassung: Wenn neue Erkenntnisse aus Simulationen oder Recherchen auftauchen oder die Datenlage unzureichend ist, passe den Workflow an und starte ggf. neue Simulationen oder Recherchen.\n\nErgebnisanalyse: Beauftrage den Datenauswertungs-Agent, die Ergebnisse aus Simulationen, Literatur und Datensätzen zu integrieren und eine prägnante Analyse zu liefern.\nAntwort generieren: Formuliere eine fundierte, nachvollziehbare und datenbasierte Antwort. Markiere Unsicherheiten und schlage, falls nötig, weitere Schritte zur Klärung vor.\n\nZiel:\nLiefere eine präzise, vollständige und wissenschaftlich fundierte Antwort. Simuliere stets Szenarien und Hypothesen, wenn dies notwendig ist, um tiefgehende Insights zu gewinnen. Nur wenn die Studienlage ausreichend und abschließend ist, werden keine weiteren Simulationen durchgeführt.\n\nNutzerfrage:\n{{ $('When chat message received').item.json.chatInput }}\n\n",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -139,25 +166,6 @@
     },
     {
       "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
-      "position": [
-        -1260,
-        -1480
-      ],
-      "id": "ce441ff5-38f7-495f-a029-7dbce400a9dc",
-      "name": "OpenAI Chat Model4",
-      "credentials": {
-        "openAiApi": {
-          "id": "5wSjIMdZLY3uXjre",
-          "name": "API_n8n_20.1"
-        }
-      }
-    },
-    {
-      "parameters": {
         "name": "Hypothesen_Agent",
         "description": "=Fähigkeiten / Zweck:\nErstellt basierend auf einer Fragestellung oder einem Sachverhalt eine wissenschaftliche Hypothese. Arbeitet mit dem Szenario-Agenten zusammen, um Szenarien zur Hypothesentestung zu generieren.\n\nWann aufrufen?\n\nWenn eine neue Fragestellung in eine testbare Hypothese umgewandelt werden soll.\nWenn der Supervisor-Agent eine Hypothese verfeinern oder anpassen möchte.\nBenötigte Eingaben:\n\nFragestellung/Sachverhalt: Worum geht es?\nKontext (optional): Hintergrundinfos, Forschungsergebnisse, frühere Hypothesen.\nAusgabe / Output:\nEine testbare, spezifische Hypothese (ggf. mehrere Alternativen) zur Untersuchung in Simulationen oder Experimenten.",
         "workflowId": {
@@ -168,9 +176,33 @@
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
+          "value": {
+            "Fragestellung": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Fragestellung', ``, 'string') }}",
+            "Zusätzliche Informationen": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Zus_tzliche_Informationen', ``, 'string') }}"
+          },
           "matchingColumns": [],
-          "schema": [],
+          "schema": [
+            {
+              "id": "Fragestellung",
+              "displayName": "Fragestellung",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Zusätzliche Informationen",
+              "displayName": "Zusätzliche Informationen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
           "attemptToConvertTypes": false,
           "convertFieldsToString": false
         }
@@ -196,9 +228,24 @@
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
+          "value": {
+            "Hypothese": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Hypothese', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Hypothese"
+          ],
+          "schema": [
+            {
+              "id": "Hypothese",
+              "displayName": "Hypothese",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
           "attemptToConvertTypes": false,
           "convertFieldsToString": false
         }
@@ -214,62 +261,6 @@
     },
     {
       "parameters": {
-        "name": "Brian2_Simulationssoftware",
-        "description": "=Fähigkeiten / Zweck:\nFührt Simulationen mit der Software Brian2 durch, ideal für die Modellierung einzelner Neuronen oder kleinerer neuronaler Netzwerke (spiking neural networks).\n\nWann aufrufen?\n\nFür feingranulare Simulationen von Neuronen oder Mikronetzwerken.\nZur Überprüfung oder Exploration von Hypothesen auf Einzelzell- oder Mikronetzwerk-Ebene.\nBenötigte Eingaben:\n\nSzenariobeschreibung: Angaben zu neuronalen Modellen, Parametern, Stimulationsprotokollen.\nHypothese (optional): Erwartete Effekte oder zu testende Parameteränderungen.\nAusgabe / Output:\nSimulationsergebnisse und Insights in natürlicher Sprache.",
-        "workflowId": {
-          "__rl": true,
-          "value": "eqfCMvdWOW8V5ZmJ",
-          "mode": "list",
-          "cachedResultName": "Brian2_Version2"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2,
-      "position": [
-        -960,
-        -1480
-      ],
-      "id": "a7d4ecc7-746f-42a8-ae37-67fe41f45580",
-      "name": "Brian2_Simulationssoftware"
-    },
-    {
-      "parameters": {
-        "name": "TVB_Simulationssoftware",
-        "description": "=Fähigkeiten / Zweck:\nFührt Simulationen mit The Virtual Brain (TVB) durch, spezialisiert auf großskalige Hirnnetzwerk-Simulationen zur Untersuchung dynamischer Prozesse.\n\nWann aufrufen?\n\nBei Szenarien zur Simulation großräumiger neuronaler Netzwerke.\nWenn ein Experiment mit TVB zur Hypothesentestung geplant ist.\nBenötigte Eingaben:\n\nSzenariobeschreibung: Parameter, Hirnregionen/Netzwerke, Zeitfenster, Fragestellung.\nHypothese (optional): Warum diese Konfiguration relevant ist.\nAusgabe / Output:\nSimulationsergebnisse in sprachlicher Form.",
-        "workflowId": {
-          "__rl": true,
-          "value": "oKf3SRq4ar4MDt8B",
-          "mode": "list",
-          "cachedResultName": "TVB_Sub_Workflow"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2,
-      "position": [
-        -460,
-        -1480
-      ],
-      "id": "bc2fca65-e32e-4825-9aeb-037c989f8d07",
-      "name": "TVB-Simulationssoftware"
-    },
-    {
-      "parameters": {
         "name": "Research_Agent",
         "description": "=Fähigkeiten / Zweck:\nRecherchiert wissenschaftliche Publikationen über APIs, liefert Zusammenfassungen oder Details zu Theorien und Erkenntnissen.\n\nWann aufrufen?\n\nZur wissenschaftlichen Untermauerung einer Forschungsfrage.\nFür State-of-the-Art-Informationen oder Literaturübersichten.\nBenötigte Eingaben:\n\nFragestellung/Thema: Konkrete Frage oder Stichwörter.\nKontext (optional): Bisherige Erkenntnisse oder Literaturquellen zur Verfeinerung der Suche.\nAusgabe / Output:\nZusammenfassung relevanter Forschungsergebnisse.",
         "workflowId": {
@@ -280,20 +271,22 @@
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
+          "value": {
+            "Research Thema": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Research_Thema', ``, 'string') }}"
+          },
           "matchingColumns": [
             "chatInput"
           ],
           "schema": [
             {
-              "id": "chatInput",
-              "displayName": "chatInput",
+              "id": "Research Thema",
+              "displayName": "Research Thema",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
               "type": "string",
-              "removed": true
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -303,7 +296,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2,
       "position": [
-        -800,
+        -900,
         -1480
       ],
       "id": "116d3316-9fc8-49fe-aef9-3a74b3a92ab4",
@@ -312,7 +305,7 @@
     {
       "parameters": {
         "name": "Datenauswertungs_Agent",
-        "description": "=Fähigkeiten / Zweck:\nAggregiert und analysiert Daten aus Simulationen (TVB/Brian2) und Forschungsergebnissen. Erkennt Muster, stellt Zusammenhänge her und bereitet die Daten verständlich auf.\n\nWann aufrufen?\n\nNach Simulationen zur Konsolidierung der Ergebnisse.\nBei neuen Forschungsergebnissen oder Hypothesen für eine Gesamtanalyse.\nBenötigte Eingaben:\n\nSimulationsergebnisse: Zeitreihen, statistische Kennwerte, Parameterlisten.\nLiteraturdaten (optional): Wissenschaftlicher Kontext.\nFragestellung/Hypothese (optional): Falls die Analyse gezielt erfolgen soll.\nAusgabe / Output:\nZusammenfassung der Daten mit ggf. Interpretation im Hypothesenkontext.",
+        "description": "=**Sub-Agent: Ganzheitlicher Datenanalyse-Agent**\n\n**Zweck:**  \nAnalysiert Forschungsdaten (User-Fragen, Hypothesen, Szenarien, Research Tasks, Simulationen) und liefert eine kompakte Zusammenfassung der wichtigsten Erkenntnisse. Bewertet die Datenlage und empfiehlt weitere Schritte.\n\n**Wann aufrufen:**  \n- Nach Forschungszyklen oder Simulationen.  \n- Wenn die Datenlage geprüft oder ergänzt werden soll.  \n- Vor der Definition neuer Szenarien oder Hypothesen.\n\n**Erwartete Rückgabe:**  \n- Kern-Insights  \n- Bewertung der Hypothesen (gestützt/widerlegt/unklar)  \n- Identifikation von Datenlücken  \n- Einschätzung der Datenlage (ausreichend: Ja/Nein)  \n- Empfehlungen zu nächsten Schritten",
         "workflowId": {
           "__rl": true,
           "value": "3hPiZqTvz5BOq8r3",
@@ -331,22 +324,202 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2,
       "position": [
-        -640,
+        -700,
         -1480
       ],
       "id": "970dcb30-e76d-4380-965c-65d8ef502ebf",
       "name": "Datenasuwertungs-Agent"
     },
     {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "skQK8T0RU86IE7Mj",
+          "mode": "list",
+          "cachedResultName": "Delete_Temporal_Database_Airtable"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
       "position": [
-        -1120,
+        -1400,
+        -2200
+      ],
+      "id": "97551e7e-14fa-44ec-abdd-f227ae9bf2e3",
+      "name": "Cleaning Database"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblRjL9aImLDWF12R",
+          "mode": "list",
+          "cachedResultName": "User Question",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblRjL9aImLDWF12R"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "User Question": "={{ $('When chat message received').item.json.chatInput }}"
+          },
+          "matchingColumns": [
+            "User Question"
+          ],
+          "schema": [
+            {
+              "id": "User Question",
+              "displayName": "User Question",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -1420,
+        -1880
+      ],
+      "id": "30aa1cbd-e1be-45ba-9c2b-cb078daad8a4",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "kn8kMDgKcPDlYT3a",
+          "mode": "list",
+          "cachedResultName": "Datenauswertung - Final"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -320,
+        -2000
+      ],
+      "id": "da8b828c-98aa-4667-95b7-3e94ccc3a0a3",
+      "name": "Datenauswertung - Final"
+    },
+    {
+      "parameters": {
+        "name": "Simulations_Sub_Agent",
+        "description": "=Der Simulations-Agent analysiert Szenario-Beschreibungen und übersetzt sie in Simulationsparameter für zwei spezialisierte Sub-Agents:\n\nBrian2: Modelliert neuronale Dynamiken mit Differentialgleichungen.\nThe Virtual Brain: Simuliert großskalige Gehirnaktivitäten und Konnektivität.\nWann aufrufen:\nBei einer wissenschaftlichen Szenario-Beschreibung mit Modellannahmen und dem Bedarf an neuronalen sowie großskaligen Simulationen.\n\nEingaben:\n\nSzenario-Beschreibung mit wissenschaftlichen Parametern.\nFür Brian2: Zeitabhängige Prozesse, neuronale Dynamiken.\nFür The Virtual Brain: Netzwerkstrukturen, funktionelle Konnektivität.\nErwartete Antwort:\n\nSimulationsparameter für Brian2 (Neuronale Dynamik).\nSimulationsparameter für The Virtual Brain (Gehirnnetzwerke).",
+        "workflowId": {
+          "__rl": true,
+          "value": "GSARutTY3DSiIx7r",
+          "mode": "list",
+          "cachedResultName": "Simulations-Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Szenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Szenario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Szenario"
+          ],
+          "schema": [
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        -480,
         -1480
       ],
-      "id": "02bd27e9-0a83-4dea-aaa0-de9e237a632f",
-      "name": "Window Buffer Memory"
+      "id": "18ca0cdd-c764-4821-addb-6359875821c4",
+      "name": "Simulations-Agent"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -1060,
+        -2000
+      ],
+      "id": "144546d8-552f-4d52-8f25-107415baacc0",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -1220,
+        -1480
+      ],
+      "id": "9d3d2da4-cbf5-440d-b665-1a1c3d9abad2",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -356,6 +529,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-13T23:19:16.000Z",
-  "versionId": "0e6ca166-df0c-4ed0-a594-f29d1d778472"
+  "updatedAt": "2025-02-17T20:12:07.000Z",
+  "versionId": "8f246909-3431-4fd8-8fbe-64bb1659f4af"
 }
