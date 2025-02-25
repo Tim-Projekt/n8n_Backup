@@ -1,0 +1,495 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pylorisches_Modell": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Izhikevich_2003": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Spike_Timing_Dependent_Plasticity": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hodgkin_Huxley_Modell": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CUBA": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-18T21:44:01.383Z",
+  "id": "EXIGUf9IeAI2pIsx",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "NeuroPilot",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -360,
+        -80
+      ],
+      "id": "23ad37df-4a0e-4438-9897-a1a1ee25d1c5",
+      "name": "When chat message received",
+      "webhookId": "e1bfb5a9-f262-4aae-9f79-2a0e42643f6c"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Zu simulierendes Szenario:\n{{$node[\"When chat message received\"].json[\"chatInput\"]}}",
+        "options": {
+          "systemMessage": "=Rolle:\n\nDu bist ein fortschrittlicher wissenschaftlicher Simulations-Agent, spezialisiert auf die Simulation neuronaler und kognitiver Prozesse. Deine Aufgabe besteht darin ein Szenario vielfälltig und Intelligent zu simulieren. Mithilfe spezialisierter Sub-Agents, die für verschiedene Modelle und Simulationstools zuständig sind, orchestrierst du die simulationsbasierte Untersuchung des Szenarios.\n\nArbeitsweise:\n\nSzenario-Identifikation:\nDas Szenario wird als Eingabe bereitgestellt. Verwende diese Vorgabe als Grundlage für die weitere Analyse.\n\nDekonstruktion des Szenarios:\nAnalysiere und zerlege das gegebene Szenario in mehrere wissenschaftlich relevante Sub-Szenarien.\nIdentifiziere die Kernkomponenten und Teilprozesse, die für die Simulation neuronaler und kognitiver Prozesse entscheidend sind.\n\nSub-Agenten-Koordination:\nWeise jedem identifizierten Sub-Szenario einen spezialisierten Sub-Agenten zu, der ein spezifisches Simulationsmodell verwendet.\nStelle sicher, dass alle Sub-Agenten die Simulationen entsprechend den wissenschaftlichen Standards und Vorgaben durchführen, ohne dass du eigenständig Parameter bestimmst.\n\nSimulation und Iteration:\nKoordiniere den Ablauf der Sub-Simulationen, indem du die Ergebnisse iterativ zusammenführst.\nFalls notwendig, veranlasse erneute Tool-Aufrufe, um die Simulationsergebnisse zu verfeinern, wobei jeder Sub-Agent seine spezifischen Modelle wiederholt einsetzt.\n\nDokumentation der Ergebnisse:\nFasse die Ergebnisse aller Sub-Simulationen strukturiert und objektiv zusammen.\nDer finale Bericht soll ausschließlich die wissenschaftlich dokumentierten Simulationsergebnisse enthalten, ohne weiterführende Interpretationen, Handlungsempfehlungen oder spekulative Aussagen.\n\nZiel:\nEine präzise und realitätsnahe Simulation der vorgegebenen neuronalen und kognitiven Prozesse.\nDie objektive, strukturierte und wissenschaftlich fundierte Darstellung der Simulationsergebnisse, basierend auf den dekomponierten Sub-Szenarien und den spezialisierten Sub-Agenten.\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        240,
+        -80
+      ],
+      "id": "c0d97ab6-463e-4414-8512-e69ca6623c60",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-4o",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        60,
+        340
+      ],
+      "id": "805868bf-8e25-48cd-9631-75a1fe67fff2",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "Pylorisches_Modell",
+        "description": "=Das Pylorische Modell ist ein biologisch inspiriertes neuronales Netzwerkmodell, das die Aktivitätsmuster von Neuronen im pylorischen Netzwerk des Magen-Darm-Trakts untersucht. Es wird verwendet, um rhythmische neuronale Schaltkreise zu simulieren und deren dynamische Eigenschaften zu analysieren.",
+        "workflowId": {
+          "__rl": true,
+          "value": "ng6nSAcXtYqDjC0K",
+          "mode": "list",
+          "cachedResultName": "Pylorisches_Modell"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Szenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Szenario', `Zu simulierendes Szenario`, 'string') }}"
+          },
+          "matchingColumns": [
+            "Szenario"
+          ],
+          "schema": [
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        400
+      ],
+      "id": "92ccf5a1-dabb-4bc6-9a77-0721eeec608b",
+      "name": "Pylorisches_Modell"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "uY00KRfSftJnvfuT",
+          "mode": "list",
+          "cachedResultName": "My Sub-Workflow 1"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        720,
+        -80
+      ],
+      "id": "f113b12a-da5f-4c2f-993c-1f92307621bc",
+      "name": "Execute Workflow"
+    },
+    {
+      "parameters": {
+        "name": "Adaptive_Exponential_Integrate_and_Fire_Neuronen_Modell",
+        "description": "=Das Adaptive Exponential Integrate-and-Fire (AdEx) Neuronenmodell ist ein einfaches, biophysikalisch inspiriertes Modell zur Simulation grundlegender neuronaler Aktivität (Feuerraten, Spike-Amplituden, einfache Anpassung). Es ist für Basisdynamiken wie Ruhepotentialstabilität oder kurzfristige Feuerratenadaptation optimiert, nicht für komplexe Szenarien (z. B. Netzwerk-Oszillationen).\n\n",
+        "workflowId": {
+          "__rl": true,
+          "value": "8vxR5m0Wz3wOhJOw",
+          "mode": "list",
+          "cachedResultName": "Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Szenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Szenario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Szenario"
+          ],
+          "schema": [
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        840,
+        400
+      ],
+      "id": "80c31bab-a945-45b8-b883-1291f1139961",
+      "name": "Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen"
+    },
+    {
+      "parameters": {
+        "name": "Izhikevich_2003",
+        "description": "=Das Izhikevich_2003 Neuronenmodell ist ein kompaktes, biophysikalisch inspiriertes Modell zur Simulation vielfältiger neuronaler Feuermuster (z. B. spiking, bursting, chattering). Es kombiniert die biologisch realistische Dynamik komplexer Modelle mit der Rechenökonomie einfacher Integrate-and-Fire-Ansätze. Das Modell ist speziell optimiert, um ein breites Spektrum neuronaler Aktivität mit minimalem Rechenaufwand darzustellen, eignet sich jedoch weniger für die Abbildung detaillierter ionenkanalbasierter Mechanismen.",
+        "workflowId": {
+          "__rl": true,
+          "value": "7wAxw5EYrWNv52L1",
+          "mode": "list",
+          "cachedResultName": "Izhikevich_2003_Flexibel"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Szenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Szenario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Szenario"
+          ],
+          "schema": [
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        400
+      ],
+      "id": "b41c9174-113a-49c7-8e44-2eea1b104825",
+      "name": "Izhikevich_2003"
+    },
+    {
+      "parameters": {
+        "name": "Spike_Timing_Dependent_Plasticity",
+        "description": "=Die Spike-Timing-Dependent Plasticity (STDP) Simulation modelliert synaptische Plastizität basierend auf der zeitlichen Abfolge präsynaptischer und postsynaptischer Spikes. Sie bildet grundlegende Lernmechanismen ab, indem sie die synaptische Stärke abhängig vom Spike-Timing anpasst (LTP/LTD). Die Simulation fokussiert auf einfache Plastizitätsdynamiken und ist für die Untersuchung lokaler Lernregeln optimiert, jedoch nicht für komplexe Netzwerkinteraktionen oder modulierte Plastizitätsprozesse (z. B. dopaminerge Modulation).",
+        "workflowId": {
+          "__rl": true,
+          "value": "EDFsjM3oYm3vcUAj",
+          "mode": "list",
+          "cachedResultName": "STDP-NeuroPilot"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Szenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Szenario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Szenario"
+          ],
+          "schema": [
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        660,
+        400
+      ],
+      "id": "7416d68e-c56f-4c58-802c-cef2ef3e6b4e",
+      "name": "Spike_Timing_Dependent_Plasticity"
+    },
+    {
+      "parameters": {
+        "name": "Hodgkin_Huxley_Modell",
+        "description": "=Die Hodgkin-Huxley-Modell-Simulation bildet die elektrische Erregbarkeit von Neuronen basierend auf spannungsabhängigen Ionenkanälen ab. Sie beschreibt die Entstehung und Ausbreitung von Aktionspotenzialen durch detaillierte Modellierung von Natrium-, Kalium- und Leckströmen. Die Simulation fokussiert auf die biophysikalisch präzise Reproduktion neuronaler Erregung und ist optimiert für Einzelneuronen oder kleine Netzwerke, jedoch nicht für großskalige Populationen oder abstrahierte Netzwerkdynamiken.",
+        "workflowId": {
+          "__rl": true,
+          "value": "f7sb1hOnYjpNReua",
+          "mode": "list",
+          "cachedResultName": "HH-NeuroPilot"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Szenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Szenario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Szenario"
+          ],
+          "schema": [
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        480,
+        400
+      ],
+      "id": "cc89c47f-7e35-4ccb-947a-094cfb4becdf",
+      "name": "Hodgkin_Huxley_Modell"
+    },
+    {
+      "parameters": {
+        "name": "Current_based_Netzwork",
+        "description": "=Das CUBA-Modell (Cellular Universal Biological Activity) simuliert die Aktivität von Neuronen und deren Interaktionen innerhalb eines biologischen Netzwerks. Es integriert die Dynamik von Membranpotenzialen, Ionenströmen und synaptischen Interaktionen unter Berücksichtigung von unterschiedlichen Zelltypen und deren physiologischen Zuständen. Die Simulation ermöglicht eine detaillierte Modellierung von neuronalen Reaktionen auf externe Reize und die Ausbreitung von Erregungswellen in komplexen Netzwerkstrukturen. Das CUBA-Modell ist für die Untersuchung von lokalen Netzwerkdynamiken und individuellen Zellverhalten optimiert, jedoch weniger geeignet für großskalige neuronale Populationen oder vereinfachte Netzwerkmodelle.",
+        "workflowId": {
+          "__rl": true,
+          "value": "OYZvqgAgg0d7CILa",
+          "mode": "list",
+          "cachedResultName": "CUBA - NeuroPilot"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Szenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Szenario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Szenario"
+          ],
+          "schema": [
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        280,
+        420
+      ],
+      "id": "06533684-7898-4ead-8b91-965044f9d7aa",
+      "name": "CUBA"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "XBx2QUfCe2CZrhoo",
+          "mode": "list",
+          "cachedResultName": "Clean Database - NeuroPilot"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        -80
+      ],
+      "id": "e177f808-147a-491b-8bbe-97e2bafa169b",
+      "name": "Execute Workflow1"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-24T23:45:29.000Z",
+  "versionId": "5e1c0349-3152-45d6-976a-546d710136bc"
+}
