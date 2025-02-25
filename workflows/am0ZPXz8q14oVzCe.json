@@ -45,12 +45,28 @@
         ]
       ]
     },
-    "Google Gemini Chat Model": {
+    "OpenRouter Chat Model": {
       "ai_languageModel": [
         [
           {
             "node": "Morris_Lecar_1981",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI4": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
             "index": 0
           }
         ]
@@ -164,23 +180,138 @@
     },
     {
       "parameters": {
-        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "model": "={{$env.Simulation_LLM}}",
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        100,
+        20,
         220
       ],
-      "id": "30db1bc6-37ff-4f6e-8b45-e7c23f695e6a",
-      "name": "Google Gemini Chat Model",
+      "id": "9eca1ebc-c1c6-4b55-a31a-fe0e2f3d479f",
+      "name": "OpenRouter Chat Model",
       "credentials": {
-        "googlePalmApi": {
-          "id": "Mid8lkFo2uMmRyYL",
-          "name": "Google Gemini(PaLM) Api account"
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblD1v9qA3B96bBgp",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblD1v9qA3B96bBgp"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsmodell": "Morris_Lecar_1981",
+            "Szenario": "={{ $('Workflow Input Trigger').item.json.query }}",
+            "Simulationsparameter": "={{ $('Morris_Lecar_1981').item.json.text }}",
+            "Simulationsergebnisse": "={{ $json.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Simulationsmodell",
+              "displayName": "Simulationsmodell",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsparameter",
+              "displayName": "Simulationsparameter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsergebnisse",
+              "displayName": "Simulationsergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1300,
+        -180
+      ],
+      "id": "55a82d76-4ee3-4999-9854-83930e71224a",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd4a689f-cd05-40b2-8167-76a2c0e9b2bc",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1880,
+        0
+      ],
+      "id": "bb0e4e64-ea3f-4ec9-9cf7-328340e7c8f6",
+      "name": "Edit Fields"
     }
   ],
   "pinData": {},
@@ -190,6 +321,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-16T10:14:29.000Z",
-  "versionId": "c18db186-4cfa-48b1-a249-e2325c059596"
+  "updatedAt": "2025-02-16T20:12:55.000Z",
+  "versionId": "f0992c32-51d3-4d40-972b-7542051a3f8c"
 }
