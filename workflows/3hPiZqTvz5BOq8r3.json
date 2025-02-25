@@ -1,7 +1,240 @@
 {
   "active": false,
   "connections": {
-    "OpenAI Chat Model3": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Airtable7",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable10",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datenauswertung": {
+      "main": [
+        [
+          {
+            "node": "Airtable3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Airtable1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ],
+        [
+          {
+            "node": "Airtable2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable7": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable9": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable8": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Datenauswertung",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
       "ai_languageModel": [
         [
           {
@@ -12,11 +245,102 @@
         ]
       ]
     },
-    "Workflow Input Trigger": {
+    "Code4": {
       "main": [
         [
           {
-            "node": "Datenauswertung",
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ],
+        [
+          {
+            "node": "Airtable4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable10": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ],
+        [
+          {
+            "node": "Airtable5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable11": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
             "type": "main",
             "index": 0
           }
@@ -38,45 +362,642 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        0,
-        0
+        -680,
+        560
       ],
       "id": "f25112d8-82c7-4ad0-821b-2d92656a65ec",
       "name": "Workflow Input Trigger"
     },
     {
       "parameters": {
-        "model": "gpt-4o",
+        "promptType": "define",
+        "text": "=Rolle:\nDu bist ein fortschrittlicher KI-gestützter Datenanalyse-Agent, der alle relevanten Informationen aus einem Forschungsprozess zusammenfasst. Deine Aufgabe ist es, basierend auf den vorhandenen Daten tiefgehende, aber kurz und präzise formulierte Erkenntnisse (Insights) zu gewinnen und strategische Empfehlungen für den weiteren Forschungsprozess zu geben.\n\nEingabe:\nDu erhältst strukturierte Daten aus folgenden Quellen:\n\nUser-Frage: Die ursprüngliche Forschungsfrage oder das Problem.\nHypothesen: Die bisherigen Annahmen, die getestet wurden oder noch getestet werden müssen.\nSzenarien: Die realen oder hypothetischen Situationen, die in Betracht gezogen wurden.\nResearch Tasks: Relevante wissenschaftliche Arbeiten, recherchierte Theorien oder experimentelle Daten.\nSimulationen: Durchgeführte Simulationen mit ihren Parametern, Ergebnissen und Beobachtungen.\nZiele deiner Analyse:\nGanzheitliche Zusammenfassung: Erfasse die wichtigsten Erkenntnisse aus den Daten, formuliere sie knapp und prägnant.\nIdentifikation wichtiger Muster: Nenne nur die zentralen Korrelationen, Trends oder unerwarteten Ergebnisse – keine detaillierte Analyse.\nBewertung der Hypothesen: Überprüfe, ob eine Hypothese gestützt oder widerlegt wurde, und begründe dies in einem Satz pro Hypothese.\nLückenanalyse: Falls fehlende oder widersprüchliche Daten vorliegen, liste sie kurz auf, ohne lange Erklärungen.\nBewertung der Datenlage: Gib eine klare, direkte Aussage: Sind die aktuellen Daten ausreichend für ein umfassendes Verständnis des Sachverhalts? Falls nein, nenne kurz, welche Daten fehlen.\nEmpfehlungen für nächste Schritte: Falls notwendig, schlage kurz vor:\nNeue Szenarien zur Simulation.\nZusätzliche Hypothesen, die geprüft werden sollten.\nWeitere Research Tasks oder Literaturrecherchen. Falls keine weiteren Schritte erforderlich sind, gib dies deutlich an.\nAntwortformat:\nDeine Ausgabe sollte klar und strukturiert sein:\n\nInsights:\n  - [Kurz formulierte Erkenntnis 1]\n  - [Kurz formulierte Erkenntnis 2]\n  - ...\n  \nHypothesen-Bewertung:\n  - [Hypothese 1]: [Gestützt / Widerlegt / Unklar] – [Ein-Satz-Begründung]\n  - [Hypothese 2]: [Gestützt / Widerlegt / Unklar] – [Ein-Satz-Begründung]\n  - ...\n\nLücken & Unsicherheiten:\n  - [Kurz aufgelistete fehlende oder widersprüchliche Daten]\n  - [Potenzielle Fehlerquellen in den Daten]\n\nBewertung der Datenlage:\n  - **Sind die Daten ausreichend für eine fundierte Analyse? Ja/Nein**\n  - Falls nein: **[Kurz aufgelistet: Welche Daten fehlen?]**\n\nEmpfohlene nächste Schritte:\n  - Falls nötig: **[Kurz aufgelistet: Neue Szenarien, Hypothesen oder Research Tasks]**\n  - Falls nicht nötig: **\"Keine weiteren Schritte erforderlich. Die Datenlage ist ausreichend.\"**\nAnweisung für den Agenten:\nFormuliere alle Erkenntnisse und Bewertungen so kurz wie möglich.\nFokussiere dich auf das Wesentliche und vermeide unnötige Details.\nGib eine klare Aussage darüber, ob die Daten für ein vollständiges Verständnis des Sachverhalts ausreichen.\nFalls Unsicherheiten bestehen, nenne sie knapp und präzise.\n\n-----\n\nVerfügbare Informationen:\n{{ $('Code3').item.json.Data }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2620,
+        540
+      ],
+      "id": "e94fed4b-8730-453e-aff5-4e68a39a643e",
+      "name": "Datenauswertung"
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblD1v9qA3B96bBgp",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblD1v9qA3B96bBgp"
+        },
+        "id": "={{ $json.id }}",
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
       "position": [
-        380,
-        200
+        900,
+        380
       ],
-      "id": "dd5cbd67-6781-47ab-b45a-a4eb577ca4a1",
-      "name": "OpenAI Chat Model3",
+      "id": "86106abd-8fb3-4a1e-b783-1b9010ea8fa7",
+      "name": "Airtable1",
       "credentials": {
-        "openAiApi": {
-          "id": "93L9c3FnEnOvHs4I",
-          "name": "OpenAi account 2"
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
         }
       }
     },
     {
       "parameters": {
-        "promptType": "define",
-        "text": "=Du bist ein hochentwickeltes wissenschaftliches KI-Modell, spezialisiert auf die Analyse von Daten in der Neurowissenschaft. Deine Aufgabe ist es, eine umfassende wissenschaftliche Bewertung basierend auf den bereitgestellten Datenquellen vorzunehmen.  \n\n### **Vorgehensweise:**  \n1. **Verständnis der Fragestellung:**  \n   - Analysiere die Kernfrage und identifiziere ihre wissenschaftliche Bedeutung.  \n\n2. **Auswertung der relevanten Studien:**  \n   - Untersuche die angegebenen wissenschaftlichen Studien systematisch.  \n   - Extrahiere und gewichte relevante Erkenntnisse in Bezug auf die Fragestellung.  \n   - Identifiziere Konsistenzen oder Widersprüche zwischen den Studien.  \n\n3. **Analyse der Hypothesen:**  \n   - Vergleiche die Hypothesen mit bestehenden Forschungsergebnissen.  \n   - Bewerte ihre Plausibilität anhand der bisherigen Literatur.  \n\n4. **Auswertung der Szenariosimulationen:**  \n   - Untersuche die experimentell simulierten (Sub-)Szenarien.  \n   - Analysiere die Simulationsergebnisse im Kontext der Fragestellung.  \n   - Vergleiche Simulationsergebnisse mit den bestehenden wissenschaftlichen Daten.  \n\n5. **Synthese und wissenschaftliches Fazit:**  \n   - Formuliere eine abschließende Bewertung der Fragestellung.  \n   - Diskutiere die Aussagekraft der Simulationsergebnisse im Vergleich zur bisherigen Forschung.  \n   - Hebe mögliche Limitationen der Daten oder Methodik hervor.  \n   - Falls nötig, mache Vorschläge für weitere Untersuchungen.  \n\n### **Ausgabeformat:**  \n1. **Zusammenfassung der Hauptbefunde**  \n2. **Bewertung der Hypothesen (Bestätigung, Modifikation oder Widerlegung)**  \n3. **Wissenschaftliches Fazit inkl. Empfehlungen für zukünftige Forschung**  \n\nNutze einen sachlichen, präzisen und wissenschaftlichen Schreibstil. Ziehe nur begründbare Schlussfolgerungen und gebe klare Belege für deine Argumentation an.\n\nVerfügbare Informationen:\n{{ $('Workflow Input Trigger').item.json }}"
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
       },
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "typeVersion": 1.5,
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
       "position": [
         360,
-        0
+        -220
       ],
-      "id": "e94fed4b-8730-453e-aff5-4e68a39a643e",
-      "name": "Datenauswertung"
+      "id": "972cac41-a9d7-4f7a-8e94-7932a0b14f58",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        380,
+        260
+      ],
+      "id": "01e3adc6-2dae-46b4-bb9a-414d664d9ded",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        580,
+        -220
+      ],
+      "id": "0cb21fbb-93a1-45db-850a-40951cbb0507",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        660,
+        260
+      ],
+      "id": "9bc79149-f5e5-4e67-b2b1-8beba3dce65a",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        380,
+        660
+      ],
+      "id": "54d35b91-8dbc-4dbe-8376-5f60a52edd84",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        660,
+        660
+      ],
+      "id": "76557818-f9f8-4d7c-82b9-8ab82c7ff049",
+      "name": "Loop Over Items2"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPEZOZ3fG76MnD6",
+          "mode": "list",
+          "cachedResultName": "Research - Abstracts",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblPEZOZ3fG76MnD6"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        120,
+        -220
+      ],
+      "id": "789bb793-2af4-4178-a8ed-f0354469a113",
+      "name": "Airtable7",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblD1v9qA3B96bBgp",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblD1v9qA3B96bBgp"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        100,
+        260
+      ],
+      "id": "b03f99e9-cb95-44e2-88f3-2fea093fe1de",
+      "name": "Airtable8",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbleUou52Uiawnetw",
+          "mode": "list",
+          "cachedResultName": "Forschungsüberlegungen",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tbleUou52Uiawnetw"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        80,
+        660
+      ],
+      "id": "f862d3f0-b17a-43af-9dd2-c5a64d9530a6",
+      "name": "Airtable9",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbleUou52Uiawnetw",
+          "mode": "list",
+          "cachedResultName": "Forschungsüberlegungen",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tbleUou52Uiawnetw"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        760
+      ],
+      "id": "7a1c5c99-b330-43c0-a4f9-0ef682fb58dd",
+      "name": "Airtable2",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPEZOZ3fG76MnD6",
+          "mode": "list",
+          "cachedResultName": "Research - Abstracts",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblPEZOZ3fG76MnD6"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        780,
+        -60
+      ],
+      "id": "5e0b7f9d-6a01-4fbf-bced-301fa256e4f7",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1780,
+        540
+      ],
+      "id": "e824a595-b262-42df-9456-fc448247f862",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "createdTime"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        540
+      ],
+      "id": "b23e7e43-fe7c-401e-be14-c9cc41d1e787",
+      "name": "Sort"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n    json: {\n        Data: items.map(item => JSON.stringify(item.json, null, 2)).join(\"\\n\\n\")\n    }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2220,
+        540
+      ],
+      "id": "2ff5edc7-aedf-40de-9242-657bd3ef39b4",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "model": "openai/o3-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        2640,
+        720
+      ],
+      "id": "b97a8566-077e-447c-b61e-2a6b336f0a63",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblrJ0BGlWlQwJiHn",
+          "mode": "list",
+          "cachedResultName": "Gesamtanalyse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblrJ0BGlWlQwJiHn"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Analyseergebnisse": "={{ $('Datenauswertung').item.json.text }}"
+          },
+          "matchingColumns": [
+            "Analyseergebnisse"
+          ],
+          "schema": [
+            {
+              "id": "Analyseergebnisse",
+              "displayName": "Analyseergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        3080,
+        320
+      ],
+      "id": "1b81531f-bea9-4f45-be2c-7f4bc8473c4a",
+      "name": "Airtable3",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        1200
+      ],
+      "id": "59810e4a-7b02-492e-870d-4144844d812d",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        680,
+        1200
+      ],
+      "id": "276a7457-6286-4c77-ab79-002083b6f5e4",
+      "name": "Loop Over Items3"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblRjL9aImLDWF12R",
+          "mode": "list",
+          "cachedResultName": "User Question",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblRjL9aImLDWF12R"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        100,
+        1200
+      ],
+      "id": "c8ed752c-3e57-4618-ab96-a9fbafeb7a09",
+      "name": "Airtable10",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblRjL9aImLDWF12R",
+          "mode": "list",
+          "cachedResultName": "User Question",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblRjL9aImLDWF12R"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        920,
+        1300
+      ],
+      "id": "730ca6c3-9251-45d6-a9a5-5f2d16752490",
+      "name": "Airtable4",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "03b6b917-54c6-4e45-89fe-68afa50d5e53",
+              "name": "text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3360,
+        540
+      ],
+      "id": "93731e61-13e3-42bd-8527-6d5664b46200",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        380,
+        1720
+      ],
+      "id": "1ef7f6f0-7728-468a-afc1-021bcf68ce2e",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        660,
+        1720
+      ],
+      "id": "61d4d3dd-396c-4651-a263-f29aa6205c55",
+      "name": "Loop Over Items4"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblINZACOtuJnfslO",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse-The-Virtual-Brain",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblINZACOtuJnfslO"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        80,
+        1720
+      ],
+      "id": "9a8ec417-1e7a-4613-bed3-a7b72ff0213b",
+      "name": "Airtable11",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblINZACOtuJnfslO",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse-The-Virtual-Brain",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblINZACOtuJnfslO"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        1820
+      ],
+      "id": "5e4fa2f8-a8db-480f-8b8a-2f534d361cb2",
+      "name": "Airtable5",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -86,6 +1007,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-13T22:37:02.270Z",
-  "versionId": "3a915fc7-0bf6-4a5e-8478-94059c47f040"
+  "updatedAt": "2025-02-17T14:59:08.000Z",
+  "versionId": "7787d311-ceef-4371-b791-8c116657a92b"
 }
