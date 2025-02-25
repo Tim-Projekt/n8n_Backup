@@ -1,0 +1,1010 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Airtable7",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable8",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable10",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datenauswertung": {
+      "main": [
+        [
+          {
+            "node": "Airtable3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Airtable1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ],
+        [
+          {
+            "node": "Airtable2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable7": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable8": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable9": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sort": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Datenauswertung",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Datenauswertung",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ],
+        [
+          {
+            "node": "Airtable4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable10": {
+      "main": [
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items4": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ],
+        [
+          {
+            "node": "Airtable5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable11": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-16T21:24:04.033Z",
+  "id": "kn8kMDgKcPDlYT3a",
+  "meta": null,
+  "name": "Datenauswertung - Final",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -800,
+        780
+      ],
+      "id": "082d5e36-ee0b-4764-b6e8-9426f2f29fd8",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Prompt für den ganzheitlichen Datenanalyse-Agenten\nRolle:\nDu bist ein hochentwickelter wissenschaftlicher Analyse-Agent. Deine Aufgabe ist es, alle gesammelten Forschungsdaten kritisch und ganzheitlich zu analysieren und eine präzise, tiefgehende Zusammenfassung der wichtigsten Erkenntnisse bereitzustellen.\n\nEingabe:\nDu erhältst strukturierte Daten aus folgenden Quellen:\n\nUser-Frage: Die zentrale Forschungsfrage oder das wissenschaftliche Problem.\nHypothesen: Die bisher formulierten Annahmen, die durch Daten gestützt, widerlegt oder unklar geblieben sind.\nSzenarien: Beschreibungen experimenteller oder simulierter Bedingungen und deren Kontext.\nResearch Tasks: Relevante wissenschaftliche Arbeiten, Theorien oder empirische Befunde.\nSimulationen: Alle durchgeführten Simulationen mit Parametern, Ergebnissen und beobachteten Mustern.\nZiele deiner Analyse:\n\nGanzheitliche Zusammenfassung: Erstelle eine wissenschaftlich fundierte Zusammenfassung aller bisherigen Erkenntnisse aus den Forschungsdaten.\nMustererkennung: Identifiziere signifikante Korrelationen, Trends oder Anomalien in den Daten.\nHypothesenbewertung: Analysiere, inwieweit die gesammelten Daten bestehende Hypothesen stützen oder widerlegen.\nTheoretische Einordnung: Setze die Erkenntnisse in den Kontext bestehender wissenschaftlicher Theorien und Forschungsergebnisse.\nLückenanalyse: Identifiziere widersprüchliche oder unzureichende Daten, die die wissenschaftliche Interpretation erschweren.\n\n-----\nAntwortformat:\nDie Ausgabe soll klar, wissenschaftlich fundiert und strukturiert sein:\n\nGesamtzusammenfassung:\n  - [Überblick über die gewonnenen Erkenntnisse]\n  \nDetaillierte wissenschaftliche Analyse:\n  - Muster & Korrelationen:\n      - [Beschreibe relevante Zusammenhänge zwischen Datenpunkten]\n  - Anomalien & unerwartete Ergebnisse:\n      - [Liste unerwartete oder schwer erklärbare Phänomene auf]\n  - Hypothesenbewertung:\n      - [Hypothese 1]: [Gestützt / Widerlegt / Unklar], Begründung: [Wissenschaftliche Erklärung]\n      - [Hypothese 2]: [Gestützt / Widerlegt / Unklar], Begründung: [Wissenschaftliche Erklärung]\n  - Theoretischer Kontext:\n      - [Einordnung der Erkenntnisse in bestehende wissenschaftliche Theorien]\n  \nLücken & Unsicherheiten:\n  - [Fehlende Daten oder widersprüchliche Ergebnisse]\n  - [Mögliche Verzerrungen oder Unsicherheiten in der Analyse]\nAnweisung für den Agenten:\nDenke kritisch und analytisch über die vorhandenen Daten nach. Setze sie in den Kontext wissenschaftlicher Theorien, hinterfrage mögliche Verzerrungen und liefere eine tiefgehende, ganzheitliche Analyse. Falls Unsicherheiten oder offene Fragen bestehen, beschreibe diese präzise und wissenschaftlich fundiert.\n\n\n-----\n\nVerfügbare Informationen:\n{{ $('Code3').item.json.Data }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        2500,
+        760
+      ],
+      "id": "6e66f5b1-0843-48ea-959c-c474f7da7ee7",
+      "name": "Datenauswertung"
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblD1v9qA3B96bBgp",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblD1v9qA3B96bBgp"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        820,
+        320
+      ],
+      "id": "38982657-8ca3-48b9-af96-8753aee6fe74",
+      "name": "Airtable1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        280,
+        -280
+      ],
+      "id": "bb0486db-e47a-4d66-9d91-0de8e80984b1",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        300,
+        200
+      ],
+      "id": "372c4dee-23e4-4fe2-9f9b-65e086dab037",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        500,
+        -280
+      ],
+      "id": "db0b3b46-eaa4-45c5-a222-b38755c2425b",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        580,
+        200
+      ],
+      "id": "f089df10-18cd-4bf6-a230-d5c97e752d4a",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        300,
+        600
+      ],
+      "id": "75ae5f2d-b75f-4ca0-b472-143a33567ed2",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        580,
+        600
+      ],
+      "id": "bd6aaf4c-efb1-48bd-bf9c-4e369143c498",
+      "name": "Loop Over Items2"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPEZOZ3fG76MnD6",
+          "mode": "list",
+          "cachedResultName": "Research - Abstracts",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblPEZOZ3fG76MnD6"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        40,
+        -280
+      ],
+      "id": "f14e574c-4544-4723-ae9d-3ba22c989a18",
+      "name": "Airtable7",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblD1v9qA3B96bBgp",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblD1v9qA3B96bBgp"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        20,
+        200
+      ],
+      "id": "750eba5c-9c31-4dca-a4ce-2dab8d9edb16",
+      "name": "Airtable8",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbleUou52Uiawnetw",
+          "mode": "list",
+          "cachedResultName": "Forschungsüberlegungen",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tbleUou52Uiawnetw"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        600
+      ],
+      "id": "3d9a5119-d800-40a7-baa5-de06e8866ac3",
+      "name": "Airtable9",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbleUou52Uiawnetw",
+          "mode": "list",
+          "cachedResultName": "Forschungsüberlegungen",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tbleUou52Uiawnetw"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        820,
+        700
+      ],
+      "id": "af12028d-2a1c-429d-b883-5a12ffd0e020",
+      "name": "Airtable2",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPEZOZ3fG76MnD6",
+          "mode": "list",
+          "cachedResultName": "Research - Abstracts",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblPEZOZ3fG76MnD6"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        740,
+        -120
+      ],
+      "id": "538b497e-2b6d-4b25-9f7a-3997dab1d4a1",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "numberInputs": 5
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        1660,
+        760
+      ],
+      "id": "32679fbd-491a-495e-a9c2-518464a1b644",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "createdTime"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1880,
+        760
+      ],
+      "id": "1c17e447-efe3-40f5-a97a-19bb8054d590",
+      "name": "Sort"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{\n    json: {\n        Data: items.map(item => JSON.stringify(item.json, null, 2)).join(\"\\n\\n\")\n    }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2100,
+        760
+      ],
+      "id": "2106582e-bfcd-44f8-a247-104ce7d23b1d",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "model": "openai/o3-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        2520,
+        940
+      ],
+      "id": "b2edb0b8-baae-4fde-97f9-8cf50a22e7c5",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblrJ0BGlWlQwJiHn",
+          "mode": "list",
+          "cachedResultName": "Gesamtanalyse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblrJ0BGlWlQwJiHn"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Analyseergebnisse": "={{ $('Datenauswertung').item.json.text }}"
+          },
+          "matchingColumns": [
+            "Analyseergebnisse"
+          ],
+          "schema": [
+            {
+              "id": "Analyseergebnisse",
+              "displayName": "Analyseergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        3000,
+        540
+      ],
+      "id": "2632caee-aa1e-4d98-b9d1-1d0018607502",
+      "name": "Airtable3",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        300,
+        1100
+      ],
+      "id": "1a2ba62c-2f3d-4e55-805a-9c204e60ef9a",
+      "name": "Code4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        580,
+        1100
+      ],
+      "id": "bd96cb50-c17f-490b-9dbb-93eaa33a1404",
+      "name": "Loop Over Items3"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblRjL9aImLDWF12R",
+          "mode": "list",
+          "cachedResultName": "User Question",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblRjL9aImLDWF12R"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        1100
+      ],
+      "id": "d2ec79c8-9e2a-4715-9ab8-931db07e24b0",
+      "name": "Airtable10",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblRjL9aImLDWF12R",
+          "mode": "list",
+          "cachedResultName": "User Question",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblRjL9aImLDWF12R"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        820,
+        1200
+      ],
+      "id": "87751995-7b87-4fa5-9d52-078d8667cbc0",
+      "name": "Airtable4",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "03b6b917-54c6-4e45-89fe-68afa50d5e53",
+              "name": "text",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3260,
+        760
+      ],
+      "id": "5c1e0de3-d1ea-4545-b1b1-53ae7d4b74af",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        1560
+      ],
+      "id": "ba772de9-dd87-434a-a028-05cceb4d69d2",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        520,
+        1560
+      ],
+      "id": "de567c7f-27f9-4bbc-9d75-48f15524af82",
+      "name": "Loop Over Items4"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblINZACOtuJnfslO",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse-The-Virtual-Brain",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblINZACOtuJnfslO"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -60,
+        1560
+      ],
+      "id": "23931803-ad50-490f-8272-18eb7392178f",
+      "name": "Airtable11",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblINZACOtuJnfslO",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse-The-Virtual-Brain",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblINZACOtuJnfslO"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        760,
+        1660
+      ],
+      "id": "edf41bf6-0cf2-488e-a718-55c193a4a679",
+      "name": "Airtable5",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-17T14:59:34.000Z",
+  "versionId": "42139cfb-89c7-4a2c-954e-80760f0a38a5"
+}
