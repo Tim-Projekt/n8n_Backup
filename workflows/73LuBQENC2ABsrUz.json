@@ -87,7 +87,7 @@
     {
       "parameters": {
         "promptType": "define",
-        "text": "=Durchsuche den Cyberspace mithilfe deiner APIs/Tools nach neurowissenschaftlichen Informationen/Studien zu dieser Fragestellung:\n{{ $json.chatInput }}\nExtrahiere relevante wissenschaftliche und technische Daten und liefere eine objektive, faktenbasierte Zusammenfassung der wichtigsten Ergebnisse, ohne eine Einleitung, Schlussfolgerung oder Erklärungen hinzuzufügen. Achte darauf, alle Informationen präzise und sachlich zu formulieren, dabei jedoch keine persönlichen oder subjektiven Meinungen zu äußern.",
+        "text": "=Durchsuche den Cyberspace mithilfe deiner APIs/Tools nach neurowissenschaftlichen Informationen/Studien zu dieser Fragestellung:\n{{ $('Workflow Input Trigger').item.json }}\nExtrahiere relevante wissenschaftliche und technische Daten und liefere eine objektive, faktenbasierte Zusammenfassung der wichtigsten Ergebnisse, ohne eine Einleitung, Schlussfolgerung oder Erklärungen hinzuzufügen. Achte darauf, alle Informationen präzise und sachlich zu formulieren, dabei jedoch keine persönlichen oder subjektiven Meinungen zu äußern.",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -113,7 +113,7 @@
     {
       "parameters": {
         "name": "Sementic_Scholar_API",
-        "description": "The Semantic Scholar API provides abstracts and metadata from scholarly articles, ideal for academic research and exploring interdisciplinary topics. Its semantic search finds relevant papers based on meaning, not just keywords.\n\nWhen to Use:\nFor peer-reviewed academic research\nTo discover relevant papers across fields\n\nStrengths\nHigh-quality, peer-reviewed content\nAdvanced semantic search\nDetailed metadata (citations, references)\n\nWeaknesses\nLimited in medical/biomedical topics (use PubMed)\nNot suited for general knowledge (use Wikipedia)",
+        "description": "=Die Semantic Scholar API liefert Abstracts und Metadaten aus wissenschaftlichen Artikeln und ist ideal für akademische Forschung und die Erforschung interdisziplinärer Themen. Ihre semantische Suche findet relevante Arbeiten basierend auf der Bedeutung, nicht nur auf Schlüsselwörtern.\n\nWann verwenden:\n\nFür peer-reviewed akademische Forschung\nUm relevante Arbeiten aus verschiedenen Fachbereichen zu entdecken\nStärken:\n\nHochwertige, peer-reviewed Inhalte\nErweiterte semantische Suche\nDetaillierte Metadaten (Zitationen, Referenzen)\nSchwächen:\n\nEingeschränkt bei medizinischen/biomedizinischen Themen (verwende PubMed)\nNicht geeignet für allgemeines Wissen (verwende Wikipedia)\n\nHinweis: \nDieses Tool muss mit spezifischen Schlüsselwörtern zum Thema geprompt werden.\nDieses Tool sollte nicht in einem kurzen Zeitraum mehrfach aufgerufen werden.",
         "workflowId": {
           "__rl": true,
           "value": "VGEXh6JqDtPxXOxo",
@@ -122,20 +122,22 @@
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
+          "value": {
+            "Keyword": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Keyword', `Keyword mit dem nach spezifischen Studien gesucht wird. `, 'string') }}"
+          },
           "matchingColumns": [
             "Input"
           ],
           "schema": [
             {
-              "id": "Input",
-              "displayName": "Input",
+              "id": "Keyword",
+              "displayName": "Keyword",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
               "type": "string",
-              "removed": true
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -145,7 +147,7 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2,
       "position": [
-        420,
+        360,
         560
       ],
       "id": "d4746d3e-b789-4978-b1ed-5519a94a7d0d",
@@ -154,7 +156,7 @@
     {
       "parameters": {
         "name": "Pub_Med_API",
-        "description": "The PubMed API provides access to abstracts, metadata, and references from millions of biomedical articles, ideal for medical research and clinical studies.\n\nWhen to Use\n\nFor reliable, peer-reviewed biomedical research\nTo find articles on specific medical topics or treatments\nFor citation and metadata gathering\nStrengths\n\nExtensive database of peer-reviewed articles\nPrecise search with filters\nRegularly updated\nFlexible data output (XML, JSON)\nWeaknesses\n\nLimited full-text access\nComplex search syntax\nNot directly compatible with AI/ML applications",
+        "description": "=Die PubMed API bietet Zugriff auf Abstracts, Metadaten und Referenzen aus Millionen biomedizinischer Artikel und ist ideal für medizinische Forschung und klinische Studien.\n\nWann verwenden:\n\nFür zuverlässige, peer-reviewed biomedizinische Forschung\nUm Artikel zu spezifischen medizinischen Themen oder Behandlungen zu finden\nZur Zitation und Metadatensammlung\n\nStärken:\nUmfangreiche Datenbank peer-reviewed Artikel\nPräzise Suche mit Filtern\nRegelmäßig aktualisiert\n\nSchwächen:\nEingeschränkter Zugriff auf Volltexte\nKomplexe Suchsyntax\nNicht direkt kompatibel mit KI/ML-AnwendungeM\n\nHinweis: Dieses Tool muss mit spezifischen Schlüsselwörtern zum Thema geprompt werden.",
         "workflowId": {
           "__rl": true,
           "value": "gTLWuvBMcEt6I3RY",
@@ -163,19 +165,22 @@
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
+          "value": {
+            "Keyword": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Keyword', `Keyword mit dem nach spezifischen Studien gesucht wird. `, 'string') }}"
+          },
           "matchingColumns": [
             "term"
           ],
           "schema": [
             {
-              "id": "term",
-              "displayName": "term",
+              "id": "Keyword",
+              "displayName": "Keyword",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "canBeUsedToMatch": true,
-              "removed": true
+              "type": "string",
+              "removed": false
             }
           ],
           "attemptToConvertTypes": false,
@@ -196,7 +201,7 @@
         "workflowInputs": {
           "values": [
             {
-              "name": "chatInput"
+              "name": "Research Thema"
             }
           ]
         }
@@ -218,6 +223,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-13T17:54:53.000Z",
-  "versionId": "59b97983-eebf-4c14-94c3-39818404daa8"
+  "updatedAt": "2025-02-17T17:26:48.000Z",
+  "versionId": "ccfa5208-7a6e-45c6-b4a5-34dd25c78717"
 }
