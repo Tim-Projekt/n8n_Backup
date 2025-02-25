@@ -1,0 +1,183 @@
+{
+  "active": false,
+  "connections": {
+    "Airtable10": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items5": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Airtable11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable11": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Airtable10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-24T20:33:42.322Z",
+  "id": "XBx2QUfCe2CZrhoo",
+  "meta": null,
+  "name": "Clean Database - NeuroPilot",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appw2bTn3Zt80Vgia",
+          "mode": "list",
+          "cachedResultName": "Pylorisches",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl8tlIfo2kUlK8Ck",
+          "mode": "list",
+          "cachedResultName": "Analyseergebnisse",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia/tbl8tlIfo2kUlK8Ck"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "43de8adf-796b-4e87-92d0-009d6a5d0185",
+      "name": "Airtable10",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "zt1LZGV2136revL0",
+          "name": "RAD Pylorisches"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => ({ json: { id: item.json.id } }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        260,
+        0
+      ],
+      "id": "039d9908-2c6a-4f3e-9c75-dfa0cece043d",
+      "name": "Code5"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        540,
+        0
+      ],
+      "id": "b97d02af-1844-4751-b706-cb71734a97e1",
+      "name": "Loop Over Items5"
+    },
+    {
+      "parameters": {
+        "operation": "deleteRecord",
+        "base": {
+          "__rl": true,
+          "value": "appw2bTn3Zt80Vgia",
+          "mode": "list",
+          "cachedResultName": "Pylorisches",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl8tlIfo2kUlK8Ck",
+          "mode": "list",
+          "cachedResultName": "Analyseergebnisse",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia/tbl8tlIfo2kUlK8Ck"
+        },
+        "id": "={{ $json.id }}"
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        700,
+        200
+      ],
+      "id": "67cdcea7-4611-4385-a150-687ca2e58fbd",
+      "name": "Airtable11",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "zt1LZGV2136revL0",
+          "name": "RAD Pylorisches"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -220,
+        0
+      ],
+      "id": "bd99e041-384d-447b-b10f-b9de9aaf8797",
+      "name": "When Executed by Another Workflow"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-24T20:34:52.000Z",
+  "versionId": "406950a7-bb36-47a9-9384-71f0ce3a3688"
+}
