@@ -1,0 +1,210 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Simulations-Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Simulations-Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Brian2_Simulationssoftware": {
+      "ai_tool": [
+        [
+          {
+            "node": "Simulations-Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TVB_Sub_Workflow": {
+      "ai_tool": [
+        [
+          {
+            "node": "Simulations-Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-17T13:50:04.418Z",
+  "id": "GSARutTY3DSiIx7r",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Simulations-Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Szenario"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "When Executed by Another Workflow",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Rolle:\nDu bist ein Simulations-Agent, der dafür verantwortlich ist, eine empfangene Szenario-Beschreibung wissenschaftlich und ausführlich zu analysieren und die darin enthaltenen Informationen zielgerichtet an zwei spezialisierte Sub-Agents weiterzugeben:\n\nBrian2: Diese Simulationssoftware eignet sich für die Simulation neuronaler Netzwerke mittels Differentialgleichungen und detaillierter Zeitreihenanalysen.\nThe Virtual Brain: Diese Plattform simuliert großskalige Gehirnnetzwerke und modelliert regionale Aktivitäten sowie funktionelle Konnektivitäten.\nZiel:\nDeine Hauptaufgabe ist es, die empfangene Szenario-Beschreibung in ihre wesentlichen Elemente zu zerlegen und diese Elemente präzise den Sub-Agents zuzuordnen. Dabei musst du sicherstellen, dass jede Weitergabe wissenschaftlich fundiert, detailliert und exakt den spezifischen Fähigkeiten der jeweiligen Simulationssoftware entspricht, um eine realitätsnahe Simulation zu ermöglichen.\n\nArbeitsweise:\n\nAnalyse der Szenario-Beschreibung:\nLies die Szenario-Beschreibung gründlich und extrahiere alle relevanten wissenschaftlichen Parameter, Modellannahmen, Simulationstypen und Zielsetzungen.\nZuordnung der Elemente:\nFür Brian2: Identifiziere alle Informationen, die neuronale Dynamiken, zeitabhängige Prozesse oder Differentialgleichungen betreffen.\nFür The Virtual Brain: Finde jene Aspekte, die großskalige Netzwerke, regionale Interaktionen oder funktionelle Konnektivitätsmuster betreffen.\nErstellung spezifischer Anweisungen:\nFormuliere für jeden Sub-Agent detaillierte und wissenschaftlich präzise Anweisungen, in denen die jeweiligen Parameter, Modelle und gewünschten Simulationsergebnisse klar definiert sind.\nWeitergabe:\nÜbermittle die erstellten Anweisungen strukturiert an die entsprechenden Sub-Agents, sodass diese ihre Simulationen exakt nach den vorgegebenen wissenschaftlichen Kriterien durchführen können.\n---\nSzenario:\n{{ $('When Executed by Another Workflow').item.json.Szenario }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        520,
+        340
+      ],
+      "id": "164b3078-f0f3-43ed-a740-04d4d8d27c23",
+      "name": "Simulations-Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        420,
+        580
+      ],
+      "id": "926067b7-3ad2-4f18-bf00-be9b83768b62",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "Brian2_Simulationssoftware",
+        "description": "Fähigkeiten / Zweck:\nFührt Simulationen mit der Software Brian2 durch, ideal für die Modellierung einzelner Neuronen oder kleinerer neuronaler Netzwerke (spiking neural networks).\n\nWann aufrufen?\n\nFür feingranulare Simulationen von Neuronen oder Mikronetzwerken.\nZur Überprüfung oder Exploration von Hypothesen auf Einzelzell- oder Mikronetzwerk-Ebene.\nBenötigte Eingaben:\n\nSzenariobeschreibung: Angaben zu neuronalen Modellen, Parametern, Stimulationsprotokollen.\nHypothese (optional): Erwartete Effekte oder zu testende Parameteränderungen.\nAusgabe / Output:\nSimulationsergebnisse und Insights in natürlicher Sprache.",
+        "workflowId": {
+          "__rl": true,
+          "value": "tDcFb5jxwWzkpyCj",
+          "mode": "list",
+          "cachedResultName": "Brian2-Sub-Agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsszenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Simulationsszenario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Simulationsszenario"
+          ],
+          "schema": [
+            {
+              "id": "Simulationsszenario",
+              "displayName": "Simulationsszenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        980,
+        580
+      ],
+      "id": "c6bf149f-5142-4b85-ad1e-f0be8907bdb8",
+      "name": "Brian2_Simulationssoftware"
+    },
+    {
+      "parameters": {
+        "name": "The_Virtual_Brain_Simulationssoftware",
+        "description": "Fähigkeiten / Zweck:\nFührt Simulationen mit The Virtual Brain (TVB) durch, spezialisiert auf großskalige Hirnnetzwerk-Simulationen zur Untersuchung dynamischer Prozesse.\n\nWann aufrufen?\n\nBei Szenarien zur Simulation großräumiger neuronaler Netzwerke.\nWenn ein Experiment mit TVB zur Hypothesentestung geplant ist.\nBenötigte Eingaben:\n\nSzenariobeschreibung: Parameter, Hirnregionen/Netzwerke, Zeitfenster, Fragestellung.\nHypothese (optional): Warum diese Konfiguration relevant ist.\nAusgabe / Output:\nSimulationsergebnisse in sprachlicher Form.",
+        "workflowId": {
+          "__rl": true,
+          "value": "oKf3SRq4ar4MDt8B",
+          "mode": "list",
+          "cachedResultName": "TVB_Sub_Workflow"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsszenario": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Simulationsszenario', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Simulationsszenario"
+          ],
+          "schema": [
+            {
+              "id": "Simulationsszenario",
+              "displayName": "Simulationsszenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        760,
+        580
+      ],
+      "id": "3f3549ef-c8f7-4e22-9102-3260c87f9f09",
+      "name": "TVB_Sub_Workflow"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-17T19:33:58.000Z",
+  "versionId": "93a39191-37fd-4e7e-9c5f-f3ad99eba628"
+}
