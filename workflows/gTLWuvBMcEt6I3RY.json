@@ -33,6 +33,22 @@
           }
         ]
       ]
+    },
+    "Summarys": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-01-21T14:32:06.248Z",
@@ -54,7 +70,7 @@
             },
             {
               "name": "term",
-              "value": "={{ $('Workflow Input Trigger').item.json.query }}"
+              "value": "={{ $('Workflow Input Trigger').item.json.Keyword }}"
             },
             {
               "name": "retmax",
@@ -147,7 +163,13 @@
     },
     {
       "parameters": {
-        "inputSource": "passthrough"
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Keyword"
+            }
+          ]
+        }
       },
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
@@ -157,6 +179,97 @@
       ],
       "id": "f679ce2b-a469-454c-a333-975fcb9f4938",
       "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPEZOZ3fG76MnD6",
+          "mode": "list",
+          "cachedResultName": "Research - Abstracts",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblPEZOZ3fG76MnD6"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Content/Abstract": "={{ $json.data }}",
+            "Studienname": "={{ $('Workflow Input Trigger').item.json.query }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Studienname",
+              "displayName": "Studienname",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Content/Abstract",
+              "displayName": "Content/Abstract",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1120,
+        -200
+      ],
+      "id": "491ffeba-8af4-455c-b7b6-fe800bb407f3",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1fb43044-92fb-4694-b72b-bb86a0f71e54",
+              "name": "data",
+              "value": "={{ $json.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1300,
+        0
+      ],
+      "id": "9020e0dd-472d-4b6d-94d7-47f24e573bb4",
+      "name": "Edit Fields"
     }
   ],
   "pinData": {},
@@ -166,6 +279,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-01-25T16:27:59.000Z",
-  "versionId": "5b375394-33f1-4137-a6ad-b83a3a2b46af"
+  "updatedAt": "2025-02-17T16:54:30.000Z",
+  "versionId": "fe28ad4e-ba8f-45a1-93c7-87402aead003"
 }
