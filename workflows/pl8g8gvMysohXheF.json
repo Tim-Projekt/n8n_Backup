@@ -45,12 +45,28 @@
         ]
       ]
     },
-    "Google Gemini Chat Model": {
+    "OpenRouter Chat Model": {
       "ai_languageModel": [
         [
           {
             "node": "Brunel_2000",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI5": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
             "index": 0
           }
         ]
@@ -167,23 +183,138 @@
     },
     {
       "parameters": {
-        "modelName": "models/gemini-2.0-flash-thinking-exp",
+        "model": "={{$env.Simulation_LLM}}",
         "options": {}
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        340,
+        260,
         220
       ],
-      "id": "a2412970-a29e-44a2-88da-2a2251eadd3e",
-      "name": "Google Gemini Chat Model",
+      "id": "4ce979b8-eb89-4d73-a734-a0ef19b18c64",
+      "name": "OpenRouter Chat Model",
       "credentials": {
-        "googlePalmApi": {
-          "id": "Mid8lkFo2uMmRyYL",
-          "name": "Google Gemini(PaLM) Api account"
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3sJYWJGLERh8D",
+          "mode": "list",
+          "cachedResultName": "RAD - Sys - n8n",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblD1v9qA3B96bBgp",
+          "mode": "list",
+          "cachedResultName": "Simulationsergebnisse",
+          "cachedResultUrl": "https://airtable.com/appt3sJYWJGLERh8D/tblD1v9qA3B96bBgp"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsmodell": "Brunel_2000",
+            "Szenario": "={{ $('Workflow Input Trigger').item.json.query }}",
+            "Simulationsparameter": "={{ $('Brunel_2000').item.json.text }}",
+            "Simulationsergebnisse": "={{ $json.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Simulationsmodell",
+              "displayName": "Simulationsmodell",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsparameter",
+              "displayName": "Simulationsparameter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsergebnisse",
+              "displayName": "Simulationsergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1500,
+        -220
+      ],
+      "id": "49b5ef47-d0d9-437e-8a56-380928e55faf",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "xWAwTKgY6HGNzEsl",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd4a689f-cd05-40b2-8167-76a2c0e9b2bc",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1780,
+        0
+      ],
+      "id": "09436839-1a31-488b-b8e9-224dcc9f1005",
+      "name": "Edit Fields"
     }
   ],
   "pinData": {},
@@ -193,6 +324,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-16T10:14:09.000Z",
-  "versionId": "c728cb28-923f-4eeb-bb89-3e28ca3cbfc6"
+  "updatedAt": "2025-02-16T20:13:10.000Z",
+  "versionId": "6aa08e86-1304-46d0-811c-c405b771c98f"
 }
