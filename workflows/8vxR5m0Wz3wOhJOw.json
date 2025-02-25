@@ -1,0 +1,339 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API9": {
+      "main": [
+        [
+          {
+            "node": "OpenAI9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI9": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-20T16:27:35.678Z",
+  "id": "8vxR5m0Wz3wOhJOw",
+  "meta": null,
+  "name": "Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Szenario"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1540,
+        140
+      ],
+      "id": "225fb2f3-8824-4422-b95a-5b5fdec4ab0f",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -800,
+        140
+      ],
+      "id": "b8963a8a-25be-4775-ae7c-5eea57b056d8",
+      "name": "Code9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_adex",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code9').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -540,
+        140
+      ],
+      "id": "55f7cf18-cb9d-491e-bed6-fb9edd983f77",
+      "name": "Simulation_API9"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "=Aufgabe:\nAnalysiere kritisch die Dynamik des simulierten Membranpotentials eines neuronalen Modells. Nutze die Referenzwerte (gestrichelte graue Linie) als kontextuelle Orientierungshilfe, um die Simulationsergebnisse einzuordnen, Abweichungen zu identifizieren und neuronale Mechanismen zu hypothesisieren.\n\nEingabe:\n\nDiagramm:\n\nBlaue Linie: Simuliertes Membranpotential.\n\nGestrichelte graue Linie: Referenzwerte (typisches Membranpotential eines regulär feuernden Neurons mit moderater Adaptation).\n\nSimulationskontext:\n\nSzenario: {{ $('Workflow Input Trigger').item.json.Szenario }}\n\nModellparameter: {{ $('Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen').item.json.text }}\n\nAchsen:\n\ny-Achse: Membranpotential (mV).\n\nx-Achse: Zeit (ms).\n\nAnalytische Leitfragen:\n\nDynamik der Simulation (Primärfokus):\n\nBeschreibe quantitativ und qualitativ:\n\nRuhepotential: Liegt es im erwarteten Bereich (z. B. ~-70 mV)?\n\nSpike-Amplitude: Maximale Depolarisation, Anstiegs-/Abfallgeschwindigkeit.\n\nFeuerrate: Frequenz der Spikes über die Zeit.\n\nAdaptationsverhalten: Ändert sich die Feuerrate bei anhaltender Stimulation?\n\nReferenz als Kontext: Nutze die graue Linie, um Auffälligkeiten zu markieren (z. B. \"Die Simulation zeigt im Vergleich zum typischen Adaptationsmuster eine...\").\n\nMechanistische Hypothesen:\n\nWelche neuronalen Mechanismen (Ionenkanäle, synaptische Eigenschaften, Stimulationsparameter) könnten folgende Abweichungen erklären?\n\nBeispiel: \"Ein schnellerer Spike-Anstieg deutet auf erhöhte Na⁺-Leitfähigkeit hin.\"\n\nBeziehe explizit das Szenario und die Modellparameter ein (z. B. \"Die in den Parametern definierte erhöhte Kaliumleitfähigkeit könnte...\").\n\nModellbewertung:\n\nStärken: Welche Aspekte der Simulation ähneln dem Referenzverhalten und stützen die biologische Plausibilität?\n\nAbweichungen: Sind diese technisch limitierend (z. B. übermäßige Vereinfachung) oder zeigen sie interessante Dynamiken (z. B. unerwartete Adaptationseffekte)?\n\nAnforderungen:\n\nWissenschaftliche Präzision: Nutze Begriffe wie \"Nachhyperpolarisation\", \"Feuerratenadaptation\", \"intrinsische Erregbarkeit\".\n\nQuantitative Angaben: Messwerte (mV, ms, Hz) für Spike-Amplituden, Frequenzänderungen.\n\nTestbare Hypothesen: Formuliere kausale Vermutungen (z. B. \"Eine Reduktion der Kaliumkanaldichte im Modell könnte die verlängerte Repolarisationsphase erklären.\").\n\nKritik: Hinterfrage, ob Abweichungen durch Modelllimitationen oder reale neurobiologische Phänomene begründet sind.\n\nStrukturvorgabe:\n\nBeschreibung der Simulationsdynamik (Primärdaten).\n\nKontextualisierung mit Referenzwerten (kein direkter Vergleich, sondern Einordnung).\n\nMechanistische Hypothesenbildung (Ursachen für Beobachtungen).\n\nBewertung der Modellperformance (Plausibilität, Innovation, Limitationen).\n\nZiel: Eine Analyse, die die Simulation selbst in den Mittelpunkt stellt und die Referenzwerte nutzt, um Erkenntnisse über deren neuronale Dynamik zu vertiefen.",
+        "inputType": "base64",
+        "options": {
+          "maxTokens": 1000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -240,
+        140
+      ],
+      "id": "396e7a89-086c-4166-b32d-e355c0e98ad8",
+      "name": "OpenAI9",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/o3-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -1180,
+        380
+      ],
+      "id": "a4e8cc62-f445-4523-99e2-f6341b7f4222",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appw2bTn3Zt80Vgia",
+          "mode": "list",
+          "cachedResultName": "Pylorisches",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl8tlIfo2kUlK8Ck",
+          "mode": "list",
+          "cachedResultName": "Analyseergebnisse",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia/tbl8tlIfo2kUlK8Ck"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsmodell": "Adaptive Exponential Integrate-and-Fire",
+            "Szenario": "={{ $('Workflow Input Trigger').item.json.Szenario }}",
+            "Simulationsparameter": "={{ $('Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen').item.json.text }}",
+            "Analyseergebnisse": "={{ $('OpenAI9').item.json.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Simulationsmodell",
+              "displayName": "Simulationsmodell",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsparameter",
+              "displayName": "Simulationsparameter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Analyseergebnisse",
+              "displayName": "Analyseergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f0c0764d-1a5c-45af-82d4-8bbefa339447",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "zt1LZGV2136revL0",
+          "name": "RAD Pylorisches"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd4a689f-cd05-40b2-8167-76a2c0e9b2bc",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        300,
+        140
+      ],
+      "id": "c55a519e-641e-4495-a90b-e2eb9a38140b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Dies ist das zu simulierende Szenario:\n{{ $json.Szenario }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\n\nParameter: C\nBeschreibung: Membrankapazität, die angibt, wie viel Ladung zur Veränderung des Membranpotenzials benötigt wird.\nWertebereich: [Min: 100, Typisch: 281, Max: 500]\nEinheit: pF\n\nParameter: gL\nBeschreibung: Leckleitwert, der den passiven Ionenfluss durch die Membran bei Ruhepotenzial bestimmt.\nWertebereich: [Min: 5, Typisch: 30, Max: 50]\nEinheit: nS\n\nParameter: EL\nBeschreibung: Ruhepotential, das stabile Membranpotenzial eines Neurons ohne externe Stimulation.\nWertebereich: [Min: -80, Typisch: -70.6, Max: -60]\nEinheit: mV\n\nParameter: VT\nBeschreibung: Schwellenwert des Membranpotenzials, ab dem ein Aktionspotenzial ausgelöst wird.\nWertebereich: [Min: -55, Typisch: -50.4, Max: -40]\nEinheit: mV\n\nParameter: DeltaT\nBeschreibung: Steilheitsparameter im exponentiellen Integrate-and-Fire-Modell, der die Dynamik der Membranpotenzialänderung bestimmt.\nWertebereich: [Min: 0.5, Typisch: 2, Max: 4]\nEinheit: mV\n\nParameter: tauw\nBeschreibung: Zeitkonstante der Adaptation, die die Geschwindigkeit der Rückkehr zur Ausgangsaktivität nach einem Spike beschreibt.\nWertebereich: [Min: 50, Typisch: 144, Max: 500]\nEinheit: ms\n\nParameter: a\nBeschreibung: Subthreshold Adaptation, die den Anpassungsstrom während subschwelligem Potenzial moduliert.\nWertebereich: [Min: 0, Typisch: 4, Max: 10]\nEinheit: nS\n\nParameter: b\nBeschreibung: Spike-triggered Adaptation, die den diskreten Anstieg des Adaptationsstroms nach einem Aktionspotenzial beschreibt.\nWertebereich: [Min: 0, Typisch: 0.0805, Max: 0.5]\nEinheit: nA\n\nParameter: Vr\nBeschreibung: Reset-Potential, auf das das Membranpotenzial nach einem Aktionspotenzial zurückgesetzt wird.\nWertebereich: [Min: -80, Typisch: -70.6, Max: -55]\nEinheit: mV\n\nBeispieloutput:\nC: [Zahl im Bereich 100–500]  \ngL: [Zahl im Bereich 5–50]  \nEL: [Zahl im Bereich -80 bis -60]  \nVT: [Zahl im Bereich -55 bis -40]  \nDeltaT: [Zahl im Bereich 0.5–4]  \ntauw: [Zahl im Bereich 50–500]  \na: [Zahl im Bereich 0–10]  \nb: [Zahl im Bereich 0–0.5]  \nVr: [Zahl im Bereich -80 bis -55]"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -1200,
+        140
+      ],
+      "id": "7da4d144-eacd-4bbe-8e63-8c2d124e51b3",
+      "name": "Adaptive Exponential Integrate-and-Fire (AdEx) Neuronen"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-24T21:22:21.000Z",
+  "versionId": "a049c8b1-24b2-42e3-9596-66f4a7605162"
+}
