@@ -1,0 +1,341 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "Pylorische Simulation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code9": {
+      "main": [
+        [
+          {
+            "node": "Simulation_API9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simulation_API9": {
+      "main": [
+        [
+          {
+            "node": "OpenAI9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI9": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Pylorische Simulation",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pylorische Simulation": {
+      "main": [
+        [
+          {
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-02-18T21:50:37.084Z",
+  "id": "ng6nSAcXtYqDjC0K",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Pylorisches_Modell",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "Szenario"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -2060,
+        60
+      ],
+      "id": "1defe96b-8353-462c-be07-12c94e64ca71",
+      "name": "Workflow Input Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Original-Response aus dem Input-Node\nconst response = $input.first().json.text;\n\n// Validierung: Sicherstellen, dass response ein String ist\nif (typeof response !== 'string') {\n  throw new Error(\"Response ist nicht definiert oder kein String.\");\n}\n\n// Regex zur Extraktion der Parameter und Werte\nconst regexParams = /\\b([a-zA-Z_]+(?:\\s*\\(.*?\\))?):\\s*([\\d.-]+)\\s*(?:\\*\\s*[a-zA-Z_()]+)?/g;\n\n// Alle Übereinstimmungen für Parameter finden\nconst matchesParams = [...response.matchAll(regexParams)];\n\n// Initialisiere ein Objekt zur Speicherung der Parameter\nconst parameters = {};\n\n// Parameterwerte aus Matches extrahieren\nmatchesParams.forEach(match => {\n  // Extrahiere den Parameter-Namen und den Wert\n  const paramName = match[1].trim();\n  const paramValue = parseFloat(match[2]);\n\n  // Speichere die Parameter im Objekt\n  parameters[paramName] = paramValue;\n});\n\n// Rückgabe des Parameters-Objekts\nreturn {\n  json: parameters\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1320,
+        60
+      ],
+      "id": "4fbe88c5-3c7f-4928-8334-4c358f704068",
+      "name": "Code9"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.API_URL}}/simulate_pylorisch",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $('Code9').item.json }}",
+        "options": {
+          "response": {}
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1060,
+        60
+      ],
+      "id": "75e838c8-d179-42ff-a871-b9b7afe33aa1",
+      "name": "Simulation_API9"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "GPT-4O"
+        },
+        "text": "=Aufgabe:\n\nEin biologisch realistisches neuronales Netzwerk wurde simuliert. Analysiere das folgende Diagramm wissenschaftlich und kritisch, um fundierte Erkenntnisse über die neuronale Dynamik zu gewinnen und vorsichtige, hypothesen-geleitete Interpretationen zu entwickeln.  Die Analyse soll über eine deskriptive Zusammenfassung hinausgehen und qualifizierte wissenschaftliche Hypothesen oder weiterführende Forschungsfragen generieren, wobei der hypothetische Charakter der Schlussfolgerungen betont werden soll.\n\nEingabe:\n\nDas Diagramm visualisiert zwei Simulationsphasen eines neuronalen Netzwerks: Initial phase (links) und Adapted phase (rechts).\n\nDargestellte Daten: Membranpotenziale von drei neuronalen Zelltypen über die Zeit (0-4 Sekunden).\nNeuronentypen: AB/PD (blau), LP (orange), PY (grün).\nBenchmark: Graue Linien repräsentieren \"Typische Werte\" und dienen als Referenz für normale Netzwerkaktivität.\nAchsenbeschriftung:\ny-Achse: Membrane potential (mV) - Membranpotential in Millivolt.\nx-Achse: Time (s) - Zeit in Sekunden.\nSimulationskontext:\nSzenario: \n{{ $('Workflow Input Trigger').item.json.Szenario }}\nSimulationsparameter: \n{{ $('Pylorische Simulation').item.json.text }}\nAnalytische Fragen und zu erwartende Erkenntnisse:\n\n1. Dynamische Veränderungen zwischen Initial- und Adapted-Phase:\n\nQuantitative und Qualitative Charakterisierung der Aktivitätsänderungen: Beschreibe die wesentlichen Unterschiede im Aktivitätsmuster zwischen der Initial- und der Adapted-Phase für jeden Neuronentyp (AB/PD, LP, PY). Nutze dabei nach Möglichkeit messbare Größen wie Feuerrate, Burst-Frequenz, Amplitude der Potentialschwankungen oder mittleres Membranpotential, aber vermeide übermäßige Präzision, wenn diese nicht direkt aus dem Diagramm ableitbar ist. Beschreibe qualitative Veränderungen, wie die Art des Feuermusters und die Stabilität des Membranpotentials.\nAnalyse der Feuermuster und Hinweise auf Koordination: Vergleiche die Feuermuster (z.B. Einzelspikes vs. Bursts, Regelmäßigkeit vs. Irregularität) der Neuronen in beiden Phasen. Gibt es Hinweise auf Veränderungen in der Oszillationsfrequenz oder Anzeichen für eine veränderte Koordination der Aktivität innerhalb des Netzwerks, wie z.B. gleichzeitige Aktivitätsmuster oder Phasenverschiebungen? Quantifiziere Veränderungen nur, wenn dies sinnvoll und präzise möglich ist anhand des Diagramms.\nHypothesen zu potentiellen zugrundeliegenden Mechanismen: Formuliere potenzielle Hypothesen zu neuronalen Mechanismen, die diese beobachteten dynamischen Veränderungen erklären könnten. Denke dabei an synaptische Plastizität (z.B. Langzeitpotenzierung/Depression), Veränderungen in intrinsischen Membraneigenschaften (z.B. Ionenkanalmodulation) oder neuromodulatorische Einflüsse. Betone den spekulativen Charakter dieser Hypothesen.\n2. Funktionale Implikationen der beobachteten Muster:\n\nBedeutung für die Informationsverarbeitung: Interpretiere die beobachteten Veränderungen im Kontext der Informationsverarbeitung im simulierten Netzwerk. Wie könnten die veränderten Feuermuster die Art und Weise der Informationskodierung und -übertragung beeinflussen? Gibt es Anzeichen für eine veränderte Netzwerkfunktion in der Adapted-Phase im Vergleich zur Initial-Phase? Vermeide Werturteile wie \"verbessert\" und konzentriere dich auf Beschreibungen der Veränderung.\nVergleich mit typischen Werten: Setze die simulierten Aktivitätsmuster in Beziehung zu den \"Typischen Werten\" (graue Linien). Weichen die simulierten Werte in einer oder beiden Phasen erkennbar von den typischen Werten ab? Was könnte dies über den Funktionszustand des simulierten Netzwerks aussagen (z.B. Dysfunktion, Anpassung, Optimierung - wobei auch hier die Interpretationen hypothetisch bleiben sollen)?\n3. Vergleich mit biologischer Funktion und Ableitung von Hypothesen:\n\nParallelen zu bekannten biologischen Netzwerken: Ziehe Parallelen zu bekannten biologischen neuronalen Netzwerken, die ähnliche dynamische Veränderungen oder Feuermuster zeigen. Gibt es ähnliche Anpassungsprozesse in realen neuronalen Schaltkreisen, die mit den hier simulierten Mustern vergleichbar sein könnten (z.B. Habituation, Sensitivierung, Lernen)?\nHypothesen zu potentiellen Regulationsprozessen: Leite Hypothesen über potenzielle zugrunde liegende biologische Regulationsprozesse ab, die in realen neuronalen Netzwerken zu ähnlichen Anpassungen führen könnten. Welche Experimente an biologischen Systemen könnten diese Hypothesen in Zukunft validieren oder falsifizieren?\n4. Optimierung und Weiterentwicklung der Simulation:\n\nVorschläge für zusätzliche Experimente/Simulationen: Schlage konkrete zusätzliche Experimente oder Simulationen vor, die weitere Erkenntnisse über die neuronale Dynamik und die zugrunde liegenden Mechanismen liefern könnten. Denke dabei an Manipulationen von Simulationsparametern, Erweiterung des simulierten Netzwerks oder systematische Parameterstudien.\nIdentifikation potentiell kritischer Parameter: Gibt es Hinweise aus der Analyse, dass bestimmte Parameter (aus \n{{ $('Pylorische Simulation').item.json.text }}\n) potenziell besonders kritisch für die beobachteten Muster sind? Welche Parameter sollten in weiteren Simulationen systematisch variiert werden, um deren Einfluss genauer zu untersuchen?\nAnforderungen an die Analyse:\n\nWissenschaftliche Terminologie: Verwende präzise wissenschaftliche Terminologie der Neurophysiologie und Computational Neuroscience.\nQuantitative Aussagen (wo sinnvoll): Formuliere quantitative Aussagen, wo dies sinnvoll und direkt aus dem Diagramm ableitbar ist. Vermeide übermäßige Spekulationen mit Zahlen, wo qualitative Beschreibungen angemessener sind.\nHypothesenbildung (vorsichtig formuliert): Generiere explizit formulierte wissenschaftliche Hypothesen, die potenziell testbar sind und weiterführende Forschungsfragen aufwerfen. Betone den vorläufigen und spekulativen Charakter der Hypothesen.\nKritische Interpretation: Gehe über die reine Beschreibung hinaus und biete eine kritische Interpretation der Ergebnisse im Kontext des gegebenen Simulationsszenarios und des biologischen Wissens. Formuliere Interpretationen als mögliche Erklärungen und nicht als gesicherte Fakten.\nStrukturierte Darstellung: Präsentiere die Analyse strukturiert und übersichtlich, idealerweise in Form von nummerierten Antworten zu den gestellten Fragen.",
+        "inputType": "base64",
+        "options": {
+          "maxTokens": 1000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -760,
+        60
+      ],
+      "id": "2b3d21e2-5cf6-4ceb-81ee-13f6ea2e1df9",
+      "name": "OpenAI9",
+      "credentials": {
+        "openAiApi": {
+          "id": "93L9c3FnEnOvHs4I",
+          "name": "OpenAi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "openai/o3-mini",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -1700,
+        300
+      ],
+      "id": "b341364a-3939-4824-a364-3c7b352bb5c3",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "pG95LwYPd3nZ3zAb",
+          "name": "OpenRouter account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Dies ist das zu simulierende Szenario:\n{{ $json.Szenario }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Du bist ein führender Neurowissenschaftler mit fundierter Expertise in der Arbeit mit Simulationssoftware. Deine Aufgabe besteht darin, präzise Simulationsparameter zu bestimmen, die optimal auf ein vorgegebenes Szenario abgestimmt sind.\n\nDein Ziel:\nKonfiguriere die Simulation so, dass sie das Szenario möglichst genau widerspiegelt, robuste wissenschaftliche Erkenntnisse liefert und optimal auf relevante Fragestellungen eingeht.\n\nDein Arbeitsansatz:\n\nAnalysiere das Szenario sorgfältig, um relevante Variablen, Bedingungen und Zielgrößen zu identifizieren, die durch die Simulation abgebildet werden sollen.\nBestimme präzise, wie die Simulationsparameter konfiguriert werden müssen, um eine hohe Genauigkeit und Relevanz für das vorgegebene Szenario zu erreichen.\nFühre die Optimierung so aus, dass Ergebnisse eine maximale Übertragbarkeit auf reale oder hypothetische Situationen garantieren.\nDokumentiere ausschließlich die optimierten Simulationsparameter, um einen direkten Einsatz in der Simulation zu ermöglichen.\nWichtige Anforderungen:\n\nDie Analyse und die Auswahl der Parameter müssen vollständig objektiv, wissenschaftlich fundiert und direkt anwendbar sein.\nDer Output ist strikt auf die relevanten Simulationsparameter zu beschränken.\nVerzichte auf jegliche Einleitung, Erklärungen oder abschließende Kommentare.\n\nSimulationsparameter:\n\nParameter: init_time\nBeschreibung: Dauer der Initialisierungsphase, in der das Netzwerk in einen stabilen Zustand gebracht wird.\nWertebereich: [Min: 1, Typisch: 2.5, Max: 10]\nEinheit: Sekunden\n\nParameter: observe_time\nBeschreibung: Beobachtungszeitraum, in dem die Netzwerkaktivität aufgezeichnet wird.\nWertebereich: [Min: 2, Typisch: 4, Max: 20]\nEinheit: Sekunden\n\nParameter: adapt_time\nBeschreibung: Zeitraum zur Beobachtung langsamer Anpassungsprozesse im Netzwerk.\nWertebereich: [Min: 30, Typisch: 49, Max: 120]\nEinheit: Sekunden\n\nParameter: Delta_T\nBeschreibung: Steilheitsparameter im exponentiellen Integrate-and-Fire-Modell, der die Dynamik der Membranpotenzialänderung bestimmt.\nWertebereich: [Min: 5, Typisch: 17.5, Max: 30]\nEinheit: mV\n\nParameter: v_T\nBeschreibung: Schwellenwert des Membranpotenzials, ab dem ein Aktionspotenzial ausgelöst wird.\nWertebereich: [Min: -55, Typisch: -40, Max: -30]\nEinheit: mV\n\nParameter: tau\nBeschreibung: Membranzeitkonstante, die angibt, wie schnell das Membranpotenzial auf Veränderungen reagiert.\nWertebereich: [Min: 1, Typisch: 2, Max: 10]\nEinheit: ms\n\nParameter: tau_adapt\nBeschreibung: Zeitkonstante der Adaptation, die den Zeitraum beschreibt, in dem Anpassungsprozesse im Neuron wirken.\nWertebereich: [Min: 0.01, Typisch: 0.02, Max: 0.2]\nEinheit: Sekunden\n\nParameter: tau_Ca\nBeschreibung: Zeitkonstante für den Abbau intrazellulärer Calciumkonzentrationen, die die Calciumdynamik reguliert.\nWertebereich: [Min: 50, Typisch: 150, Max: 500]\nEinheit: ms\n\nParameter: tau_x\nBeschreibung: Zeitkonstante für langsame Regulations- oder Anpassungsprozesse im Neuron.\nWertebereich: [Min: 0.5, Typisch: 2, Max: 5]\nEinheit: Sekunden\n\nParameter: v_r\nBeschreibung: Reset-Potential, auf das das Membranpotenzial nach einem Aktionspotenzial zurückgesetzt wird.\nWertebereich: [Min: -80, Typisch: -68, Max: -50]\nEinheit: mV\n\nParameter: C\nBeschreibung: Membrankapazität, die angibt, wie viel Ladung zur Veränderung des Membranpotenzials benötigt wird.\nWertebereich: [Min: 20, Typisch: 60, Max: 300]\nEinheit: pF\n\nParameter: S\nBeschreibung: Steilheitsfaktor, der die Anstiegsdynamik der Membranpotenzialänderung im Modell beeinflusst.\nWertebereich: [Min: 1, Typisch: 2, Max: 5]\nEinheit: nA/Delta_T\n\nParameter: G\nBeschreibung: Leitfähigkeit, die den Stromfluss innerhalb oder zwischen Neuronen moduliert.\nWertebereich: [Min: 10, Typisch: 28.5, Max: 60]\nEinheit: nS\n\nParameter: tau_z\nBeschreibung: Zeitkonstante für sehr langsame Prozesse oder Modulationen im neuronalen Verhalten.\nWertebereich: [Min: 1, Typisch: 5, Max: 10]\nEinheit: Sekunden\n\nParameter: c\nBeschreibung: Eingespeister Strom oder stimulierte Stromstärke im Modell, der zusätzliche Modulationen ermöglicht.\nWertebereich: [Min: 0.5, Typisch: 1.2, Max: 3]\nEinheit: nA\n\nBeispieloutput:\ninit_time: [Zahl im Bereich 1–10]  \nobserve_time: [Zahl im Bereich 2–20]  \nadapt_time: [Zahl im Bereich 30–120]  \nDelta_T: [Zahl im Bereich 5–30]  \nv_T: [Zahl im Bereich -55 bis -30]  \ntau: [Zahl im Bereich 1–10]  \ntau_adapt: [Zahl im Bereich 0.01–0.2]  \ntau_Ca: [Zahl im Bereich 50–500]  \ntau_x: [Zahl im Bereich 0.5–5]  \nv_r: [Zahl im Bereich -80 bis -50]  \nC: [Zahl im Bereich 20–300]  \nS: [Zahl im Bereich 1–5]  \nG: [Zahl im Bereich 10–60]  \ntau_z: [Zahl im Bereich 1–10]  \nc: [Zahl im Bereich 0.5–3]"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        -1720,
+        60
+      ],
+      "id": "f59dff53-c5f7-4a64-af52-46bb56e37811",
+      "name": "Pylorische Simulation"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appw2bTn3Zt80Vgia",
+          "mode": "list",
+          "cachedResultName": "Pylorisches",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl8tlIfo2kUlK8Ck",
+          "mode": "list",
+          "cachedResultName": "Analyseergebnisse",
+          "cachedResultUrl": "https://airtable.com/appw2bTn3Zt80Vgia/tbl8tlIfo2kUlK8Ck"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Simulationsmodell": "Pylorisches",
+            "Szenario": "={{ $('Workflow Input Trigger').item.json.Szenario }}",
+            "Simulationsparameter": "={{ $('Pylorische Simulation').item.json.text }}",
+            "Analyseergebnisse": "={{ $('OpenAI9').item.json.content }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Simulationsmodell",
+              "displayName": "Simulationsmodell",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Szenario",
+              "displayName": "Szenario",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Simulationsparameter",
+              "displayName": "Simulationsparameter",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Analyseergebnisse",
+              "displayName": "Analyseergebnisse",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -520,
+        -80
+      ],
+      "id": "c3cc021a-5354-4afd-ab85-37511628cd11",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "zt1LZGV2136revL0",
+          "name": "RAD Pylorisches"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd4a689f-cd05-40b2-8167-76a2c0e9b2bc",
+              "name": "content",
+              "value": "={{ $json.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -220,
+        60
+      ],
+      "id": "ac782fae-fb81-4f8e-bd2f-9dc5f4aa2d67",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-02-24T21:48:31.000Z",
+  "versionId": "69bd45a7-51a7-41fa-abcc-c848d6c88e65"
+}
